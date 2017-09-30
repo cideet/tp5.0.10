@@ -19,4 +19,4 @@ require __DIR__ . '/../thinkphp/start.php';
 // 读取自动生成定义文件
 $build = include '../build.php';
 // 运行自动生成
-\think\Build::run($build,'index',true);
+\think\Build::run($build, 'index', true);
