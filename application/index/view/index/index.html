@@ -1,113 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="x-ua-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>$title</title>
-    <link rel="shortcut icon" href="">
-    <link rel="stylesheet" href="__STATIC__/index/css/base.css"/>
-    <link rel="stylesheet" href="__STATIC__/index/css/common.css"/>
-    <link rel="stylesheet" href="__STATIC__/index/css/index.css"/>
-    <script type="text/javascript" src="__STATIC__/index/js/html5shiv.js"></script>
-    <script type="text/javascript" src="__STATIC__/index/js/respond.min.js"></script>
-    <script type="text/javascript" src="__STATIC__/index/js/jquery-1.11.3.min.js"></script>
-</head>
-<body>
-<div class="header-bar">
-    <div class="header-inner">
-        <ul class="father">
-            <li><a>$city.name</a></li>
-            <li>|</li>
-            <li class="city">
-                <a>切换城市<span class="arrow-down-logo"></span></a>
-                <div class="city-drop-down">
-                    <h3>热门城市</h3>
-                    <ul class="son">
-                        <li><a href="#">$vo.name</a></li>
-                    </ul>
-
-                </div>
-            </li>
-            <li>欢迎您：$user->username</li>
-            <li><a href="#">退出</a></li>
-            <li><a href="#">注册</a></li>
-            <li>|</li>
-            <li><a href="#">登录</a></li>
-            <li><a href="#">商户中心</a></li>
-        </ul>
-    </div>
-</div>
-
-<div class="search">
-    <a href="/"><img src="__STATIC__/index/image/logo.png"/></a>
-
-</div>
-
-<div class="nav-bar-header">
-    <div class="nav-inner">
-        <ul class="nav-list">
-            <li class="nav-item">
-                <span class="item">全部分类</span>
-                <div class="left-menu">
-                    <div class="level-item">
-                        <div class="first-level">
-                            <dl>
-                                <dt class="title"><a href="#" target="_blank">$cat[0]</a></dt>
-                                <dd><a href="#" target="_blank" class="">$vo.name</a></dd>
-                            </dl>
-                        </div>
-                        <div class="second-level">
-                            <div class="section">
-                                <div class="section-item clearfix no-top-border">
-                                    <h3>其他分类</h3>
-                                    <ul>
-                                        <li><a target="_blank" href="#">$vo.name</a></li>
-                                        <li><a target="_blank" href="#">$vo.name</a></li>
-                                        <li><a target="_blank" href="#">$vo.name</a></li>
-                                        <li><a target="_blank" href="#">$vo.name</a></li>
-                                        <li><a target="_blank" href="#">$vo.name</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="section-item clearfix no-top-border">
-                                    <h3>其他分类</h3>
-                                    <ul>
-                                        <li><a target="_blank" href="#">$vo.name</a></li>
-                                        <li><a target="_blank" href="#">$vo.name</a></li>
-                                        <li><a target="_blank" href="#">$vo.name</a></li>
-                                        <li><a target="_blank" href="#">$vo.name</a></li>
-                                        <li><a target="_blank" href="#">$vo.name</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="first-level">
-                            <dl>
-                                <dt class="title"><a href="#" target="_blank">$cat[1]</a></dt>
-                                <dd><a href="#" target="_blank" class="">$vo.name</a></dd>
-                            </dl>
-                        </div>
-
-
-                        <div class="first-level">
-                            <dl>
-                                <dt class="title"><a href="#" target="_blank">$cat[2]</a></dt>
-                                <dd><a href="#" target="_blank" class="">$vo.name</a></dd>
-                            </dl>
-                        </div>
-
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item"><a href="/" class="item first active">首页</a></li>
-            <li class="nav-item"><a class="item">团购</a></li>
-            <li class="nav-item"><a class="item">商户</a></li>
-        </ul>
-    </div>
-</div>
-
+<{include file="public/head"}>
+<{include file="public/nav"}>
 
 <div class="container">
     <div class="top-container">
@@ -452,12 +344,6 @@
     </div>
 </div>
 
-<div class="footer-content">
-    <div class="copyright-info">
-
-    </div>
-</div>
-
 <script>
     var width = 800 * $("#slide-holder ul li").length;
     $("#slide-holder ul").css({width: width + "px"});
@@ -494,5 +380,5 @@
         time = setInterval(moveleft, 5000);
     });
 </script>
-</body>
-</html>
+
+<{include file="public/foot"}>
