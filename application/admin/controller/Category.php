@@ -34,5 +34,7 @@ class Category extends \think\Controller
         if (!$validate->scene('add')->check($data)) { //验证的场景设置
             $this->error($validate->getError());
         }
+        //把$data提交到model层
+        model('Category')->add($data);
     }
 }
