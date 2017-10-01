@@ -19,7 +19,11 @@ class Category extends \think\Controller
     //生活服务分类 首页
     public function index()
     {
-        return $this->fetch();
+        $categorys = model('Category')->getFirstCategorys();
+        //print_r($categorys);
+        return $this->fetch('', [
+            'categorys' => $categorys
+        ]);
     }
 
     //生活服务分类 添加分类（点击按钮进入页面）
