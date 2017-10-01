@@ -12,22 +12,21 @@ function o2o_edit(title, url) {
 function o2o_s_edit(title, url, w, h) {
     layer_show(title, url, w, h);
 }
+
 /*-删除*/
 function o2o_del(url) {
-
     layer.confirm('确认要删除吗？', function (index) {
         window.location.href = url;
     });
 }
+
 $('.listorder input').blur(function () {
     // 编写我们的抛送的逻辑
     //获取主键id
     var id = $(this).attr('attr-id');
     // 获取排序的值
     var listorder = $(this).val();
-
     var postData = {
-
         'id': id,
         'listorder': listorder,
     };
@@ -41,9 +40,8 @@ $('.listorder input').blur(function () {
             alert(result.msg);
         }
     }, "json");
-
-
 });
+
 /**城市相关二级内容**/
 $(".cityId").change(function () {
     city_id = $(this).val();
@@ -58,7 +56,6 @@ $(".cityId").change(function () {
             city_html = "";
             $(data).each(function (i) {
                 city_html += "<option value='" + this.id + "'>" + this.name + "</option>";
-
             });
             $('.se_city_id').html(city_html);
         } else if (result.status == 0) {
