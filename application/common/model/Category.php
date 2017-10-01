@@ -33,10 +33,10 @@ class Category extends \think\Model
     }
 
     //获取一级栏目
-    public function getFirstCategorys()
+    public function getFirstCategorys($parentID = 0)
     {
         $data = [
-            'parent_id' => 0,
+            'parent_id' => $parentID,
             'status' => ['neq', -1]
         ];
         $order = ['id' => 'desc'];

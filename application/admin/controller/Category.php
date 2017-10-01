@@ -19,7 +19,8 @@ class Category extends \think\Controller
     //生活服务分类 首页
     public function index()
     {
-        $categorys = model('Category')->getFirstCategorys();
+        $parentID = input('get.parent_id', 0, 'intval');
+        $categorys = model('Category')->getFirstCategorys($parentID);
         //print_r($categorys);
         return $this->fetch('', [
             'categorys' => $categorys
