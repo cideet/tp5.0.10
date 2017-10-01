@@ -46,12 +46,18 @@ class Category extends \think\Controller
         print_r(input('post.')); //第二种获取数据的方式
         //print_r(request()->post()); //第三种获取数据的方式
         //建议使用后面两条，不要用PHP原生的
+        if (!request()->isPost()) {
+            $this->error('请求失败');
+        }
         $data = input('post.');
-        $data['status'] = 10; //测试validate
+        //$data['status'] = 10; //测试validate
         $validate = validate('Category');
         //if (!$validate->check($data)) { //tp5的validate
         if (!$validate->scene('add')->check($data)) { //验证的场景设置
             $this->error($validate->getError());
+        }
+        if (!empty($data['id'])) {
+            return $this->update($data);
         }
         //把$data提交到model层
         $res = model('Category')->add($data);
@@ -77,5 +83,16 @@ class Category extends \think\Controller
             'categorys' => $categorys,
             'category' => $category
         ]);
+    }
+
+    //更新编辑
+    public function update($data)
+    {
+        $res = model('Category')->save($data, ['id' => intval($data['id'])]); //更新的条件是id=$data['id']
+        if ($res) {
+            $this->success('更新成功');
+        } else {
+            $this->error('更新失败');
+        }
     }
 }
