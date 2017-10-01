@@ -9,18 +9,32 @@
 namespace app\admin\controller;
 class Category extends \think\Controller
 {
+//    private $obj;
+//
+//    public function _initialize()
+//    {
+//        $this->obj = model('Category');
+//    }
+
+    //生活服务分类 首页
     public function index()
     {
-        //echo('application/admin/controller/Category.php/Category/index');
         return $this->fetch();
     }
 
+    //生活服务分类 添加分类（点击按钮进入页面）
     public function add()
     {
-        //echo('application/admin/controller/Category.php/Category/add');
-        return $this->fetch();
+        //获取一级分类
+        $categorys = model('Category')->getNormalFirstCategory();
+        //$categorys = $this->obj->getNormalFirstCategory();
+        //print_r($categorys);
+        return $this->fetch('', [
+            'categorys' => $categorys
+        ]);
     }
 
+    //生活服务分类 添加分类（保存到数据库）
     public function save()
     {
         //print_r($_POST); //第一种获取数据的方式
@@ -35,6 +49,11 @@ class Category extends \think\Controller
             $this->error($validate->getError());
         }
         //把$data提交到model层
-        model('Category')->add($data);
+        $res = model('Category')->add($data);
+        if ($res) {
+            $this->success('新增成功');
+        } else {
+            $this->error('新增失败');
+        }
     }
 }
