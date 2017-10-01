@@ -40,7 +40,10 @@ class Category extends \think\Model
             'status' => ['neq', -1]
         ];
         $order = ['id' => 'desc'];
-        $result = $this->where($data)->order($order)->select();
+        $result = $this->where($data)
+            ->order($order)
+            //->select();
+            ->paginate(2);
         //echo $this->getLastSql(); //TP5提供的方法，用于打印出SQL语句
         return $result;
     }
