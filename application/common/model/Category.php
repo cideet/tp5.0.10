@@ -31,4 +31,17 @@ class Category extends \think\Model
         $order = ['id' => 'desc'];
         return $this->where($data)->order($order)->select();
     }
+
+    //获取一级栏目
+    public function getFirstCategorys()
+    {
+        $data = [
+            'parent_id' => 0,
+            'status' => ['neq', -1]
+        ];
+        $order = ['id' => 'desc'];
+        $result = $this->where($data)->order($order)->select();
+        //echo $this->getLastSql(); //TP5提供的方法，用于打印出SQL语句
+        return $result;
+    }
 }
