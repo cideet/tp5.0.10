@@ -43,7 +43,7 @@ class Category extends \think\Model
         $result = $this->where($data)
             ->order($order)
             //->select();
-            ->paginate(2);
+            ->paginate(); //默认15条，config.php中有定义
         //echo $this->getLastSql(); //TP5提供的方法，用于打印出SQL语句
         return $result;
     }

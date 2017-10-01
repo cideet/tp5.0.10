@@ -61,4 +61,21 @@ class Category extends \think\Controller
             $this->error('新增失败');
         }
     }
+
+    //分类 编辑
+//    public function edit(){
+//        echo input('get.id'); //这样也能获取到传递过来的参数
+//    }
+    public function edit($id = 0)
+    {
+        if (intval($id) < 1) {
+            $this->error('参数不合法');
+        }
+        $category = model('Category')->get($id);
+        $categorys = model('Category')->getNormalFirstCategory();
+        return $this->fetch('', [
+            'categorys' => $categorys,
+            'category' => $category
+        ]);
+    }
 }
