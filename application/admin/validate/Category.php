@@ -20,8 +20,9 @@ class Category extends \think\Validate
 
     //场景设置
     protected $scene = [
-        'add' => ['name', 'parent_id', 'id'],    //添加
-        'listorder' => ['id', 'listorder'],    //排序
+        'add' => ['name', 'parent_id', 'id'], //添加
+        'listorder' => ['id', 'listorder'], //排序
+        'status' => ['id', 'status'], //删除
 
     ];
 }

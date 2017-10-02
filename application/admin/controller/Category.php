@@ -106,4 +106,20 @@ class Category extends \think\Controller
             $this->result($_SERVER['HTTP_REFERER'], 0, '更新排序失败');
         }
     }
+
+    //修改状态 删除
+    public function status()
+    {
+        $data = input('get.');
+        $validate = validate('Category');
+        if (!$validate->scene('status')->check($data)) {
+            $this->error($validate->getError());
+        }
+        $res = model('Category')->save(['status' => $data['status']], ['id' => $data['id']]);
+        if ($res) {
+            $this->success('状态更新成功');
+        } else {
+            $this->error('状态更新失败');
+        }
+    }
 }
