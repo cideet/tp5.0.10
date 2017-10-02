@@ -39,7 +39,10 @@ class Category extends \think\Model
             'parent_id' => $parentID,
             'status' => ['neq', -1]
         ];
-        $order = ['id' => 'desc'];
+        $order = [
+            'listorder'=>'desc',
+            'id' => 'desc'
+        ];
         $result = $this->where($data)
             ->order($order)
             //->select();
