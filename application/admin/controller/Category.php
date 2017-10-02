@@ -69,9 +69,9 @@ class Category extends \think\Controller
     }
 
     //分类 编辑
-//    public function edit(){
-//        echo input('get.id'); //这样也能获取到传递过来的参数
-//    }
+    //    public function edit(){
+    //        echo input('get.id'); //这样也能获取到传递过来的参数
+    //    }
     public function edit($id = 0)
     {
         if (intval($id) < 1) {
@@ -93,6 +93,17 @@ class Category extends \think\Controller
             $this->success('更新成功');
         } else {
             $this->error('更新失败');
+        }
+    }
+
+    //排序
+    public function listorder($id, $listorder)
+    {
+        $res = model('Category')->save(['listorder' => $listorder], ['id' => $id]);
+        if ($res) {
+            $this->result($_SERVER['HTTP_REFERER'], 1, '更新排序成功');
+        } else {
+            $this->result($_SERVER['HTTP_REFERER'], 0, '更新排序失败');
         }
     }
 }

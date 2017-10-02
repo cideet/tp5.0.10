@@ -28,7 +28,7 @@ $('.listorder input').blur(function () {
     var listorder = $(this).val();
     var postData = {
         'id': id,
-        'listorder': listorder,
+        'listorder': listorder
     };
     var url = SCOPE.listorder_url;
     // 抛送http
