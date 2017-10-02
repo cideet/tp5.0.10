@@ -18,8 +18,8 @@ class Index extends \think\Controller
 
     public function welcome()
     {
-        //\phpmailer\Email::send('463785435@qq.com','tp5-emaiil','sucess-hala');
-        //return '发送邮件成功';
+        \phpmailer\Email::send('488703045@qq.com','tp5-email','sucess..hahaha');
+        echo '发送邮件成功<br>';
         //return $this->fetch();
         //return "<img src='http://www.vdouw.com/skin/vdouw/images/logo.png'/>";
         return "<img src='/index.php/admin/index/map'/>";
