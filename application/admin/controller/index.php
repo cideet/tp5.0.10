@@ -21,6 +21,17 @@ class Index extends \think\Controller
         //\phpmailer\Email::send('463785435@qq.com','tp5-emaiil','sucess-hala');
         //return '发送邮件成功';
         //return $this->fetch();
-        return "欢迎来到o2o主后台首页!";
+        //return "<img src='http://www.vdouw.com/skin/vdouw/images/logo.png'/>";
+        return "<img src='/index.php/admin/index/map'/>";
+    }
+
+    public function test()
+    {
+        return (\Map::getLngLat('北京昌平沙河地铁'));
+    }
+
+    public function map()
+    {
+        return \Map::staticimage('北京昌平沙河地铁');
     }
 }
