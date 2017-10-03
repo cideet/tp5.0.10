@@ -40,7 +40,7 @@ class Category extends \think\Model
             'status' => ['neq', -1]
         ];
         $order = [
-            'listorder'=>'desc',
+            'listorder' => 'desc',
             'id' => 'desc'
         ];
         $result = $this->where($data)
@@ -48,6 +48,53 @@ class Category extends \think\Model
             //->select();
             ->paginate(); //默认15条，config.php中有定义
         //echo $this->getLastSql(); //TP5提供的方法，用于打印出SQL语句
+        return $result;
+    }
+
+    public function getNormalCategoryByParentId($parentId = 0)
+    {
+        $data = [
+            'status' => 1,
+            'parent_id' => $parentId,
+        ];
+
+        $order = [
+            'id' => 'desc',
+        ];
+
+        return $this->where($data)
+            ->order($order)
+            ->select();
+    }
+
+    public function getNormalRecommendCategoryByParentId($id = 0, $limit = 5)
+    {
+        $data = [
+            'parent_id' => $id,
+            'status' => 1,
+        ];
+        $order = [
+            'listorder' => 'desc',
+            'id' => 'desc',
+        ];
+        $result = $this->where($data)->order($order);
+        if ($limit) {
+            $result = $result->limit($limit);
+        }
+        return $result->select();
+    }
+
+    public function getNormalCategoryIdParentId($ids)
+    {
+        $data = [
+            'parent_id' => ['in', implode(',', $ids)],
+            'status' => 1,
+        ];
+        $order = [
+            'listorder' => 'desc',
+            'id' => 'desc',
+        ];
+        $result = $this->where($data)->order($order)->select();
         return $result;
     }
 }
