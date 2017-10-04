@@ -18,6 +18,7 @@ class Index extends  Controller
         //\phpmailer\Email::send('463785435@qq.com','tp5-emaiil','sucess-hala');
         //return '发送邮件成功';
         //return $this->fetch();
+//        return "<img src='/index.php/admin/index/map'/>";
         return "欢迎来到o2o主后台首页!";
     }
 }
