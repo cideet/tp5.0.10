@@ -1,15 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: sf
- * Date: 2017/10/2
- * Time: 22:33
+ * 发送邮件相关配置
  */
-
 return [
     'host' => 'smtp.126.com',
     'port' => 25,
-    'username' => 'vdouw_tp5_testmail@126.com',
-    'password' => 'tp51234',
+    'username' => 'singwa3@126.com',
+    'password' => 'you password o hah',
 
 ];

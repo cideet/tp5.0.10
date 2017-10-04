@@ -2,11 +2,12 @@
 
 namespace app\Common\model;
 
-class City extends \think\Model
+use think\Model;
+
+class City extends Model
 {
     //
-    public function getNormalCitysByParentId($parentId = 0)
-    {
+    public function getNormalCitysByParentId($parentId=0) {
         $data = [
             'status' => 1,
             'parent_id' => $parentId,
@@ -21,14 +22,13 @@ class City extends \think\Model
             ->select();
     }
 
-    public function getNormalCitys()
-    {
+    public function getNormalCitys() {
         $data = [
             'status' => 1,
             'parent_id' => ['gt', 0],
         ];
 
-        $order = ['id' => 'desc'];
+        $order = ['id'=>'desc'];
 
         return $this->where($data)
             ->order($order)

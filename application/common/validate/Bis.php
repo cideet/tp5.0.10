@@ -1,17 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sf
- * Date: 2017/10/4
- * Time: 7:39
- */
-
-<?
-php
 namespace app\common\validate;
-
-class Bis extends \think\Validate
-{
+use think\Validate;
+class Bis extends Validate {
     protected $rule = [
         'name' => 'require|max:25',
         'email' => 'email',
@@ -25,7 +15,7 @@ class Bis extends \think\Validate
     ];
 
     // 场景设置
-    protected $scene = [
+    protected  $scene = [
         'add' => ['name', 'email', 'logo', 'city_id', 'bank_info', 'bank_name', 'bank_user', 'faren', 'faren_tel'],
     ];
 }
