@@ -3,7 +3,8 @@ namespace app\bis\controller;
 use think\Controller;
 class Register extends  Controller
 {
-	  public function index() {
+	public function index()
+    {
         //获取一级城市的数据
         $citys = model('City')->getNormalCitysByParentId();
         //获取一级栏目的数据
@@ -23,7 +24,7 @@ class Register extends  Controller
         //检验数据
         $validate = validate('Bis');
         if(!$validate->scene('add')->check($data)) {
-            $this->error($validate->getError());
+            //$this->error($validate->getError());
         }
 
         // 获取经纬度
@@ -32,8 +33,7 @@ class Register extends  Controller
             $this->error('无法获取数据，或者匹配的地址不精确');
         }
         // 判定提交的用户是否存在
-        $accountResult = model('BisAccount')->get(['username'=>$data['username']]);
-				//echo model('BisAccount')->getLastSql();exit;
+        $accountResult = Model('BisAccount')->get(['username'=>$data['username']]);
         if($accountResult) {
             $this->error('该用户存在，请重新分配');
         }

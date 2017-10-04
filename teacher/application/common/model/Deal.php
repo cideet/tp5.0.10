@@ -92,10 +92,4 @@ class Deal extends BaseModel
 			
 		return $result;
 	}
-
-
-	public function updateBuyCountById($id, $buyCount) {
-		return $this->where(['id' => $id])->setInc('buy_count', $buyCount);
-
-	}
 }

@@ -1,7 +1,6 @@
 <?php
 namespace app\admin\validate;
 use think\Validate;
-
 class Category extends Validate {
     protected  $rule = [
         ['name', 'require|max:1000', '分类名必须传递|分类名不能超过10个字符'],
