@@ -1,54 +1,45 @@
-.wrapper {
+.wrapper{
     width: 100%;
 }
-
-.head {
+.head{
     width: 980px;
     height: 75px;
     padding: 0 75px;
     margin: 0 auto;
     overflow: hidden;
 }
-
-.head ul {
+.head ul{
     float: left;
     overflow: hidden;
 }
-
-.head ul li {
+.head ul li{
     float: left;
 }
-
-.head ul li:first-child a {
+.head ul li:first-child a{
     margin-top: 15px;
     display: block;
 }
-
-.head ul .divider {
+.head ul .divider{
     width: 1px;
     height: 25px;
     background: #ccc;
     margin: 34px 0 0 15px;
 }
-
-.head ul li:nth-child(3) {
+.head ul li:nth-child(3){
     font-size: 20px;
     color: #222;
     display: block;
     margin: 35px 0 0 15px;
 }
-
-.login-link {
+.login-link{
     float: right;
 }
-
-.login-link span {
+.login-link span{
     color: #666;
     margin-top: 35px;
     float: left;
 }
-
-.login-link a {
+.login-link a{
     float: right;
     font-weight: 700;
     color: #666;
@@ -62,8 +53,7 @@
     margin-top: 26px;
     margin-left: 7px;
 }
-
-.content {
+.content{
     width: 100%;
     min-width: 1130px;
     margin: 0 auto;
@@ -73,21 +63,18 @@
     border-top: 1px solid #dbdbdb;
     border-bottom: 5px solid #dbdbdb;
 }
-
-.wrap {
+.wrap{
     margin: 0 auto;
     padding: 0 9px 30px;
     width: 962px;
 }
-
-.wrap .login-logo {
+.wrap .login-logo{
     float: left;
     margin-top: 49px;
     width: 623px;
     height: 337px;
 }
-
-.wrap .login-area {
+.wrap .login-area{
     float: right;
     position: relative;
     margin-top: 49px;
@@ -97,40 +84,34 @@
     border: 1px solid #eee;
     background: #fff;
 }
-
-.wrap .login-area .title {
+.wrap .login-area .title{
     height: 25px;
     line-height: 25px;
     font-size: 17px;
     font-weight: 700;
     color: #666;
 }
-
-.ordinaryLogin p.pass-smsSwitchWrapper {
+.ordinaryLogin p.pass-smsSwitchWrapper{
     text-align: right;
     margin: 0 0 10px;
 }
-
-.ordinaryLogin p.pass-smsSwitchWrapper .pass-sms-btn {
+.ordinaryLogin p.pass-smsSwitchWrapper .pass-sms-btn{
     background: url("../image/smsSwitchPhone_68b31bb.png") no-repeat;
     background-position: 0 0;
     padding-left: 15px;
     color: #666;
     cursor: pointer;
 }
-
-.ordinaryLogin p.pass-smsSwitchWrapper .pass-sms-btn:hover {
+.ordinaryLogin p.pass-smsSwitchWrapper .pass-sms-btn:hover{
     color: #1b66c7;
 }
-
-.ordinaryLogin .pass-form-item {
+.ordinaryLogin .pass-form-item{
     position: relative;
     clear: both;
     z-index: 21;
     margin-bottom: 15px;
 }
-
-.ordinaryLogin .pass-form-item .pass-label {
+.ordinaryLogin .pass-form-item .pass-label{
     background-image: url("../image/user_z_fe074f3.png");
     background-position: -366px -97px;
     background-repeat: no-repeat;
@@ -143,12 +124,10 @@
     padding: 0 0 0 18px;
     z-index: 20;
 }
-
-.ordinaryLogin .pass-form-item:nth-child(3) .pass-label {
+.ordinaryLogin .pass-form-item:nth-child(3) .pass-label{
     background-position: -366px -135px;
 }
-
-.ordinaryLogin .pass-form-item .pass-text-input {
+.ordinaryLogin .pass-form-item .pass-text-input{
     margin: 0;
     padding: 11px 20px 11px 35px;
     width: 222px;
@@ -158,32 +137,26 @@
     border: 1px solid #F0F0F0;
     background-color: #fff;
 }
-
-.ordinaryLogin .pass-form-item:nth-child(4) {
+.ordinaryLogin .pass-form-item:nth-child(4){
     margin-bottom: 31px;
 }
-
-.ordinaryLogin .pass-form-item:nth-child(4) input {
+.ordinaryLogin .pass-form-item:nth-child(4) input{
     vertical-align: middle;
 }
-
-.ordinaryLogin .pass-form-item:nth-child(4) label {
+.ordinaryLogin .pass-form-item:nth-child(4) label{
     color: #666;
 }
-
-.messageLogin {
+.messageLogin{
     margin-top: 30px;
     display: none;
 }
-
-.messageLogin .pass-form-item {
+.messageLogin .pass-form-item{
     position: relative;
     clear: both;
     z-index: 21;
     margin-bottom: 15px;
 }
-
-.messageLogin .pass-label {
+.messageLogin .pass-label{
     background-image: url("../image/user_z_fe074f3.png");
     background-position: -370px -179px;
     background-repeat: no-repeat;
@@ -196,12 +169,10 @@
     padding: 0 0 0 18px;
     z-index: 20;
 }
-
-.messageLogin .pass-form-item:nth-child(2) .pass-label {
+.messageLogin .pass-form-item:nth-child(2) .pass-label{
     background-position: -366px -135px;
 }
-
-.messageLogin .pass-text-input {
+.messageLogin .pass-text-input{
     margin: 0;
     padding: 11px 20px 11px 35px;
     width: 222px;
@@ -211,12 +182,10 @@
     border: 1px solid #F0F0F0;
     background-color: #fff;
 }
-
-.messageLogin .pass-form-item:nth-child(2) .pass-text-input {
+.messageLogin .pass-form-item:nth-child(2) .pass-text-input{
     width: 100px;
 }
-
-.messageLogin .getCode {
+.messageLogin .getCode{
     width: 100px;
     height: 39px;
     text-align: center;
@@ -228,32 +197,27 @@
     float: right;
     border-radius: 5px;
 }
-
-.commonLogin {
+.commonLogin{
     margin-top: 20px;
 }
-
-.commonLogin .pass-form-item {
+.commonLogin .pass-form-item{
     position: relative;
     clear: both;
     z-index: 21;
     margin-bottom: 15px;
 }
-
-.commonLogin .question {
+.commonLogin .question{
     margin-bottom: 20px;
     display: none;
 }
-
-.commonLogin .question .pass-sms-link {
+.commonLogin .question .pass-sms-link{
     float: right;
 }
-
-.commonLogin .pass-button {
+.commonLogin .pass-button{
     width: 279px;
     height: 39px;
     font-family: "Microsoft Yahei";
-    border-bottom: 1px solid #FD528B !important;
+    border-bottom: 1px solid #FD528B!important;
     background: #F69;
     font-size: 14px;
     font-weight: 700;
@@ -261,12 +225,10 @@
     color: #fff;
     cursor: pointer;
 }
-
-.bd-acc-list li {
+.bd-acc-list li{
     float: left;
 }
-
-.bd-acc-list .phoenix-btn-item {
+.bd-acc-list .phoenix-btn-item{
     display: block;
     margin-right: 15px;
     color: #00C;
@@ -279,50 +241,40 @@
     width: 24px;
     height: 24px;
 }
-
-.bd-acc-list .bd-acc-qzone .phoenix-btn-item {
+.bd-acc-list .bd-acc-qzone .phoenix-btn-item{
     background-position: -88px 0;
 }
-
-.bd-acc-list .bd-acc-tsina .phoenix-btn-item {
+.bd-acc-list .bd-acc-tsina .phoenix-btn-item{
     background-position: -64px 0;
 }
-
-.bd-acc-list .bd-acc-tqq .phoenix-btn-item {
+.bd-acc-list .bd-acc-tqq .phoenix-btn-item{
     background-position: -112px 0;
 }
-
-.footer {
+.footer{
     width: 980px;
     margin: 30px auto;
 }
-
-.footer .first {
+.footer .first{
     margin: 0 auto;
     overflow: hidden;
     width: 736px;
 }
-
-.footer .first li {
+.footer .first li{
     float: left;
     color: #666;
 }
-
-.footer .first li a {
+.footer .first li a{
     color: #666;
 }
-
-.footer .first li.fgx {
+.footer .first li.fgx{
     margin: 0 15px;
 }
-
-.footer .second {
+.footer .second{
     margin: 30px auto;
     overflow: hidden;
     width: 400px;
 }
-
-.footer .second li {
+.footer .second li{
     float: left;
     color: #999;
 }
