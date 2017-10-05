@@ -1,8 +1,23 @@
 <ul>
+
     <li>
         <div class="tran-all pl-15 pr-15"><a href="main.html" target="right_content"><i
                 class="icon-desktop mr-5"></i><b>后台首页</b><i class="pull-right icon-sort-down"></i></a></div>
     </li>
+
+    <li attr-onoff="on">
+        <div class="tran-all pl-15 pr-15"><i class="icon-cog mr-5"></i><b>分类管理</b><i
+                class="pull-right icon-sort-down"></i></div>
+        <dl>
+            <dd class="tran-all">
+                <small class="icon-double-angle-right font16"></small>
+                <a href="/index.php/admin/category/index" target="right_content">分类列表</a></dd>
+            <dd class="tran-all">
+                <small class="icon-double-angle-right font16"></small>
+                <a href="/index.php/admin/category/add" target="right_content">添加分类</a></dd>
+        </dl>
+    </li>
+
     <li attr-onoff="off">
         <div class="tran-all pl-15 pr-15"><i class="icon-cog mr-5"></i><b>文章管理</b><i
                 class="pull-right icon-sort-down"></i></div>
@@ -15,18 +30,7 @@
                 <a href="/index.php/Admin/Article/add" target="right_content">添加文章</a></dd>
         </dl>
     </li>
-    <li attr-onoff="off">
-        <div class="tran-all pl-15 pr-15"><i class="icon-cog mr-5"></i><b>文章分类管理</b><i
-                class="pull-right icon-sort-down"></i></div>
-        <dl>
-            <dd class="tran-all">
-                <small class="icon-double-angle-right font16"></small>
-                <a href="/index.php/admin/cate/index" target="right_content">分类列表</a></dd>
-            <dd class="tran-all">
-                <small class="icon-double-angle-right font16"></small>
-                <a href="/index.php/Admin/Cate/add" target="right_content">添加分类</a></dd>
-        </dl>
-    </li>
+
     <li attr-onoff="off">
         <div class="tran-all pl-15 pr-15">
             <i class="icon-cog mr-5"></i>
@@ -79,7 +83,7 @@
 
         </dl>
     </li>
-    <li attr-onoff="on">
+    <li attr-onoff="off">
         <div class="tran-all pl-15 pr-15"><i class="icon-globe mr-5"></i><b>权限控制</b><i
                 class="pull-right icon-sort-down"></i></div>
         <dl>
@@ -100,6 +104,18 @@
                 <a href="/index.php/Admin/Rule/adminuserlist" target="right_content">后台管理员</a>
             </dd>
         </dl>
+    </li>
+
+    <li attr-onoff="on">
+        <div class="tran-all pl-15 pr-15"><i class="icon-globe mr-5"></i><b>静态页面</b><i
+                class="pull-right icon-sort-down"></i></div>
+        <dl>
+            <dd class="tran-all">
+                <small class="icon-double-angle-right font16"></small>
+                <a href="/admin/index.php" target="_blank">静态首页</a>
+            </dd>
+        </dl>
+
     </li>
 
 </ul>

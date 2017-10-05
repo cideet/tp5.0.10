@@ -12,7 +12,6 @@ class Index extends \app\common\controller\Adminbasecontroller
 {
     public function index()
     {
-
         return $this->fetch();
     }
 
