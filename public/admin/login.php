@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -10,10 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <link href="../css/login.css" rel="stylesheet" type="text/css"/>
+    <link href="css/login.css" rel="stylesheet" type="text/css"/>
     <script src="../plugins/jquery/jquery.min.js"></script>
     <script src="../plugins/layer/layer.js"></script>
-    <script src="../js/global.js"></script>
+    <script src="js/global.js"></script>
 </head>
 <body>
 <div class="login-form">
@@ -24,7 +22,7 @@
         <label class="lbl-3"> </label>
     </div>
     <div class="clear"></div>
-    <div class="avtar"><img src="../Public/images/avtar.png"/></div>
+    <div class="avtar"><img src="images/avtar.png"/></div>
     <form>
         <input type="text" class="text" name="username" value="admin"/>
         <div class="key">

@@ -14,8 +14,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 ol, ul {
     list-style: none;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 blockquote, q {
@@ -104,7 +104,7 @@ img {
 /*end reset*/
 /****-----start-body----****/
 body {
-    background: url(../images/bg1.jpg) no-repeat 0px 0px;
+    background: url(../images/bg1.jpg) no-repeat 0 0;
     font-family: 'Open Sans', sans-serif;
     background-size: cover;
     -webkit-background-size: cover;
@@ -129,7 +129,7 @@ body a, form li, input[type="submit"], input[type="text"], .sixth-login input[ty
 
 /*--close--*/
 .close {
-    background: url('../images/close.png') no-repeat 0px 0px;
+    background: url('../images/close.png') no-repeat 0 0;
     cursor: pointer;
     width: 20px;
     height: 20px;
@@ -262,7 +262,7 @@ label.lbl-1 {
     display: block;
     float: right;
     border-radius: 50%;
-    margin: 16px 10px 0px 0px;
+    margin: 16px 10px 0 0;
 }
 
 label.lbl-2 {
@@ -272,7 +272,7 @@ label.lbl-2 {
     display: block;
     float: right;
     border-radius: 50%;
-    margin: 16px 10px 0px 0px;
+    margin: 16px 10px 0 0;
 }
 
 label.lbl-3 {
@@ -282,7 +282,7 @@ label.lbl-3 {
     display: block;
     float: right;
     border-radius: 50%;
-    margin: 16px 10px 0px 0px;
+    margin: 16px 10px 0 0;
 }
 
 /*--copyrights--*/
@@ -450,15 +450,15 @@ label.lbl-3 {
     }
 
     label.lbl-1 {
-        margin: 8px 10px 0px 0px;
+        margin: 8px 10px 0 0;
     }
 
     label.lbl-2 {
-        margin: 8px 10px 0px 0px;
+        margin: 8px 10px 0 0;
     }
 
     label.lbl-3 {
-        margin: 8px 10px 0px 0px;
+        margin: 8px 10px 0 0;
     }
 
     .close {
