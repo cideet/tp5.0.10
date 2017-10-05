@@ -6,9 +6,9 @@
  * Time: 22:34
  */
 
-namespace app\common;
+namespace app\common\controller;
 
-class Adminbasecontroller extends \app\common\Basecontroller
+class Adminbasecontroller extends \app\common\controller\Basecontroller
 {
     public function _initialize()
     {

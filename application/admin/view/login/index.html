@@ -11,7 +11,7 @@
     <link href="/admin/css/login.css" rel="stylesheet" type="text/css"/>
     <script src="/plugins/jquery/jquery.min.js"></script>
     <script src="/plugins/layer/layer.js"></script>
-    <script src="/js/global.js"></script>
+    <script src="/admin/js/global.js"></script>
 </head>
 <body>
 <div class="login-form">
@@ -22,7 +22,7 @@
         <label class="lbl-3"> </label>
     </div>
     <div class="clear"></div>
-    <div class="avtar"><img src="/images/avtar.png"/></div>
+    <div class="avtar"><img src="/admin/images/avtar.png"/></div>
     <form>
         <input type="text" class="text" name="username" value="admin"/>
         <div class="key">
@@ -53,7 +53,7 @@
             var password = $('input[name="password"]').val();
             //if(username==""){dialog.error("用户名不能为空");}
             //if(password==""){dialog.error("密码不能为空");}
-            var url = "/index.php/Admin/Login/check";
+            var url = "/index.php/admin/login/check";
             var data = {'username': username, 'password': password};
             $.post(url, data, function (result) {
                 if (result.status == 0) {

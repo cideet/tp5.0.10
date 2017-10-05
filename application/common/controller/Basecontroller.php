@@ -6,7 +6,7 @@
  * Time: 22:32
  */
 
-namespace app\common;
+namespace app\common\controller;
 
 class Basecontroller extends \think\Controller
 {
@@ -14,6 +14,6 @@ class Basecontroller extends \think\Controller
     public function _initialize()
     {
         //初始化方法
-        echo('Basecontroller');
+        //echo('Basecontroller');
     }
 }
