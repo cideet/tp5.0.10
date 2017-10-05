@@ -17,9 +17,9 @@ return [
     // 应用命名空间
     'app_namespace'          => 'app',
     // 应用调试模式
-    'app_debug'              => true,
+    'app_debug'              => false,
     // 应用Trace
-    'app_trace'              => true,
+    'app_trace'              => false,
     // 应用模式状态
     'app_status'             => '',
     // 是否支持多模块
@@ -43,7 +43,7 @@ return [
     // 是否开启多语言
     'lang_switch_on'         => false,
     // 默认全局过滤方法 用逗号分隔多个
-    'default_filter'         => 'htmlentities',
+    'default_filter'         => '',
     // 默认语言
     'default_lang'           => 'zh-cn',
     // 应用类库后缀
@@ -85,7 +85,7 @@ return [
     // URL伪静态后缀
     'url_html_suffix'        => 'html',
     // URL普通方式参数 用于自动生成
-    'url_common_param'       => true,
+    'url_common_param'       => false,
     // URL参数方式 0 按名称成对解析 1 按顺序解析
     'url_param_type'         => 0,
     // 是否开启路由
@@ -114,6 +114,8 @@ return [
     'request_cache'          => false,
     // 请求缓存有效期
     'request_cache_expire'   => null,
+    // 全局请求缓存排除规则
+    'request_cache_except'   => [],
 
     // +----------------------------------------------------------------------
     // | 模板设置
@@ -139,9 +141,7 @@ return [
     ],
 
     // 视图输出字符串内容替换
-    'view_replace_str'       => [
-        '__STATIC__' => '/static',
-    ],
+    'view_replace_str'       => [],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
     'dispatch_error_tmpl'    => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
@@ -171,8 +171,6 @@ return [
         'path'  => LOG_PATH,
         // 日志记录级别
         'level' => [],
-        // error sql log 抽离出来
-        'apart_level' => ['sql','error','log'],
     ],
 
     // +----------------------------------------------------------------------
