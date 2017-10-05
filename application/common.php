@@ -21,12 +21,21 @@ function show($status, $message, $data = array())
     exit(json_encode($result));
 }
 
+//MD5加密
 function getVdouwMD5($text)
 {
     return md5($text . 'vdouw9geBB2');
 }
 
+//后台获取登录用户名
+function getLoginUsername()
+{
+    return (isset($_SESSION['think']['adminUser']['username']) ? $_SESSION['think']['adminUser']['username'] : "");
+}
+
+//一个扯犊子的JS方法
 function consolelog($a)
 {
     exit('<script>console.log(' . $a . ')</script>');
 }
+

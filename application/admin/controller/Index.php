@@ -10,8 +10,19 @@ namespace app\admin\controller;
 
 class Index extends \app\common\controller\Adminbasecontroller
 {
-    public function Index()
+    public function index()
     {
-        echo('index');
+
+        return $this->fetch();
     }
+
+    public function main()
+    {
+        print_r($_SESSION);
+        echo('<br><br>');
+        print_r($_SESSION['think']['adminUser']['username']);
+        echo('<br><br>');
+        return $this->fetch();
+    }
+
 }

@@ -12,7 +12,6 @@ class Login extends \app\common\controller\Basecontroller
 {
     public function index()
     {
-        echo(md5('123456vdouw9geBB2'));
         return $this->fetch();
     }
 
@@ -31,6 +30,11 @@ class Login extends \app\common\controller\Basecontroller
         }
         session('adminUser', $ret);
         return show(1, '登录成功');
+    }
 
+    public function logout()
+    {
+        session('adminUser', null);
+        $this->redirect('/index.php/admin/login/index');
     }
 }
