@@ -61,6 +61,8 @@ $(function () {
         $(data).each(function () {
             postData[this.name] = this.value;
         });
+        console.log(postData);
+        return;
         $.post(SCOPE.save_url, postData, function (result) {
             if (result.status == 1) {
                 return (dialog.success(result.message, SCOPE.jump_url));

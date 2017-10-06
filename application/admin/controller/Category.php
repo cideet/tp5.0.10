@@ -10,17 +10,31 @@ namespace app\admin\controller;
 
 class Category extends \app\common\controller\Adminbasecontroller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->categorys = model('Category')->getCategorys();
+    }
+
+    //分类 列表页
     public function index()
     {
-        $categorys = model('Category')->getCategorys();
-        //print_r($categorys);
         return $this->fetch('', [
-            'categorys' => $categorys
+            'categorys' => $this->categorys
         ]);
     }
 
+    //分类 添加页
     public function add()
     {
-        echo('add');
+        return $this->fetch();
+    }
+
+    //插入新分类
+    public function insert($data = array())
+    {
+        print_r($data);
+        if (!$data || !is_array($data)) return 0;
+        model('Category')->add($data);
     }
 }

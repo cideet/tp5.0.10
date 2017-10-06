@@ -13,7 +13,7 @@ class Category extends \think\Model
     public function getCategorys()
     {
         $where = ['status' => 1];
-        $order = ['id' => 'asc'];
+        $order = ['id' => 'asc', 'listorder' => 'asc'];
         return $this->where($where)->order($order)->select();
     }
 }
