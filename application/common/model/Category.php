@@ -8,12 +8,28 @@
 
 namespace app\common\model;
 
+
+
 class Category extends \think\Model
 {
-    public function getCategorys()
+    public function getCategorys($field = "all", $tree = false)
     {
-        $where = ['status' => 1];
-        $order = ['id' => 'asc', 'listorder' => 'asc'];
-        return $this->where($where)->order($order)->select();
+        if ($field == 'all') {
+            $where = ['status' => 1];
+            $order = ['id' => 'asc', 'listorder' => 'asc'];
+            $data = $this->where($where)->order($order)->select();
+            if ($tree) {
+                //Loader::import('\Org\Vdouw', EXTEND_PATH);
+                //return \Org\Vdouw\Date::tree($data, 'name');
+                return $data;
+            } else {
+                return $data;
+            }
+        } else {
+            $where = ['status' => 1];
+            $order = ['id' => 'asc', 'listorder' => 'asc'];
+            $data = $this->where($where)->order($order)->select();
+            return $data;
+        }
     }
 }

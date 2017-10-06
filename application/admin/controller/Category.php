@@ -13,7 +13,7 @@ class Category extends \app\common\controller\Adminbasecontroller
     public function __construct()
     {
         parent::__construct();
-        $this->categorys = model('Category')->getCategorys();
+        $this->categorys = model('Category')->getCategorys('all',true);
     }
 
     //分类 列表页
