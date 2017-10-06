@@ -22,14 +22,12 @@
             <td>分类名称</td>
             <td>
                 <select class="form-control width300 height-30" name="parent_id">
-                    <option value="1">测试分类</option>
-                    <option value="2">测试分类2</option>
+                    <option value="0">一级分类</option>
+                    <{volist name="categorys" id="vo"}>
+                    <option value="<{$vo.id}>">--<{$vo.name}></option>
+                    <{/volist}>
                 </select>
             </td>
-        </tr>
-        <tr>
-            <td>排序</td>
-            <td><input type="text" name="listorder" class="form-control width200 height-30"/></td>
         </tr>
         <tr>
             <td></td>
@@ -41,9 +39,8 @@
 
 <script>
     var SCOPE = {
-        "save_url": "/index.php/admin/category/add",
-        "jump_url": "/index.php/admin/category/index",
-        "edit_url": "/index.php/admin/category/edit"
+        "save_url": "/index.php/admin/category/addcate",
+        "jump_url": "/index.php/admin/category/index"
     }
 </script>
 

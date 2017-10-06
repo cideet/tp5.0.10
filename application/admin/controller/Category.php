@@ -25,17 +25,26 @@ class Category extends \app\common\controller\Adminbasecontroller
         ]);
     }
 
-    //分类 添加页
+    //分类 添加类
     public function add()
     {
-        return $this->fetch();
+        return $this->fetch('', [
+            'categorys' => $this->categorys
+        ]);
     }
 
-    //插入新分类
-    public function insert($data = array())
+    public function addcate()
     {
-        print_r($data);
-        if (!$data || !is_array($data)) return 0;
-        model('Category')->add($data);
+        $data = input('post.');
+        $data['status'] = 1;
+        $data['create_time'] = time();
+        $data['update_time'] = time();
+        $cateID = model("Category")->add($data);
+        if ($cateID) {
+            return show(1, "success", $cateID);
+        }
+        return show(0, 'error', $cateID);
     }
+
+
 }

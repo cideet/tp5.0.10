@@ -29,4 +29,11 @@ class Category extends \think\Model
             return $d;
         }
     }
+
+    //插入新分类
+    public function add($data = array())
+    {
+        if (!$data || !is_array($data)) return 0;
+        return $this->save($data);
+    }
 }

@@ -39,3 +39,6 @@ function consolelog($a)
     exit('<script>console.log(' . $a . ')</script>');
 }
 
+
+
+
