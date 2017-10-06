@@ -15,7 +15,7 @@
  * 邮  箱：baijunyao@baijunyao.com
  * 博  客：http://baijunyao.com
  */
-namespace Org\Vdouw;
+namespace vdouw;
 
 class Page
 {
