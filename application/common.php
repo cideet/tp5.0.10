@@ -39,6 +39,15 @@ function consolelog($a)
     exit('<script>console.log(' . $a . ')</script>');
 }
 
-
+function getParam($a)
+{
+    $request = \think\Request::instance()->param();
+    for ($i = 0; $i < count($request); $i++) {
+        if ($request[$i] == $a) {
+            return $request[$i + 1];
+        }
+    }
+    return '';
+}
 
 

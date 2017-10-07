@@ -34,7 +34,9 @@
                     <span class="c-pointer color-admin-blue vdouw-addson" title="添加子菜单"
                           data-id="<{$v['id']}>">添加子菜单</span>
                 <i class="ml-5 mr-5">|</i>
-                <span class="c-pointer color-admin-blue vdouw-edit" title="修改" data-id="<{$v['id']}>">修改</span>
+                <a class="c-pointer color-admin-blue" title="修改" data-id="<{$v['id']}>"
+                href="<{:url('/admin/category/edit/id',['id'=>$v['id']])}>">修改</a>
+                <!--href="<{:url('/index.php/admin/category/edit/id',['id'=>$v['id']])}>">修改</a>-->
                 <i class="ml-5 mr-5">|</i>
                 <span class="c-pointer color-admin-blue vdouw-delete" title="删除" data-id="<{$v['id']}>">删除</span>
             </td>
@@ -52,10 +54,10 @@
 
 <script>
     var SCOPE = {
-        "save_url": "/index.php/Admin/Cate/add",
-        "edit_url": "/index.php/Admin/Cate/edit",
-        'set_status_url': '/index.php/Admin/Cate/setStatus',
-        'listorder_url': '/index.php/Admin/Cate/listOrder'
+        "save_url": "/index.php/admin/category/add",
+        "edit_url": "/index.php/admin/category/edit",
+        'set_status_url': '/index.php/admin/category/setStatus',
+        'listorder_url': '/index.php/admin/category/listOrder'
     }
 
     //添加子栏目
