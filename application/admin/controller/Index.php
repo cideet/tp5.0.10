@@ -20,7 +20,8 @@ class Index extends \app\common\controller\Adminbasecontroller
         //echo('<br>发送邮件开始<br>');
         //\phpmailer\Email::send('488703045@qq.com', 'title', 'content');
         //echo('<br>发送邮件完成<br>');
-        print_r($_SESSION);
+        echo('$_SSSION:<br>');
+        dump($_SESSION);
         echo('<br><br>');
         print_r($_SESSION['think']['adminUser']['username']);
         echo('<br><br>');
