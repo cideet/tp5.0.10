@@ -23,7 +23,6 @@ class Order extends Base
         $deal = model('Deal')->find($id);
         if (!$deal || $deal->status != 1) {
             $this->error('商品不存在');
-
         }
 
         if (empty($_SERVER['HTTP_REFERER'])) {
