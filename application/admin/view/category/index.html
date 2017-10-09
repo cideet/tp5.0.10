@@ -26,8 +26,9 @@
         <{volist name="categorys" id="v"}>
         <tr>
             <td><{$v["id"]}></td>
-            <td><input type="text" size="5" name="listorder[<{$v.id}>]" value="<{$v.listorder}>"
-                       class="form-control"/></td>
+            <td><input type="text" size="5" name="listorder" value="<{$v.listorder}>" data-value="<{$v.listorder}>"
+                       data-id="<{$v['id']}>"
+                       class="form-control listorder"/></td>
             <td><{$v["_name"]}></td>
             <td><{$v["update_time"]}></td>
             <td>
@@ -38,18 +39,12 @@
                 <{if condition="$v['parent_id'] eq 0"}>
                 <i class="ml-5 mr-5">|</i>
                 <a class="c-pointer color-admin-blue vdouw-addson" title="添加子菜单"
-                   href="/index.php/admin/category/add/id/<{$v['id']}>">添加子菜单</a>
+                   href="/index.php/admin/category/addson/id/<{$v['id']}>">添加子菜单</a>
                 <{/if}>
             </td>
         </tr>
         <{/volist}>
     </form>
-
-    <tr>
-        <td></td>
-        <td colspan="5"><input type="button" id="vdouw-listorder" class="btn btn-primary color-white" value="更新排序"/>
-        </td>
-    </tr>
     </tbody>
 </table>
 
@@ -57,8 +52,9 @@
     var SCOPE = {
         "save_url": "/index.php/admin/category/add",
         "edit_url": "/index.php/admin/category/edit",
-        'set_status_url': '/index.php/admin/category/setStatus',
-        'listorder_url': '/index.php/admin/category/listOrder'
+        'delete_url': '/index.php/admin/category/delete',
+        'listorder_url': '/index.php/admin/category/listorder',
+        'jump_url': '/index.php/admin/category/index'
     }
 
     //添加子栏目
@@ -77,9 +73,10 @@
     //删除
     $('.vdouw-delete').on('click', function () {
         $data = {};
-        $data['cid'] = $(this).attr('data-id');
-        $data['is_delete'] = "1";
+        $data['id'] = $(this).attr('data-id');
+        $data['status'] = "-1";
         console.log($data);
+        //return;
         layer.open({
             type: 0,
             title: '删除确认框',
@@ -89,7 +86,7 @@
             content: "您确定要删除吗？",
             scrollbar: true,
             yes: function () {
-                $.post(SCOPE.set_status_url, $data, function (s) {
+                $.post(SCOPE.delete_url, $data, function (s) {
                     if (s.status == 1) {
                         return dialog.success(s.message, '');
                     } else {
@@ -98,23 +95,6 @@
                 }, "JSON");
             }
         });
-    });
-
-    /* 排序操作 */
-    $('#vdouw-listorder').click(function () {
-        var data = $("#vdouw-form").serializeArray();       // 获取 listorder内容
-        postData = {};
-        $(data).each(function (i) {
-            postData[this.name] = this.value;
-        });
-        var url = SCOPE.listorder_url;
-        $.post(url, postData, function (result) {
-            if (result.status == 1) {
-                return dialog.success(result.message, result['data']['jump_url']);
-            } else if (result.status == 0) {
-                return dialog.error(result.message, result['data']['jump_url']);
-            }
-        }, "JSON");
     });
 </script>
 

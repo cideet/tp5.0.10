@@ -71,6 +71,22 @@ $(function () {
         }, "JSON");
     });
 
+    //排序
+    $('.listorder').blur(function () {
+        var val = $(this).val();
+        if (val == $(this).attr('data-value')) return false;
+        var id = $(this).attr('data-id');
+        var postData = {'id': id, 'listorder': val};
+        console.log(postData);
+        $.post(SCOPE.listorder_url, postData, function (result) {
+            if (result.status == 1) {
+                return (dialog.success(result.message, SCOPE.jump_url));
+            } else if (result.status == 0) {
+                return (dialog.error(result.message));
+            }
+        }, "json");
+    });
+
 
 });
 

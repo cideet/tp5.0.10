@@ -9,7 +9,7 @@
 namespace app\common\model;
 
 
-class Category extends \think\Model
+class Category extends \app\common\model\Basemodel
 {
     /**
      * 获取分类
@@ -20,7 +20,7 @@ class Category extends \think\Model
     {
         if ($field == 'all') {
             $where = ['status' => 1];
-            $order = ['id' => 'asc', 'listorder' => 'asc'];
+            $order = ['listorder' => 'asc', 'id' => 'asc'];
             $d = $this->where($where)->order($order)->select();
             if ($tree) {
                 return \Vdouw\Data::tree($d, 'name', 'id', 'parent_id');
@@ -29,7 +29,7 @@ class Category extends \think\Model
             }
         } else {
             $where = ['status' => 1];
-            $order = ['id' => 'asc', 'listorder' => 'asc'];
+            $order = ['listorder' => 'asc', 'id' => 'asc'];
             $d = $this->where($where)->order($order)->select();
             return $d;
         }
@@ -41,10 +41,10 @@ class Category extends \think\Model
     public function getNormalFirstCategory()
     {
         $where = ['status' => 1, 'parent_id' => 0];
-        $order=['id'=>'asc'];
+        $order = ['listorder' => 'asc', 'id' => 'asc'];
         return $this->where($where)->order($order)->select();
     }
-    
+
     /**
      * 插入新分类
      * @param array $data
@@ -55,4 +55,23 @@ class Category extends \think\Model
         if (!$data || !is_array($data)) return 0;
         return $this->save($data);
     }
+
+    /**
+     * 根据ID值更新记录
+     * @param $id
+     * @param $data
+     * @return mixed
+     */
+    public function updateCateByID($id, $data)
+    {
+        if (!$id || !is_numeric($id)) {
+            throw_exception("ID不合法");
+        }
+        if (!$data || !is_array($data)) {
+            throw_exception("更新的数据不合法");
+        }
+        return $this->where("id=" . $id)->save($data);
+    }
+
+
 }
