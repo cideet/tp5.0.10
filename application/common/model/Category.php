@@ -11,6 +11,11 @@ namespace app\common\model;
 
 class Category extends \think\Model
 {
+    /**
+     * 获取分类
+     * @param string $field
+     * @param bool $tree
+     */
     public function getCategorys($field = "all", $tree = true)
     {
         if ($field == 'all') {
@@ -30,7 +35,21 @@ class Category extends \think\Model
         }
     }
 
-    //插入新分类
+    /**
+     * 获取一级分类
+     */
+    public function getNormalFirstCategory()
+    {
+        $where = ['status' => 1, 'parent_id' => 0];
+        $order=['id'=>'asc'];
+        return $this->where($where)->order($order)->select();
+    }
+    
+    /**
+     * 插入新分类
+     * @param array $data
+     * @return false|int
+     */
     public function add($data = array())
     {
         if (!$data || !is_array($data)) return 0;

@@ -14,6 +14,8 @@ class Category extends \app\common\controller\Adminbasecontroller
     {
         parent::__construct();
         $this->categorys = model('Category')->getCategorys();
+        $this->firstCategory = model('Category')->getNormalFirstCategory();
+        //dump($this->categorys);
     }
 
     //分类 列表页
@@ -24,7 +26,7 @@ class Category extends \app\common\controller\Adminbasecontroller
         ]);
     }
 
-    //分类 添加类
+    //分类 添加分类
     public function add()
     {
         $data = input('post.');
@@ -46,12 +48,18 @@ class Category extends \app\common\controller\Adminbasecontroller
 
     public function edit()
     {
-        $id = getParam('id');
-        echo($id);
-        return $this->fetch('', [
-            'categorys' => $this->categorys
-        ]);
-
+        if (request()->isPost()) {
+            echo(123);
+        } else {
+            $id = getParam('id');
+            echo($id);
+//            $thiscate = model('Category')->find($id);
+//            //dump($thiscate);
+//            return $this->fetch('', [
+//                'firstCategory' => $this->firstCategory,
+//                'thiscate' => $thiscate
+//            ]);
+        }
     }
 
 
