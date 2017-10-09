@@ -46,7 +46,8 @@ class Category extends \app\common\controller\Adminbasecontroller
 
     public function edit()
     {
-        echo(getParam('id'));
+        $id = getParam('id');
+        echo($id);
         return $this->fetch('', [
             'categorys' => $this->categorys
         ]);

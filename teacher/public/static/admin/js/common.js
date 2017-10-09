@@ -10,6 +10,7 @@ function o2o_edit(title,url){
 
 /*添加或者编辑缩小的屏幕*/
 function o2o_s_edit(title,url,w,h){
+    //alert(url); // /index.php/admin/category/edit.html?id=9
     layer_show(title,url,w,h);
 }
 /*-删除*/

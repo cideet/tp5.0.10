@@ -31,14 +31,12 @@
             <td><{$v["_name"]}></td>
             <td><{$v["update_time"]}></td>
             <td>
-                    <span class="c-pointer color-admin-blue vdouw-addson" title="添加子菜单"
-                          data-id="<{$v['id']}>">添加子菜单</span>
-                <i class="ml-5 mr-5">|</i>
                 <a class="c-pointer color-admin-blue" title="修改" data-id="<{$v['id']}>"
-                href="<{:url('/admin/category/edit/id',['id'=>$v['id']])}>">修改</a>
-                <!--href="<{:url('/index.php/admin/category/edit/id',['id'=>$v['id']])}>">修改</a>-->
+                   href="/index.php/admin/category/edit/id/<{$v['id']}>">修改</a>
                 <i class="ml-5 mr-5">|</i>
                 <span class="c-pointer color-admin-blue vdouw-delete" title="删除" data-id="<{$v['id']}>">删除</span>
+                <i class="ml-5 mr-5">|</i>
+                <span class="c-pointer color-admin-blue vdouw-addson" title="添加子菜单" data-id="<{$v['id']}>">添加子菜单</span>
             </td>
         </tr>
         <{/volist}>
