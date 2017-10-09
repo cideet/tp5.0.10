@@ -1,5 +1,6 @@
 <?php
 namespace app\index\controller;
+
 use think\Controller;
 
 class Index extends Base
@@ -13,7 +14,7 @@ class Index extends Base
         $datas = model('Deal')->getNormalDealByCategoryCityId(1, $this->city->id);
         // 获取4个子分类
         $meishicates = model('Category')->getNormalRecommendCategoryByParentId(1, 4);
-        return $this->fetch('',[
+        return $this->fetch('', [
             'datas' => $datas,
             'meishicates' => $meishicates,
             'controller' => 'ms',

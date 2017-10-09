@@ -1,5 +1,6 @@
 <?php
 namespace app\index\controller;
+
 use think\Controller;
 use wxpay\database\WxPayUnifiedOrder;
 use wxpay\database\WxPayResults;
@@ -12,7 +13,8 @@ use wxpay\database\WxPayDataBase;
 
 class Weixinpay extends controller
 {
-    public function notify() {
+    public function notify()
+    {
         // 测试
         $weixinData = file_get_contents("php://input");
         file_put_contents('/tmp/2.txt', $weixinData, FILE_APPEND);
@@ -20,12 +22,12 @@ class Weixinpay extends controller
         try {
             $resultObj = new WxPayResults();
             $weixinData = $resultObj->Init($weixinData);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $resultObj->setData('return_code', 'FAIL');
             $resultObj->setData('return_msg', $e->getMessage());
             return $resultObj->toXml();
         }
-        if($weixinData['return_code'] === 'FAIL' || $weixinData['result_code'] !== 'SUCCESS') {
+        if ($weixinData['return_code'] === 'FAIL' || $weixinData['result_code'] !== 'SUCCESS') {
             $resultObj->setData('return_code', 'FAIL');
             $resultObj->setData('return_msg', 'error');
             return $resultObj->toXml();
@@ -33,7 +35,7 @@ class Weixinpay extends controller
         //根据out_trade_to来查询订单数据
         $outTradeTo = $weixinData['out_trade_no'];
         $order = model('Order')->get(['out_trade_no' => $outTradeTo]);
-        if(!$order || $order->pay_status == 1) {
+        if (!$order || $order->pay_status == 1) {
             $resultObj->setData('return_code', 'SUCCESS');
             $resultObj->setData('return_msg', 'OK');
             return $resultObj->toXml();
@@ -67,12 +69,13 @@ class Weixinpay extends controller
 
     }
 
-    public function wxpayQCode($id) {
+    public function wxpayQCode($id)
+    {
         $notify = new NativePay();
         $input = new WxPayUnifiedOrder();
         $input->setBody("支付 0.01 元");
         $input->setAttach("支付 0.01 元");
-        $input->setOutTradeNo(WxPayConfig::MCHID.date("YmdHis"));
+        $input->setOutTradeNo(WxPayConfig::MCHID . date("YmdHis"));
         $input->setTotalFee("1");
         $input->setTimeStart(date("YmdHis"));
         $input->setTimeExpire(date("YmdHis", time() + 600));
@@ -81,13 +84,13 @@ class Weixinpay extends controller
         $input->setTradeType("NATIVE");
         $input->setProductId($id);
         $result = $notify->getPayUrl($input);
-        if(empty($result["code_url"])) {
+        if (empty($result["code_url"])) {
             $url = '';
-        }else {
+        } else {
             $url = $result["code_url"];
         }
 
-        return '<img alt="扫码支付" src="/weixin/example/qrcode.php?data='.urlencode($url).'" style="width:300px;height:300px;"/>';
+        return '<img alt="扫码支付" src="/weixin/example/qrcode.php?data=' . urlencode($url) . '" style="width:300px;height:300px;"/>';
     }
 
 }
