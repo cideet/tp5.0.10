@@ -1,0 +1,101 @@
+<{include file="public/header" /}>
+
+<body class="vdouw-main-body">
+<div class="vdouw-admin-position">
+    <i class="icon-home mr-3"></i><span>后台首页</span>
+    <cite class="ml-3 mr-3">></cite>
+    <span>分类管理</span>
+</div>
+<div class="mt-10 mb-10 vdouw-admin-title">
+    <b class="font20 height-100">分类列表</b>
+    <i class="ml-10 mr-10">|</i>
+    <a class="c-pointer color-admin-blue" href="/index.php/admin/city/add" target="right_content">添加分类</a>
+</div>
+<table class="width100 vdouw-table" cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <td class="width10">ID</td>
+        <td class="width10">排序</td>
+        <td class="width20">菜单名</td>
+        <td class="width20">新增时间</td>
+        <td class="width20">操作</td>
+    </tr>
+    </thead>
+    <tbody>
+    <form id="vdouw-form">
+        <{volist name="categorys" id="v"}>
+        <tr>
+            <td><{$v["id"]}></td>
+            <td><input type="text" size="5" name="listorder" value="<{$v.listorder}>" data-value="<{$v.listorder}>"
+                       data-id="<{$v['id']}>"
+                       class="form-control listorder"/></td>
+            <td><{$v["_name"]}></td>
+            <td><{$v["update_time"]}></td>
+            <td>
+                <a class="c-pointer color-admin-blue" title="修改" data-id="<{$v['id']}>"
+                   href="/index.php/admin/city/edit/id/<{$v['id']}>">修改</a>
+                <i class="ml-5 mr-5">|</i>
+                <span class="c-pointer color-admin-blue vdouw-delete" title="删除" data-id="<{$v['id']}>">删除</span>
+                <{if condition="$v['parent_id'] eq 0"}>
+                <i class="ml-5 mr-5">|</i>
+                <a class="c-pointer color-admin-blue vdouw-addson" title="添加子菜单"
+                   href="/index.php/admin/city/addson/id/<{$v['id']}>">添加子菜单</a>
+                <{/if}>
+            </td>
+        </tr>
+        <{/volist}>
+    </form>
+    </tbody>
+</table>
+
+<script>
+    var SCOPE = {
+        "save_url": "/index.php/admin/city/add",
+        "edit_url": "/index.php/admin/city/edit",
+        'delete_url': '/index.php/admin/city/delete',
+        'listorder_url': '/index.php/admin/city/listorder',
+        'jump_url': '/index.php/admin/city/index'
+    }
+
+    //添加子栏目
+    $(".vdouw-addson").click(function () {
+        var url = SCOPE.save_url + "/id/" + $(this).attr("data-id");
+        location.href = url;
+    });
+
+    //编辑
+    $(".vdouw-edit").click(function () {
+        var url = SCOPE.edit_url + '/id/' + $(this).attr('data-id');
+        console.log(url);
+        location.href = url;
+    });
+
+    //删除
+    $('.vdouw-delete').on('click', function () {
+        $data = {};
+        $data['id'] = $(this).attr('data-id');
+        $data['status'] = "-1";
+        console.log($data);
+        //return;
+        layer.open({
+            type: 0,
+            title: '删除确认框',
+            btn: ['确定', '取消'],
+            icon: 3,
+            closeBtn: 2,
+            content: "您确定要删除吗？",
+            scrollbar: true,
+            yes: function () {
+                $.post(SCOPE.delete_url, $data, function (s) {
+                    if (s.status == 1) {
+                        return dialog.success(s.message, '');
+                    } else {
+                        return dialog.error(s.message);
+                    }
+                }, "JSON");
+            }
+        });
+    });
+</script>
+
+<{include file="public/footer" /}>

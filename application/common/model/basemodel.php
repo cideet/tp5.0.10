@@ -10,6 +10,10 @@ namespace app\common\model;
 
 class Basemodel extends \think\Model
 {
+    /**
+     * 自动更新create_time | update_time等字段
+     * @var bool
+     */
     protected $autoWriteTimestamp = true;
 
     /**
@@ -20,6 +24,7 @@ class Basemodel extends \think\Model
      */
     public function updateById($id, $data)
     {
-        return $this->allowField(true)->save($data, ['id' => $id]);
+        return $this->allowField(true)
+            ->save($data, ['id' => $id]);
     }
 }

@@ -8,14 +8,14 @@
 
 namespace app\admin\controller;
 
-class Category extends \app\common\controller\Adminbasecontroller
+class City extends \app\common\controller\Adminbasecontroller
 {
     private $obj;
 
     public function __construct()
     {
         parent::__construct();
-        $this->obj = model('Category');
+        $this->obj = model('City');
         $order = ['listorder' => 'asc', 'id' => 'asc',];
         $this->categorys = $this->obj->getCategorys();
         $this->firstCategory = $this->obj->getNormalFirstCategory();
