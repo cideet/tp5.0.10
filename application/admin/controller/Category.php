@@ -8,7 +8,7 @@
 
 namespace app\admin\controller;
 
-class Category extends \app\common\controller\Adminbasecontroller
+class Category extends \app\admin\controller\Basecontroller
 {
     private $obj;
 

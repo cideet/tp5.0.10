@@ -8,7 +8,7 @@
 
 namespace app\admin\controller;
 
-class Index extends \app\common\controller\Adminbasecontroller
+class Index extends \app\admin\controller\Basecontroller
 {
     public function index()
     {

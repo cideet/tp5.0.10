@@ -8,7 +8,7 @@
 
 namespace app\admin\controller;
 
-class City extends \app\common\controller\Adminbasecontroller
+class City extends \app\admin\controller\Basecontroller
 {
     private $obj;
 

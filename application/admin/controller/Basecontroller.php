@@ -1,14 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: sf
- * Date: 2017/10/5
- * Time: 22:34
+ * User: Administrator
+ * Date: 2017/10/10 0010
+ * Time: 16:52
  */
 
-namespace app\common\controller;
+namespace app\admin\controller;
 
-class Adminbasecontroller extends \app\common\controller\Basecontroller
+class Basecontroller extends \app\common\controller\Basecontroller
 {
     public function _initialize()
     {
