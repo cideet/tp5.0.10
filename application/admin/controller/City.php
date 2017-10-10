@@ -17,16 +17,16 @@ class City extends \app\common\controller\Adminbasecontroller
         parent::__construct();
         $this->obj = model('City');
         $order = ['listorder' => 'asc', 'id' => 'asc',];
-        $this->categorys = $this->obj->getCategorys();
-        $this->firstCategory = $this->obj->getNormalFirstCategory();
-        //dump($this->categorys);
+        $this->citys = $this->obj->getCitys();
+        $this->firstCity = $this->obj->getNormalFirstCity();
+        //dump($this->citys);
     }
 
     //分类的列表页
     public function index()
     {
         return $this->fetch('', [
-            'categorys' => $this->categorys
+            'citys' => $this->citys
         ]);
     }
 
@@ -40,12 +40,12 @@ class City extends \app\common\controller\Adminbasecontroller
             //$data['update_time'] = time();
             $cateID = $this->obj->add($data);
             if ($cateID) {
-                return show(1, "success", $cateID);
+                return show(1, "添加成功", $cateID);
             }
-            return show(0, 'error', $cateID);
+            return show(0, '添加失败', $cateID);
         } else {
             return $this->fetch('', [
-                'firstCategory' => $this->firstCategory
+                'firstCity' => $this->firstCity
             ]);
         }
     }
@@ -55,7 +55,6 @@ class City extends \app\common\controller\Adminbasecontroller
     {
         if (request()->isPost()) {
             $data = input('post.');
-            $id = $data['id'];
             $res = $this->obj->save($data, ['id' => intval($data['id'])]);
             if ($res) {
                 return show(1, "更新成功");
@@ -64,10 +63,10 @@ class City extends \app\common\controller\Adminbasecontroller
             }
         } else {
             $id = getParam('id');
-            $thiscate = $this->obj->find($id);
+            $thisCity = $this->obj->find($id);
             return $this->fetch('', [
-                'firstCategory' => $this->firstCategory,
-                'thiscate' => $thiscate
+                'firstCity' => $this->firstCity,
+                'thisCity' => $thisCity
             ]);
         }
     }
@@ -93,16 +92,16 @@ class City extends \app\common\controller\Adminbasecontroller
         $data = input('post.');
         if ($data) {
             $data['status'] = 1;
-            $cateID = $this->obj->add($data);
-            if ($cateID) {
-                return show(1, "success", $cateID);
+            $cityID = $this->obj->add($data);
+            if ($cityID) {
+                return show(1, "操作成功", $cityID);
             }
-            return show(0, 'error', $cateID);
+            return show(0, '操作失败', $cityID);
         } else {
             $id = getParam('id');
             return $this->fetch('', [
                 'id' => $id,
-                'firstCategory' => $this->firstCategory
+                'firstCity' => $this->firstCity
             ]);
         }
     }

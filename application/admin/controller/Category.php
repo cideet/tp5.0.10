@@ -40,9 +40,9 @@ class Category extends \app\common\controller\Adminbasecontroller
             //$data['update_time'] = time();
             $cateID = $this->obj->add($data);
             if ($cateID) {
-                return show(1, "success", $cateID);
+                return show(1, "添加成功", $cateID);
             }
-            return show(0, 'error', $cateID);
+            return show(0, '添加失败', $cateID);
         } else {
             return $this->fetch('', [
                 'firstCategory' => $this->firstCategory
@@ -95,9 +95,9 @@ class Category extends \app\common\controller\Adminbasecontroller
             $data['status'] = 1;
             $cateID = $this->obj->add($data);
             if ($cateID) {
-                return show(1, "success", $cateID);
+                return show(1, "添加成功", $cateID);
             }
-            return show(0, 'error', $cateID);
+            return show(0, '添加失败', $cateID);
         } else {
             $id = getParam('id');
             return $this->fetch('', [

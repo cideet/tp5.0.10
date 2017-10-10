@@ -4,34 +4,38 @@
 <div class="vdouw-admin-position">
     <i class="icon-home mr-3"></i><span>后台首页</span>
     <cite class="ml-3 mr-3">></cite>
-    <span>分类管理</span>
+    <span>省市管理</span>
 </div>
 <div class="mt-10 mb-10 vdouw-admin-title">
-    <b class="font20 height-100">添加分类</b>
+    <b class="font20 height-100">添加省市</b>
     <i class="ml-10 mr-10">|</i>
-    <a class="c-pointer color-admin-blue" href="/index.php/admin/city/index" target="right_content">分类列表</a>
+    <a class="c-pointer color-admin-blue" href="/index.php/admin/city/index" target="right_content">省市列表</a>
 </div>
 <form id="vdouw-form">
     <table class="width100 vdouw-table mb-20" cellpadding="0" cellspacing="0">
         <tbody>
         <tr>
-            <td>分类名称</td>
-            <td><input type="text" name="name" value="<{$thiscate.name}>" class="form-control width300 height-30"/></td>
+            <td>省市名称</td>
+            <td><input type="text" name="name" value="<{$thisCity.name}>" class="form-control width300 height-30"/></td>
         </tr>
         <tr>
-            <td>所属分类</td>
+            <td>English Name</td>
+            <td><input type="text" name="uname" value="<{$thisCity.uname}>" class="form-control width300 height-30"/></td>
+        </tr>
+        <tr>
+            <td>所属省市</td>
             <td>
                 <select class="form-control width300 height-30" name="parent_id">
-                    <option value="0">顶级分类</option>
-                    <{volist name="firstCategory" id="vo"}>
+                    <option value="0">一级省市</option>
+                    <{volist name="firstCity" id="vo"}>
                     <option value="<{$vo.id}>"
-                    <{if condition="$vo.id eq $thiscate.parent_id"}>selected="selected"<{/if}>><{$vo.name}></option>
+                    <{if condition="$vo.id eq $thisCity.parent_id"}>selected="selected"<{/if}>><{$vo.name}></option>
                     <{/volist}>
                 </select>
             </td>
         </tr>
         <tr>
-            <td><input type="hidden" name="id" value="<{$thiscate['id']}>"/></td>
+            <td><input type="hidden" name="id" value="<{$thisCity['id']}>"/></td>
             <td><input type="button" class="btn btn-primary width200 color-white" id="vdouw_submit" value="提交"/></td>
         </tr>
         </tbody>

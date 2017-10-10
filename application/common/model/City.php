@@ -16,7 +16,7 @@ class City extends \app\common\model\Basemodel
      * @param string $field
      * @param bool $tree
      */
-    public function getCategorys($field = "all", $tree = true)
+    public function getCitys($field = "all", $tree = true)
     {
         if ($field == 'all') {
             $where = ['status' => 1];
@@ -38,7 +38,7 @@ class City extends \app\common\model\Basemodel
     /**
      * 获取一级分类
      */
-    public function getNormalFirstCategory()
+    public function getNormalFirstCity()
     {
         $where = ['status' => 1, 'parent_id' => 0];
         $order = ['listorder' => 'asc', 'id' => 'asc'];
@@ -62,7 +62,7 @@ class City extends \app\common\model\Basemodel
      * @param $data
      * @return mixed
      */
-    public function updateCateByID($id, $data)
+    public function updateCityByID($id, $data)
     {
         if (!$id || !is_numeric($id)) {
             throw_exception("ID不合法");
@@ -72,6 +72,5 @@ class City extends \app\common\model\Basemodel
         }
         return $this->where("id=" . $id)->save($data);
     }
-
-
+    
 }
