@@ -12,6 +12,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     display: block;
 }
 
+html, body {
+    height: 100%;
+}
+
 ol, ul {
     list-style: none;
     margin: 0;
@@ -23,7 +27,6 @@ blockquote, q {
 }
 
 blockquote:before, blockquote:after, q:before, q:after {
-    content: '';
     content: none;
 }
 
@@ -104,13 +107,14 @@ img {
 /*end reset*/
 /****-----start-body----****/
 body {
-    background: url(../images/bg1.jpg) no-repeat 0 0;
+    background: url(../images/bg1.jpg) no-repeat 100% 100%;
     font-family: 'Open Sans', sans-serif;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    min-height: 1050px;
+    /*min-height: 1050px;*/
+    width: 100%;
     height: 100%;
     overflow: hidden;
 }
