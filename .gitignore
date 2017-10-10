@@ -2,4 +2,4 @@
 runtime/
 oldcode/runtime/
 teacher/runtime/
-application/config.php
+application/database.php
