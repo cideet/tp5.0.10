@@ -36,13 +36,44 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function (c) {
+        setTimeout(function () {
+            window.scrollTo(0, 1);
+        }, 0);
+        $('.close').on('click', function (c) {
+            $('.login-form').fadeOut('slow', function (c) {
+                $('.login-form').remove();
+            });
+        });
+    });
+
+    var login = {
+        check: function () {
+            //alert("你点击了后台登录页面的登录按钮");
+            var username = $('input[name="username"]').val();
+            var password = $('input[name="password"]').val();
+            var url = "/index.php/bis/login/check";
+            var data = {'username': username, 'password': password};
+            $.post(url, data, function (result) {
+                if (result.status == 0) {
+                    return dialog.error(result.message);
+                }
+                if (result.status == 1) {
+                    return dialog.success(result.message, '/index.php/bis/Index/index');
+                }
+            }, 'JSON');
+        }
+    };
+</script>
+
 <style>
     body {
         background: url("/admin/images/timg.jpg");
     }
 
     .login-form {
-        margin: 5% 0 0 8%;
+        margin: 80px 0 0 80px;
     }
 
     .avtar {
@@ -66,39 +97,6 @@
         font-size: 16px;
     }
 </style>
-
-<script>
-    $(document).ready(function (c) {
-        setTimeout(function () {
-            window.scrollTo(0, 1);
-        }, 0);
-        $('.close').on('click', function (c) {
-            $('.login-form').fadeOut('slow', function (c) {
-                $('.login-form').remove();
-            });
-        });
-    });
-
-    var login = {
-        check: function () {
-            //alert("你点击了后台登录页面的登录按钮");
-            var username = $('input[name="username"]').val();
-            var password = $('input[name="password"]').val();
-            //if(username==""){dialog.error("用户名不能为空");}
-            //if(password==""){dialog.error("密码不能为空");}
-            var url = "/index.php/admin/login/check";
-            var data = {'username': username, 'password': password};
-            $.post(url, data, function (result) {
-                if (result.status == 0) {
-                    return dialog.error(result.message);
-                }
-                if (result.status == 1) {
-                    return dialog.success(result.message, '/index.php/Admin/Index/index');
-                }
-            }, 'JSON');
-        }
-    };
-</script>
 
 </body>
 </html>
