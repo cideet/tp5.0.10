@@ -8,7 +8,7 @@
 
 namespace app\bis\controller;
 
-class Login extends \app\bis\controller\Basecontroller
+class Login extends \app\common\controller\Commoncontroller
 {
     /**
      * 登录页面
@@ -38,13 +38,13 @@ class Login extends \app\bis\controller\Basecontroller
             return show(0, '密码错误');
         }
         model('BisAccount')->updateById($ret->id, ['last_login_time' => time()]);
-        session('bisAccount', $ret, 'bis'); //对应 session('adminUser',$ret);
+        session('bis', $ret, 'bis'); //对应 session('adminUser',$ret);
         return show(1, '登录成功');
     }
 
     public function logout()
     {
-        session('adminUser', null);
+        session(null, 'bis');
         $this->redirect('/index.php/bis/login/index');
     }
 

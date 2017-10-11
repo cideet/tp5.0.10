@@ -27,12 +27,6 @@ function getVdouwMD5($text)
     return md5($text . 'vdouw9geBB2');
 }
 
-//后台获取登录用户名
-function getLoginUsername()
-{
-    return (isset($_SESSION['think']['adminUser']['username']) ? $_SESSION['think']['adminUser']['username'] : "");
-}
-
 //一个扯犊子的JS方法
 function consolelog($a)
 {
@@ -70,6 +64,8 @@ function getParam($a)
 
 //href="<{:url('category/edit', ['id'=>$v.id,'id444'=>444])}>">修改</a>
 //Array ( [0] => 1 [1] => 444 )
+//此方法未使用，其链接形式为：index.php/admin/index/index/1/444
+//获取参数的方法为（比如获取id）：$id=getParams[1]
 function getParams()
 {
     $request = \think\Request::instance()->param();

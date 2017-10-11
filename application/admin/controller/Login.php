@@ -8,7 +8,7 @@
 
 namespace app\admin\controller;
 
-class Login extends \app\common\controller\Basecontroller
+class Login extends \app\common\controller\Commoncontroller
 {
     public function index()
     {
@@ -28,13 +28,14 @@ class Login extends \app\common\controller\Basecontroller
         } elseif ($ret['password'] != getVdouwMD5($password)) {
             return show(0, '密码错误');
         }
-        session('adminUser', $ret);
+        session('adminUser', $ret, 'adminUser');
         return show(1, '登录成功');
     }
 
     public function logout()
     {
-        session('adminUser', null);
+        session(null, 'adminUser');
         $this->redirect('/index.php/admin/login/index');
     }
 }
+

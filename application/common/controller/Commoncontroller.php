@@ -8,12 +8,12 @@
 
 namespace app\common\controller;
 
-class Basecontroller extends \think\Controller
+class Commoncontroller extends \think\Controller
 {
     // 整站基类控制器
     public function _initialize()
     {
         //初始化方法
-        //echo('Basecontroller');
+        //echo('app\common\controller\Commoncontroller.php');
     }
 }

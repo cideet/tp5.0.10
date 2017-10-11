@@ -8,10 +8,22 @@
 
 namespace app\bis\controller;
 
-class Index extends Basecontroller
+class Index extends \app\bis\controller\Basecontroller
 {
     public function index()
     {
-        echo('application/bis/controller/Index.php');
+        return $this->fetch('', [
+            'bisUsername' => session('bis','','bis')['username']
+        ]);
+    }
+
+    public function main()
+    {
+        //echo('<br>发送邮件开始<br>');
+        //\phpmailer\Email::send('488703045@qq.com', 'title', 'content');
+        //echo('<br>发送邮件完成<br>');
+        print_r(session('bis','','bis')['username']);
+        echo('<br>');
+        return $this->fetch();
     }
 }
