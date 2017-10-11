@@ -1,3 +1,4 @@
+/* 源码编写：微豆网 张三丰 */
 html, body {
     font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
     height: 100%;
@@ -36,6 +37,10 @@ ul, li, dl, dd, dt {
 
 .font-nobold {
     font-weight: normal;
+}
+
+.font0 {
+    font-size: 0;
 }
 
 .font10 {
@@ -547,6 +552,10 @@ img.middle {
     width: 200px;
 }
 
+.width240 {
+    width: 240px;
+}
+
 .width300 {
     width: 300px;
 }
@@ -673,28 +682,4 @@ img.middle {
 .page .not-allowed {
     cursor: not-allowed;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

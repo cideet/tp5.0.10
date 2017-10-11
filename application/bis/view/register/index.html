@@ -1,0 +1,172 @@
+<{include file="public/header" /}>
+<body class="vdouw-admin-body">
+<div class="vdouw-admin-position">
+    <i class="icon-home mr-3"></i><span>商户入驻申请</span>
+</div>
+<div class="mt-10 mb-10 vdouw-admin-title">
+    <b class="font20 height-100">商户入驻申请</b>
+    <i class="ml-10 mr-10">|</i>
+    <a class="color-admin-blue" href="/index.php/bis/login/index">已有帐号？进入登录</a>
+</div>
+
+<table class="width100 vdouw-table mb-20" cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <td colspan="2"><b>账户信息</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="width20">用户名</td>
+        <td class="width80"><input type="text" class="form-control width500 height-30"/></td>
+    </tr>
+
+    <tr>
+        <td>密码</td>
+        <td><input type="text" class="form-control width500 height-30"/></td>
+    </tr>
+    </tbody>
+</table>
+<table class="width100 vdouw-table mb-20" cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <td colspan="2"><b>基本信息</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>商户名称</td>
+        <td><input type="text" class="form-control width500 height-30"/></td>
+    </tr>
+
+    <tr>
+        <td class="width20">所属省市</td>
+        <td class="width80 font0">
+            <select class="form-control width240 height-30">
+                <option>测试分类</option>
+                <option>测试分类2</option>
+            </select>
+            <select class="form-control width240 height-30 ml-20">
+                <option>测试分类</option>
+                <option>测试分类2</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>缩略图</td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>营业执照</td>
+        <td></td>
+    </tr>
+
+    <tr class="vdouw-kingeditor">
+        <td>商户介绍</td>
+        <td><textarea class="js-editor" id="vdouw-editor" name="content" rows="20" style="width:800px;"></textarea></td>
+    </tr>
+
+    <tr>
+        <td>银行账号</td>
+        <td><input type="text" class="form-control width500 height-30"/></td>
+    </tr>
+    <tr>
+        <td>开户行名称</td>
+        <td><input type="text" class="form-control width500 height-30"/></td>
+    </tr>
+    <tr>
+        <td>开户行姓名</td>
+        <td><input type="text" class="form-control width500 height-30"/></td>
+    </tr>
+    <tr>
+        <td>法人</td>
+        <td><input type="text" class="form-control width500 height-30"/></td>
+    </tr>
+    <tr>
+        <td>法人电话</td>
+        <td><input type="text" class="form-control width500 height-30"/></td>
+    </tr>
+    <tr>
+        <td>邮箱</td>
+        <td><input type="text" class="form-control width500 height-30"/></td>
+    </tr>
+
+    </tbody>
+</table>
+
+<table class="width100 vdouw-table mb-20" cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <td colspan="2"><b>总店信息</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>电话</td>
+        <td><input type="text" class="form-control width500 height-30"/></td>
+    </tr>
+
+    <tr>
+        <td>联系人</td>
+        <td><input type="text" class="form-control width500 height-30"/></td>
+    </tr>
+    <tr>
+        <td class="width20">所属分类</td>
+        <td class="width80">
+            <select class="form-control width500 height-30">
+                <option>测试分类</option>
+                <option>测试分类2</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>所属子类</td>
+        <td data-choice="more">
+            <span class="mr-10 c-pointer"><i class="icon-check-empty font18 color-admin-blue mr-3"></i>测试标签1</span>
+            <span class="mr-10 c-pointer"><i class="icon-check font18 color-admin-blue mr-3"></i>测试标签2</span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>商户地址</td>
+        <td><input type="text" class="form-control width500 height-30"/> <span class="ml-10 c-pointer">标注</span></td>
+    </tr>
+
+    <tr>
+        <td>营业时间</td>
+        <td><input type="text" class="form-control width500 height-30"/></td>
+    </tr>
+
+    <tr class="vdouw-kingeditor">
+        <td>门店简介</td>
+        <td><textarea class="js-editor" id="vdouw-editor" name="content" rows="20" style="width:800px;"></textarea></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td><input type="button" class="btn btn-primary width300 color-white" value="提交"/></td>
+    </tr>
+    </tbody>
+</table>
+
+<script>
+    KindEditor.ready(function (K) {
+        window.editor = K.create('#vdouw-editor', {
+            uploadJson: '/admin.php/Image/kindupload',
+            afterBlur: function () {
+                this.sync();
+            }
+        });
+    });
+</script>
+
+<style>
+    .vdouw-admin-body {
+        margin: 30px 50px;
+    }
+</style>
+
+<{include file="public/footer" /}>

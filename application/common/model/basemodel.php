@@ -24,7 +24,6 @@ class Basemodel extends \think\Model
      */
     public function updateById($id, $data)
     {
-        return $this->allowField(true)
-            ->save($data, ['id' => $id]);
+        return $this->allowField(true)->save($data, ['id' => $id]);
     }
 }
