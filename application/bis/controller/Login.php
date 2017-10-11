@@ -10,11 +10,19 @@ namespace app\bis\controller;
 
 class Login extends \app\bis\controller\Basecontroller
 {
+    /**
+     * 登录页面
+     * @return mixed
+     */
     public function index()
     {
         return $this->fetch();
     }
 
+    /**
+     * 登录验证
+     * @return array|void
+     */
     public function check()
     {
         $username = input('post.username');
@@ -22,13 +30,15 @@ class Login extends \app\bis\controller\Basecontroller
         if (!trim($username) || !trim($password)) {
             return show(0, '用户名和密码不能为空');
         }
-        $ret = model('Adminuser')->getAdminuserByUsername($username);
+        $ret = model('BisAccount')->get(['username' => $username]);
+        //对应 $ret = model('Adminuser')->getAdminuserByUsername($username);
         if (!$ret || $ret['status'] != 1) {
             return show(0, '该用户不存在');
         } elseif ($ret['password'] != getVdouwMD5($password)) {
             return show(0, '密码错误');
         }
-        session('adminUser', $ret);
+        model('BisAccount')->updateById($ret->id, ['last_login_time' => time()]);
+        session('bisAccount', $ret, 'bis'); //对应 session('adminUser',$ret);
         return show(1, '登录成功');
     }
 
@@ -37,4 +47,5 @@ class Login extends \app\bis\controller\Basecontroller
         session('adminUser', null);
         $this->redirect('/index.php/bis/login/index');
     }
+
 }
