@@ -17,6 +17,19 @@ class Basemodel extends \think\Model
     protected $autoWriteTimestamp = true;
 
     /**
+     * 插入新数据
+     * @param array $data
+     * @return false|int
+     */
+    public function add($data = array())
+    {
+        if (!$data || !is_array($data)) return 0;
+        //return $this->save($data);
+        $this->allowField(true)->save($data);
+        return $this->id;
+    }
+
+    /**
      * 根据ID更新数据
      * @param $id
      * @param $data
