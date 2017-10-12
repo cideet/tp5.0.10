@@ -18,7 +18,8 @@
         <tbody>
         <tr>
             <td class="width20">用户名</td>
-            <td class="width80"><input type="text" name="username" value="bis" class="form-control width500 height-30"/></td>
+            <td class="width80"><input type="text" name="username" value="bis" class="form-control width500 height-30"/>
+            </td>
         </tr>
 
         <tr>
@@ -91,7 +92,8 @@
         </tr>
         <tr>
             <td>邮箱</td>
-            <td><input name="email" type="text" value="zhangsanfeng@qq.com" class="form-control width500 height-30"/></td>
+            <td><input name="email" type="text" value="zhangsanfeng@qq.com" class="form-control width500 height-30"/>
+            </td>
         </tr>
 
         </tbody>
@@ -139,7 +141,7 @@
 
         <tr>
             <td>营业时间</td>
-            <td><input name="open_time" type="text" value="08:00-19:00" class="form-control width500 height-30"/></td>
+            <td><input name="open_time" type="text" id="open_time" class="form-control width500 height-30"/></td>
         </tr>
 
         <tr class="vdouw-kingeditor">
@@ -157,10 +159,30 @@
 </form>
 
 <script>
+    laydate.render({
+        elem: '#open_time',
+        type: 'time',
+        format: 'HH:mm',
+        range: true,
+        done: function (value, date) {
+            //alert(Number(value.substr(0,2)) + '|' + Number(value.substr(8,2)));
+            if (Number(value.substr(8, 2)) - Number(value.substr(0, 2)) <= 1) {
+                //alert('每天开业的时间，必须大于1小时');
+            }
+        }
+    });
+
+    $('#vdouw_submit').click(function(){
+        if(Number($('#open_time').val().substr(8,2))-Number($('#open_time').val().substr(0,2))<=1){
+            $('#open_time').val('');
+            return false;
+        }
+    });
+
     var SCOPE = {
         "save_url": "/index.php/bis/register/add",
         "jump_url": "/index.php/bis/index/index"
-    }
+    };
 
     KindEditor.ready(function (K) {
         window.editor = K.create('.vdouw-editor', {
