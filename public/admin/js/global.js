@@ -53,22 +53,40 @@ $(function () {
         $(this).parents("[data-choice=one]").find("input").val($(this).attr("data-value"));
     });
 
+    function vdouwSubmitFun(callback) {
+        var flag = true;
+        try {
+            if (typeof callback != undefined) {
+                if (callback() != true) {
+                    flag = false;
+                }
+            }
+        } catch (error) {
+        }
+        if (flag) {
+            var data = $("#vdouw-form").serializeArray();
+            var postData = {};
+            $(data).each(function () {
+                postData[this.name] = this.value;
+            });
+            console.log(postData);
+            $.post(SCOPE.save_url, postData, function (result) {
+                if (result.status == 1) {
+                    return (dialog.success(result.message, SCOPE.jump_url));
+                } else if (result.status == 0) {
+                    return (dialog.error(result.message));
+                }
+            }, "JSON");
+        }
+    }
+
     //整站表单提交
     $("#vdouw_submit").click(function () {
-        //alert("表单提交");
-        var data = $("#vdouw-form").serializeArray();
-        var postData = {};
-        $(data).each(function () {
-            postData[this.name] = this.value;
-        });
-        console.log(postData);
-        $.post(SCOPE.save_url, postData, function (result) {
-            if (result.status == 1) {
-                return (dialog.success(result.message, SCOPE.jump_url));
-            } else if (result.status == 0) {
-                return (dialog.error(result.message));
-            }
-        }, "JSON");
+        if (typeof submitValidateCallback == 'undefined') {
+            vdouwSubmitFun();
+        } else {
+            vdouwSubmitFun(submitValidateCallback);
+        }
     });
 
     //排序
@@ -86,8 +104,7 @@ $(function () {
             }
         }, "json");
     });
-
-
+    
 });
 
 

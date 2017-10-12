@@ -141,7 +141,7 @@
 
         <tr>
             <td>营业时间</td>
-            <td><input name="open_time" type="text" id="open_time" class="form-control width500 height-30"/></td>
+            <td><input name="open_time" type="text" id="open_time" value="10:00 - 20:00" class="form-control width500 height-30"/></td>
         </tr>
 
         <tr class="vdouw-kingeditor">
@@ -159,24 +159,26 @@
 </form>
 
 <script>
+    function submitValidateCallback() {
+        if (Number($('#open_time').val().substr(8, 2)) - Number($('#open_time').val().substr(0, 2)) >= 1) {
+            return true;
+        }else{
+            dialog.error('每天的营业时间，必须大于1小时');
+            return false;
+        }
+    }
+
     laydate.render({
         elem: '#open_time',
         type: 'time',
         format: 'HH:mm',
         range: true,
-        done: function (value, date) {
-            //alert(Number(value.substr(0,2)) + '|' + Number(value.substr(8,2)));
-            if (Number(value.substr(8, 2)) - Number(value.substr(0, 2)) <= 1) {
-                //alert('每天开业的时间，必须大于1小时');
-            }
-        }
-    });
-
-    $('#vdouw_submit').click(function(){
-        if(Number($('#open_time').val().substr(8,2))-Number($('#open_time').val().substr(0,2))<=1){
-            $('#open_time').val('');
-            return false;
-        }
+        //done: function (value, date) {
+        //    //alert(Number(value.substr(0,2)) + '|' + Number(value.substr(8,2)));
+        //    if (Number(value.substr(8, 2)) - Number(value.substr(0, 2)) <= 1) {
+        //        //alert('每天的营业时间，必须大于1小时');
+        //    }
+        //}
     });
 
     var SCOPE = {
