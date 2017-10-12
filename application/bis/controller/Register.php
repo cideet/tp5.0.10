@@ -15,6 +15,9 @@ class Register extends \app\common\controller\Commoncontroller
      */
     public function index()
     {
+        //一级省市
+        $firstCitys = model('City')->getNormalFirstCity();
+        print_r($firstCitys);
         return $this->fetch();
     }
 

@@ -72,5 +72,12 @@ class City extends \app\common\model\Basemodel
         }
         return $this->where("id=" . $id)->save($data);
     }
-    
+
+    public function getCitysByParentId($parentId = 0)
+    {
+        $where = ['status' => 1, 'parent_id' => $parentId];
+        $order = ['id' => 'asc'];
+        return $this->where($where)->order($order)->select();
+    }
+
 }
