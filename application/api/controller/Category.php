@@ -8,18 +8,18 @@
 
 namespace app\api\controller;
 
-class City extends \think\Controller
+class Category extends \think\Controller
 {
-    public function getCitysByParentId()
+    public function getCategorysByParentId()
     {
         $id = input('post.id');
         if (!$id) {
             return show(0, 'ID不合法');
         }
-        $citys = model('City')->getCitysByParentId($id);
+        $citys = model('Category')->getCategorysByPid($id);
         if ($citys) {
-            return show(1, "获取二级城市成功", $citys);
+            return show(1, "获取二级分类成功", $citys);
         }
-        return show(0, '获取二级城市失败', $citys);
+        return show(0, '获取二级分类失败', $citys);
     }
 }

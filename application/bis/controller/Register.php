@@ -17,8 +17,11 @@ class Register extends \app\common\controller\Commoncontroller
     {
         //一级省市
         $firstCitys = model('City')->getNormalFirstCity();
-        print_r($firstCitys);
-        return $this->fetch();
+        $firstCategorys = model('Category')->getNormalFirstCategory();
+        return $this->fetch('', [
+            'firstCitys' => $firstCitys,
+            'firstCategorys' => $firstCategorys
+        ]);
     }
 
     /**

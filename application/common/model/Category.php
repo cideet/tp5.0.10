@@ -45,17 +45,6 @@ class Category extends \app\common\model\Basemodel
         return $this->where($where)->order($order)->select();
     }
 
-//    /**
-//     * 插入新分类
-//     * @param array $data
-//     * @return false|int
-//     */
-//    public function add($data = array())
-//    {
-//        if (!$data || !is_array($data)) return 0;
-//        return $this->save($data);
-//    }
-
     /**
      * 根据ID值更新记录
      * @param $id
@@ -73,5 +62,16 @@ class Category extends \app\common\model\Basemodel
         return $this->where("id=" . $id)->save($data);
     }
 
-
+    /**
+     * 根据ID获取下一级分类
+     * @param int $parentId
+     * @return false|\PDOStatement|string|\think\Collection
+     */
+    public function getCategorysByPid($parentId = 0)
+    {
+        $where = ['status' => 1, 'parent_id' => $parentId];
+        $order = ['id' => 'asc'];
+        return $this->where($where)->order($order)->select();
+    }
+    
 }

@@ -73,6 +73,11 @@ class City extends \app\common\model\Basemodel
         return $this->where("id=" . $id)->save($data);
     }
 
+    /**
+     * 根据ID获取下一级城市
+     * @param int $parentId
+     * @return false|\PDOStatement|string|\think\Collection
+     */
     public function getCitysByParentId($parentId = 0)
     {
         $where = ['status' => 1, 'parent_id' => $parentId];
@@ -81,3 +86,4 @@ class City extends \app\common\model\Basemodel
     }
 
 }
+

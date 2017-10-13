@@ -34,13 +34,27 @@ var dialog = {
 
 $(function () {
     //多选
-    $("[data-choice=more] span").click(function () {
+    $(document).on("click", "[data-choice=more] span", function () {
         var i = $(this).find("i");
+        var str = $(this).parents('[data-choice=more]').find('input').val();
+        console.log(str);
         if (i.hasClass("icon-check-empty")) {
+            var array = str.split(',');
+            array.push(i.attr('data-id'));
+            var strr = array.toString();
+            $(this).parents('[data-choice=more]').find('input').val(strr);
             i.removeClass("icon-check-empty").addClass("icon-check");
         } else {
+            var array = str.split(',');
+            for (var k = 0; k < array.length; k++) {
+                if (array[k] == i.attr('data-id')) {
+                    array[k] = '';
+                }
+            }
+            $(this).parents('[data-choice=more]').find('input').val(array.toString());
             i.removeClass("icon-check").addClass("icon-check-empty");
         }
+        console.log($(this).parents('[data-choice=more]').find('input').val());
     });
 
     //单选
@@ -53,6 +67,7 @@ $(function () {
         $(this).parents("[data-choice=one]").find("input").val($(this).attr("data-value"));
     });
 
+    //整站表单提交 函数
     function vdouwSubmitFun(callback) {
         var flag = true;
         try {
@@ -80,7 +95,7 @@ $(function () {
         }
     }
 
-    //整站表单提交
+    //整站表单提交 触发
     $("#vdouw_submit").click(function () {
         if (typeof submitValidateCallback == 'undefined') {
             vdouwSubmitFun();
@@ -104,7 +119,7 @@ $(function () {
             }
         }, "json");
     });
-    
+
 });
 
 

@@ -43,11 +43,12 @@
         <tr>
             <td class="width20">所属省市</td>
             <td class="width80 font0">
-                <select class="form-control width240 height-30" name="city_id">
-                    <option>所属省市</option>
-                    <option>所属省市2</option>
+                <select class="form-control width240 height-30 cityId" name="city_id">
+                    <{volist name="firstCitys" id="vo"}>
+                    <option value="<{$vo.id}>"><{$vo.name}></option>
+                    <{/volist}>
                 </select>
-                <select class="form-control width240 height-30 ml-20" name="se_city_id">
+                <select class="form-control width240 height-30 ml-20 se_city_id" name="se_city_id">
                     <option>所属县市</option>
                     <option>所属县市2</option>
                 </select>
@@ -66,8 +67,10 @@
 
         <tr class="vdouw-kingeditor">
             <td>商户介绍</td>
-            <td><textarea class="js-editor vdouw-editor" name="description" rows="20"
-                          style="width:800px;">商户介绍</textarea></td>
+            <td>
+                <textarea class="js-editor vdouw-editor" name="description" rows="20"
+                          style="width:800px;">商户介绍</textarea>
+            </td>
         </tr>
 
         <tr>
@@ -119,17 +122,22 @@
             <td class="width20">所属分类</td>
             <td class="width80">
                 <select class="form-control width500 height-30" name="category_id">
-                    <option>所属分类</option>
-                    <option>所属分类2</option>
+                    <{volist name="firstCategorys" id="c"}>
+                    <option value="<{$c.id}>"><{$c.name}></option>
+                    <{/volist}>
                 </select>
             </td>
         </tr>
 
         <tr>
             <td>所属子类</td>
-            <td data-choice="more">
-                <span class="mr-10 c-pointer"><i class="icon-check-empty font18 color-admin-blue mr-3"></i>所属子类1</span>
-                <span class="mr-10 c-pointer"><i class="icon-check font18 color-admin-blue mr-3"></i>所属子类2</span>
+            <td data-choice="more" class="se_category_id">
+                <div>
+                    <span class="mr-10 c-pointer"><i
+                            class="icon-check-empty font18 color-admin-blue mr-3"></i>所属子类1</span>
+                    <span class="mr-10 c-pointer"><i class="icon-check font18 color-admin-blue mr-3"></i>所属子类2</span>
+                </div>
+                <input value="" type="hidden"/>
             </td>
         </tr>
 
@@ -141,7 +149,8 @@
 
         <tr>
             <td>营业时间</td>
-            <td><input name="open_time" type="text" id="open_time" value="10:00 - 20:00" class="form-control width500 height-30"/></td>
+            <td><input name="open_time" type="text" id="open_time" value="10:00 - 20:00"
+                       class="form-control width500 height-30"/></td>
         </tr>
 
         <tr class="vdouw-kingeditor">
@@ -159,31 +168,75 @@
 </form>
 
 <script>
+
+    /**城市相关二级内容**/
+    $(".cityId").change(function () {
+        getSecondCitys();
+    });
+
+    $("[name=category_id]").change(function () {
+        getSecondCategorys();
+    })
+
+    $(function () {
+        getSecondCitys();
+        getSecondCategorys();
+    });
+
+    function getSecondCitys() {
+        city_id = Number($(".cityId").val());
+        url = SCOPE.secondcity_url;
+        postData = {'id': city_id};
+        $.post(url, postData, function (result) {
+            if (result.status == 1) {
+                data = result.data;
+                city_html = "";
+                $(data).each(function (i) {
+                    city_html += "<option value='" + this.id + "'>" + this.name + "</option>";
+                });
+                $('.se_city_id').html(city_html);
+            } else if (result.status == 0) {
+                $('.se_city_id').html('');
+            }
+        }, 'json');
+    }
+
+    function getSecondCategorys() {
+        cateId = Number($("[name=category_id]").val());
+        url = SCOPE.secondcategory_url;
+        postData = {'id': cateId};
+        $.post(url, postData, function (result) {
+            if (result.status == 1) {
+                console.log(result);
+                data = result.data;
+                city_html = "";
+                $(data).each(function (i) {
+                    city_html += '<span class="mr-10 c-pointer"><i data-id="' + this.id + '" class="icon-check-empty font18 color-admin-blue mr-3"></i>' + this.name + '</span>';
+                });
+                $('.se_category_id div').html(city_html);
+            } else if (result.status == 0) {
+                $('.se_category_id').html('');
+            }
+        }, 'json');
+    }
+
+    //表单提交时的验证
     function submitValidateCallback() {
-        if (Number($('#open_time').val().substr(8, 2)) - Number($('#open_time').val().substr(0, 2)) >= 1) {
-            return true;
-        }else{
+        if (Number($('#open_time').val().substr(8, 2)) - Number($('#open_time').val().substr(0, 2)) <= 1) {
             dialog.error('每天的营业时间，必须大于1小时');
             return false;
         }
+        return true;
     }
 
-    laydate.render({
-        elem: '#open_time',
-        type: 'time',
-        format: 'HH:mm',
-        range: true,
-        //done: function (value, date) {
-        //    //alert(Number(value.substr(0,2)) + '|' + Number(value.substr(8,2)));
-        //    if (Number(value.substr(8, 2)) - Number(value.substr(0, 2)) <= 1) {
-        //        //alert('每天的营业时间，必须大于1小时');
-        //    }
-        //}
-    });
+    //营业时间的日历
+    laydate.render({elem: '#open_time', type: 'time', format: 'HH:mm', range: true});
 
     var SCOPE = {
         "save_url": "/index.php/bis/register/add",
-        "jump_url": "/index.php/bis/index/index"
+        "jump_url": "/index.php/bis/index/index",
+        "secondcity_url": "/index.php/api/city/getCitysByParentId",
+        "secondcategory_url": "/index.php/api/category/getCategorysByParentId"
     };
 
     KindEditor.ready(function (K) {
