@@ -315,11 +315,11 @@ ul, li, dl, dd, dt {
 }
 
 /* 仿bootstrap */
-.pull-right, .f-right {
+.pull-right {
     float: right
 }
 
-.pull-left, .f-left {
+.pull-left {
     float: left
 }
 
@@ -445,7 +445,7 @@ img.middle {
     color: #fff;
 }
 
-.btn:active, {
+.btn:active {
     background-image: none;
     outline: 0;
     -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
@@ -566,6 +566,30 @@ img.middle {
 
 .width500 {
     width: 500px;
+}
+
+.width600 {
+    width: 600px;
+}
+
+.width700 {
+    width: 700px;
+}
+
+.width800 {
+    width: 800px;
+}
+
+.width900 {
+    width: 900px;
+}
+
+.width1000 {
+    width: 1000px;
+}
+
+.width1200 {
+    width: 1200px;
 }
 
 .height-100 {

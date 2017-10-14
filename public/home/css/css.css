@@ -1,0 +1,96 @@
+/* 源码编写：微豆网 张三丰 */
+.middle-left-right {
+    margin: 0 auto;
+}
+
+.vdouw-home {
+    background: #f9f9f9;
+    height: 100%;
+}
+
+.vdouw-home header {
+    height: 60px;
+    line-height: 60px;
+    width: 100%;
+    background: #aeaeae;
+    position: fixed;
+    top: 0;
+}
+
+.vdouw-home header .middle-left-right {
+    height: 60px;
+    line-height: 60px;
+}
+
+.vdouw-home article {
+    height: 100%;
+    padding: 60px 0;
+}
+
+.vdouw-home article .width1200.middle-left-right {
+    height: 100%;
+}
+
+.vdouw-home article .width1200.middle-left-right > .pull-right {
+    width: 380px;
+    margin-left: 20px;
+    background: blue;
+    min-height: 500px;
+}
+
+.article-ul li {
+    /*height: 100px;*/
+    background: white;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    -moz-box-shadow:: 0 0 3px #ccc;
+    box-shadow:: 0 0 3px #ccc;
+    padding: 15px 20px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.article-ul li .img {
+    width: 225px;
+    height: 150px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.article-ul li div .pull-left:nth-child(1) {
+    width: 250px;
+}
+
+.article-ul li div .pull-left:nth-child(2) {
+    width: 500px;
+}
+
+.article-ul li div .pull-left:nth-child(2) > div.p {
+    line-height: 28px;
+    max-height: 112px;
+    overflow: hidden;
+}
+
+.article-ul li div .pull-left:nth-child(2) > div.a a {
+    display: block;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    background: #ccc;
+    text-align: center;
+    border-radius: 5px;
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+}
+
+.vdouw-home footer {
+    background: #aeaeae;
+    line-height: 30px;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
