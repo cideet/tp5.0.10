@@ -44,25 +44,35 @@
             <td class="width20">所属省市</td>
             <td class="width80 font0">
                 <select class="form-control width240 height-30 cityId" name="city_id">
+                    <option>选择省市</option>
                     <{volist name="firstCitys" id="vo"}>
                     <option value="<{$vo.id}>"><{$vo.name}></option>
                     <{/volist}>
                 </select>
                 <select class="form-control width240 height-30 ml-20 se_city_id" name="se_city_id">
-                    <option>所属县市</option>
-                    <option>所属县市2</option>
+                    <option>选择县市</option>
                 </select>
             </td>
         </tr>
 
         <tr>
             <td>缩略图</td>
-            <td><input id="file_upload" type="file" multiple="true" name="logo"/></td>
+            <td>
+                <input id="file_upload" type="file" multiple="true">
+                <img style="display: none" id="upload_org_code_img" src="" width="150" height="150">
+                <input id="file_upload_image" name="licence_logo" type="hidden" multiple="true" value="">
+            </td>
+            <!--<td><input id="file_upload" type="file" multiple="true" name="logo"/></td>-->
         </tr>
 
         <tr>
             <td>营业执照</td>
-            <td><input id="file_upload_other" type="file" multiple="true" name="licence_logo"/></td>
+            <td>
+                <input id="file_upload_other" type="file" multiple="true">
+                <img style="display: none" id="upload_org_code_img_other" src="" width="150" height="150">
+                <input id="file_upload_image_other" name="licence_logo" type="hidden" multiple="true" value="">
+            </td>
+            <!--<td><input id="file_upload_other" type="file" multiple="true" name="licence_logo"/></td>-->
         </tr>
 
         <tr class="vdouw-kingeditor">
@@ -122,6 +132,7 @@
             <td class="width20">所属分类</td>
             <td class="width80">
                 <select class="form-control width500 height-30" name="category_id">
+                    <option>选择分类</option>
                     <{volist name="firstCategorys" id="c"}>
                     <option value="<{$c.id}>"><{$c.name}></option>
                     <{/volist}>
@@ -133,9 +144,9 @@
             <td>所属子类</td>
             <td data-choice="more" class="se_category_id">
                 <div>
-                    <span class="mr-10 c-pointer"><i
-                            class="icon-check-empty font18 color-admin-blue mr-3"></i>所属子类1</span>
-                    <span class="mr-10 c-pointer"><i class="icon-check font18 color-admin-blue mr-3"></i>所属子类2</span>
+                    <!--<span class="mr-10 c-pointer"><i-->
+                    <!--class="icon-check-empty font18 color-admin-blue mr-3"></i>所属子类1</span>-->
+                    <!--<span class="mr-10 c-pointer"><i class="icon-check font18 color-admin-blue mr-3"></i>所属子类2</span>-->
                 </div>
                 <input value="" type="hidden"/>
             </td>
@@ -169,18 +180,19 @@
 
 <script>
 
-    /**城市相关二级内容**/
+    //选择二级城市
     $(".cityId").change(function () {
         getSecondCitys();
     });
 
+    //选择二级分类
     $("[name=category_id]").change(function () {
         getSecondCategorys();
     })
 
     $(function () {
-        getSecondCitys();
-        getSecondCategorys();
+        //getSecondCitys();
+        //getSecondCategorys();
     });
 
     function getSecondCitys() {
@@ -236,7 +248,9 @@
         "save_url": "/index.php/bis/register/add",
         "jump_url": "/index.php/bis/index/index",
         "secondcity_url": "/index.php/api/city/getCitysByParentId",
-        "secondcategory_url": "/index.php/api/category/getCategorysByParentId"
+        "secondcategory_url": "/index.php/api/category/getCategorysByParentId",
+        "uploadify_swf": "/plugins/uploadify/uploadify.swf",
+        "image_upload": "/index.php/api/image/upload"
     };
 
     KindEditor.ready(function (K) {
@@ -247,11 +261,58 @@
             }
         });
     });
+
+    $(function () {
+        $("#file_upload").uploadify({
+            'swf': SCOPE.uploadify_swf,
+            'uploader': SCOPE.image_upload,
+            'buttonText': '图片上传',
+            'fileTypeDesc': 'Image files',
+            'fileObjName': 'file',
+            'fileTypeExts': '*.gif; *.jpg; *.png',
+            'onUploadSuccess': function (file, data, response) {
+                console.log(file);
+                console.log(data);
+                console.log(response);
+                if (response) {
+                    var obj = JSON.parse(data);
+                    $("#upload_org_code_img").attr("src", obj.data);
+                    $("#file_upload_image").attr("value", obj.data);
+                    $("#upload_org_code_img").show();
+                }
+            }
+        });
+
+        $("#file_upload_other").uploadify({
+            'swf': SCOPE.uploadify_swf,
+            'uploader': SCOPE.image_upload,
+            'buttonText': '图片上传',
+            'fileTypeDesc': 'Image files',
+            'fileObjName': 'file',
+            'fileTypeExts': '*.gif; *.jpg; *.png',
+            'onUploadSuccess': function (file, data, response) {
+                console.log(file);
+                console.log(data);
+                console.log(response);
+                if (response) {
+                    var obj = JSON.parse(data);
+                    $("#upload_org_code_img_other").attr("src", obj.data);
+                    $("#file_upload_image_other").attr("value", obj.data);
+                    $("#upload_org_code_img_other").show();
+                }
+            }
+        });
+    });
 </script>
 
 <style>
     .vdouw-admin-body {
         margin: 30px 50px;
+    }
+
+    #file_upload-button, #file_upload_other-button {
+        top: 6px;
+        position: relative;
     }
 </style>
 
