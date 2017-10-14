@@ -35,7 +35,7 @@ class Email {
             //Password to use for SMTP authentication
             $mail->Password = config('email.password');
             //Set who the message is to be sent from
-            $mail->setFrom(config('email.username'), 'singwa');
+            $mail->setFrom(config('email.username'), 'zhangsanfeng');
             //Set an alternative reply-to address
             //$mail->addReplyTo('replyto@example.com', 'First Last');
             //Set who the message is to be sent to

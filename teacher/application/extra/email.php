@@ -7,5 +7,4 @@ return [
     'port' => 25,
     'username' => 'singwa3@126.com',
     'password' => 'you password o hah',
-
 ];

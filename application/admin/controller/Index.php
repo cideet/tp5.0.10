@@ -20,6 +20,7 @@ class Index extends \app\admin\controller\Basecontroller
 
     public function main()
     {
+        echo(config('config.myname') . '<br>');
         //echo('<br>发送邮件开始<br>');
         //\phpmailer\Email::send('488703045@qq.com', 'title', 'content');
         //echo('<br>发送邮件完成<br>');

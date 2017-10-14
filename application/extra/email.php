@@ -7,6 +7,11 @@
  */
 
 return [
+//    'host' => 'smtp.126.com',
+//    'port' => 25,
+//    'username' => 'vdouw_tp5_testmail@126.com',
+//    'password' => 'tp512345',
+
     'host' => 'smtp.126.com',
     'port' => 25,
     'username' => 'singwa3@126.com',
