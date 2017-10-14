@@ -78,8 +78,7 @@
         <tr class="vdouw-kingeditor">
             <td>商户介绍</td>
             <td>
-                <textarea class="js-editor vdouw-editor" name="description" rows="20"
-                          style="width:800px;">商户介绍</textarea>
+                <script id="editor1" type="text/plain" name="description" style="width:90%;height:300px;"></script>
             </td>
         </tr>
 
@@ -166,7 +165,8 @@
 
         <tr class="vdouw-kingeditor">
             <td>门店简介</td>
-            <td><textarea class="js-editor vdouw-editor" name="content" rows="20" style="width:800px;">门店简介</textarea>
+            <td>
+                <script id="editor" type="text/plain" name="description" style="width:90%;height:300px;"></script>
             </td>
         </tr>
 
@@ -253,16 +253,19 @@
         "image_upload": "/index.php/api/image/upload"
     };
 
-    KindEditor.ready(function (K) {
-        window.editor = K.create('.vdouw-editor', {
-            uploadJson: '/admin.php/Image/kindupload',
-            afterBlur: function () {
-                this.sync();
-            }
-        });
-    });
+    //    KindEditor.ready(function (K) {
+    //        window.editor = K.create('.vdouw-editor', {
+    //            uploadJson: "/index.php/api/image/upload",
+    //            afterBlur: function () {
+    //                this.sync();
+    //            }
+    //        });
+    //    });
 
     $(function () {
+        var ue = UE.getEditor('editor');
+        var ue1 = UE.getEditor('editor1');
+
         $("#file_upload").uploadify({
             'swf': SCOPE.uploadify_swf,
             'uploader': SCOPE.image_upload,

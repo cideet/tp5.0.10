@@ -19,4 +19,14 @@ class Image extends \think\Controller
         }
         return show(0, '上传失败');
     }
+
+    public function imageUpload() {
+        $res = \think\Request::instance()->file('file');
+
+        if($res) {
+            return '/' . $res['file']['savepath'] . $res['file']['savename'];
+        }else{
+            return false;
+        }
+    }
 }
