@@ -19,13 +19,13 @@ return [
     'database' => 'vdouwtp5',
     'username' => 'vdouwtp5',
     'password' => 'vdouwtp5',
+    'prefix'   => 'vdouw_',                     // 数据库表前缀
 
     'type' => 'mysql',                      // 数据库类型
     'hostport' => '3306',                   // 端口
     'dsn' => '',                            // 连接dsn
     'params' => [],                         // 数据库连接参数
     'charset' => 'utf8',                    // 数据库编码默认采用utf8
-    'prefix' => 'o2o_',                     // 数据库表前缀
     'debug' => true,                        // 数据库调试模式
     'deploy' => 0,                          // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
     'rw_separate' => false,                 // 数据库读写是否分离 主从式有效
