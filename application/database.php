@@ -10,10 +10,15 @@
 // +----------------------------------------------------------------------
 
 return [
-    'hostname' => 'localhost',
-    'database' => 'tp5',
-    'username' => 'root',
-    'password' => '',
+//    'hostname' => 'localhost',
+//    'database' => 'tp5',
+//    'username' => 'root',
+//    'password' => '',
+
+    'hostname' => '222.182.202.13',
+    'database' => 'vdouwtp5',
+    'username' => 'vdouwtp5',
+    'password' => 'vdouwtp5',
 
     'type' => 'mysql',                      // 数据库类型
     'hostport' => '3306',                   // 端口
