@@ -1,11 +1,11 @@
 /* 源码编写：微豆网 张三丰 */
-.middle-left-right {
-    margin: 0 auto;
+html, body {
+    min-height: 100%;
+    background: #f9f9f9;
 }
 
-.vdouw-home {
-    background: #f9f9f9;
-    height: 100%;
+.middle-left-right {
+    margin: 0 auto;
 }
 
 .vdouw-home header {
@@ -23,14 +23,15 @@
     line-height: 60px;
 }
 
-.vdouw-home article {
-    height: 100%;
-    padding: 60px 0 80px 0;
-    overflow-y: auto;
+.member-headpic {
+    width: 32px;
+    height: 32px;
+    margin-top: 14px;
 }
 
-.vdouw-home article .width1200.middle-left-right {
+.vdouw-home article {
     height: 100%;
+    padding: 60px 0 90px 0;
 }
 
 .article-ul li, .article-box {
@@ -222,4 +223,41 @@ article .pull-right .box.comment li .right .p {
 
 .article-box .comment-list dd li .right {
     margin-left: 10px;
+}
+
+.login-register-box {
+    -webkit-box-shadow: 0 0 3px #ccc;
+    -moz-box-shadow:: 0 0 3px #ccc;
+    box-shadow:: 0 0 3px #ccc;
+    padding: 15px 20px 20px 20px;
+    border-radius: 5px;
+    background: white;
+    width: 500px;
+    margin: 50px 0 0 100px;
+}
+
+.login-register-box .p {
+    display: flex;
+    height: 30px;
+    line-height: 30px;
+}
+
+.login-register-box .p .left {
+    width: 100px;
+}
+
+.login-register-box .p .right {
+    flex: 1;
+}
+
+.login-register-box .p .right input {
+    height: 34px;
+}
+
+.login-register-box .p .right .code {
+    width: 38%;
+    margin-left: 2%;
+    height: 33px;
+    float: left;
+    border-radius: 3px;
 }
