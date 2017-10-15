@@ -14,7 +14,7 @@
     <script src="/admin/js/global.js"></script>
 </head>
 <body>
-<div class="login-form">
+<div class="login-form top50">
     <div class="close"></div>
     <div class="head-info">
         <label class="lbl-1"> </label>
@@ -51,8 +51,6 @@
             //alert("你点击了后台登录页面的登录按钮");
             var username = $('input[name="username"]').val();
             var password = $('input[name="password"]').val();
-            //if(username==""){dialog.error("用户名不能为空");}
-            //if(password==""){dialog.error("密码不能为空");}
             var url = "/index.php/admin/login/check";
             var data = {'username': username, 'password': password};
             $.post(url, data, function (result) {
@@ -60,12 +58,23 @@
                     return dialog.error(result.message);
                 }
                 if (result.status == 1) {
-                    return dialog.success(result.message, '/index.php/Admin/Index/index');
+                    return dialog.success(result.message, '/index.php/admin/Index/index');
                 }
             }, 'JSON');
         }
     };
 </script>
+
+<style>
+    body {
+        background: url("/admin/images/timg.jpg");
+    }
+
+    .login-form {
+        margin: 80px 0 0 80px;
+    }
+    
+</style>
 
 </body>
 </html>
