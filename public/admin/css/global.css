@@ -282,6 +282,14 @@ ul, li, dl, dd, dt {
     margin-right: 20px !important;
 }
 
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
 .p-relative {
     position: relative;
 }
@@ -329,6 +337,10 @@ ul, li, dl, dd, dt {
 
 .show, .display-block {
     display: block
+}
+
+.display-iblock {
+    display: inline-block;
 }
 
 .clearfix {
@@ -548,6 +560,14 @@ img.middle {
     width: 100%;
 }
 
+.width120 {
+    width: 120px;
+}
+
+.width150 {
+    width: 150px;
+}
+
 .width200 {
     width: 200px;
 }
@@ -654,6 +674,10 @@ img.middle {
 
 .color-yellow {
     color: yellow !important;
+}
+
+.color-blue {
+    color: blue;
 }
 
 .color-llgray {
