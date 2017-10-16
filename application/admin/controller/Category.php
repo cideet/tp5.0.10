@@ -45,7 +45,7 @@ class Category extends \app\admin\controller\Basecontroller
             return show(0, '添加失败', $cateID);
         } else {
             return $this->fetch('', [
-                'firstCategory' => $this->firstCategory
+                'categorys' => $this->categorys
             ]);
         }
     }
@@ -66,7 +66,7 @@ class Category extends \app\admin\controller\Basecontroller
             $id = getParam('id');
             $thiscate = $this->obj->find($id);
             return $this->fetch('', [
-                'firstCategory' => $this->firstCategory,
+                'categorys' => $this->categorys,
                 'thiscate' => $thiscate
             ]);
         }
@@ -102,7 +102,7 @@ class Category extends \app\admin\controller\Basecontroller
             $id = getParam('id');
             return $this->fetch('', [
                 'id' => $id,
-                'firstCategory' => $this->firstCategory
+                'categorys' => $this->categorys
             ]);
         }
     }
