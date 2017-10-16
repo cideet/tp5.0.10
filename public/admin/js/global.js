@@ -97,10 +97,14 @@ $(function () {
         }
         if (flag) {
             var data = $("#vdouw-form").serializeArray();
+            console.log(data);
             var postData = {};
             $(data).each(function () {
                 postData[this.name] = this.value;
             });
+
+            postData['content'] = ue.getContent(content);
+
             console.log(postData);
             $.post(SCOPE.save_url, postData, function (result) {
                 if (result.status == 1) {

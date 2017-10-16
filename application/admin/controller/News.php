@@ -30,6 +30,7 @@ class News extends \app\admin\controller\Basecontroller
     {
         $data = input('post.');
         if ($data) {
+            
 //            $resId = model('Tag')->add($data);
 //            if ($resId) {
 //                return show(1, "添加成功", $resId);
