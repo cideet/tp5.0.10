@@ -32,6 +32,15 @@
         </tr>
 
         <tr>
+            <td>标题</td>
+            <td>
+                <input id="file_upload" type="file" multiple="true">
+                <img style="display: none" id="upload_org_code_img" src="" width="150" height="150">
+                <input id="file_upload_image" name="licence_logo" type="hidden" multiple="true" value="">
+            </td>
+        </tr>
+
+        <tr>
             <td>关键词</td>
             <td><input type="text" class="form-control width500 height-30" name="keywords"/></td>
         </tr>
@@ -117,7 +126,11 @@
 <script>
     var SCOPE = {
         "save_url": "/index.php/admin/news/add",
-        "jump_url": "/index.php/admin/news/index"
+        "jump_url": "/index.php/admin/news/index",
+        "secondcity_url": "/index.php/api/city/getCitysByParentId",
+        "secondcategory_url": "/index.php/api/category/getCategorysByParentId",
+        "uploadify_swf": "/plugins/uploadify/uploadify.swf",
+        "image_upload": "/index.php/api/image/upload"
     };
 
     //表单提交时的验证
@@ -131,6 +144,26 @@
 
     $(function () {
         var ue = UE.getEditor('editor');
+
+        $("#file_upload").uploadify({
+            'swf': SCOPE.uploadify_swf,
+            'uploader': SCOPE.image_upload,
+            'buttonText': '图片上传',
+            'fileTypeDesc': 'Image files',
+            'fileObjName': 'file',
+            'fileTypeExts': '*.gif; *.jpg; *.png',
+            'onUploadSuccess': function (file, data, response) {
+                console.log(file);
+                console.log(data);
+                console.log(response);
+                if (response) {
+                    var obj = JSON.parse(data);
+                    $("#upload_org_code_img").attr("src", obj.data);
+                    $("#file_upload_image").attr("value", obj.data);
+                    $("#upload_org_code_img").show();
+                }
+            }
+        });
     });
 </script>
 

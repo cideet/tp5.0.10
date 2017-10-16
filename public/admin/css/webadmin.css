@@ -250,5 +250,10 @@ article > .pull-right {
     cursor: pointer;
 }
 
+#file_upload-button, #file_upload_other-button {
+    top: 6px;
+    position: relative;
+}
+
 
 
