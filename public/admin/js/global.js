@@ -102,9 +102,9 @@ $(function () {
             $(data).each(function () {
                 postData[this.name] = this.value;
             });
-
-            postData['content'] = ue.getContent(content);
-
+            if (typeof(ue) != 'undefined') {
+                postData['content'] = ue.getContent(content);
+            }
             console.log(postData);
             $.post(SCOPE.save_url, postData, function (result) {
                 if (result.status == 1) {
