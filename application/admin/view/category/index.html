@@ -36,9 +36,11 @@
                    href="/index.php/admin/category/edit/id/<{$v['id']}>">修改</a>
                 <i class="ml-5 mr-5">|</i>
                 <span class="c-pointer color-admin-blue vdouw-delete" title="删除" data-id="<{$v['id']}>">删除</span>
+                <{if condition="$v['parent_id'] eq 0"}>
                 <i class="ml-5 mr-5">|</i>
                 <a class="c-pointer color-admin-blue vdouw-addson" title="添加子菜单"
                    href="/index.php/admin/category/addson/id/<{$v['id']}>">添加子菜单</a>
+                <{/if}>
             </td>
         </tr>
         <{/volist}>

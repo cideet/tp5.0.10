@@ -16,7 +16,6 @@ class News extends \app\admin\controller\Basecontroller
     {
         parent::__construct();
         $this->obj = model('News');
-        $order = ['listorder' => 'asc', 'id' => 'asc',];
         $this->categorys = model('Category')->getCategorys();
     }
 

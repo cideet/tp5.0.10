@@ -1,15 +1,156 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8"/>
-    <title>Title</title>
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-</head>
-<body>
-    news
-</body>
-</html>
+<{include file="public/header" /}>
+
+<body class="vdouw-main-body">
+<div class="vdouw-admin-position">
+    <i class="icon-home mr-3"></i><span>后台首页</span>
+    <cite class="ml-3 mr-3">></cite>
+    <span>文章管理</span>
+</div>
+<div class="mt-10 mb-10 vdouw-admin-title">
+    <b class="font20 height-100">文章列表</b>
+    <i class="ml-10 mr-10">|</i>
+    <a class="c-pointer color-admin-blue" href="/index.php/admin/news/add" target="right_content">添加文章</a>
+</div>
+<table class="width100 vdouw-table" cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <td class="width5 text-overflow">ID</td>
+        <td class="width10">所属栏目</td>
+        <td class="width20">标题</td>
+        <td class="width15">标签</td>
+        <td class="width5">作者</td>
+        <td class="width5 text-align-center">原创</td>
+        <td class="width5 text-align-center">审核</td>
+        <td class="width5 text-align-center">置顶</td>
+        <td class="width5 text-align-center">点击数</td>
+        <td class="width10 text-overflow">发布时间</td>
+        <td class="width20">操作</td>
+    </tr>
+    </thead>
+    <tbody>
+    <form id="vdouw-form">
+        <tr>
+            <td>69</td>
+            <td></td>
+            <td>当我屡次不经意地凝视自己的博客时</td>
+            <td>标签</td>
+            <td>张三丰</td>
+            <td class="text-align-center">
+                <i class="icon-ok"></i>
+            </td>
+            <td class="text-align-center">
+                <i data-id="69" data-value="1" class='vdouw-show c-pointer icon-remove'></i>
+            </td>
+            <td class="text-align-center">
+                <i data-id="69" data-value="1" class='vdouw-top c-pointer icon-remove'></i>
+            </td>
+            <td class="text-align-center">0</td>
+            <td>2016-11-25 10:00:07</td>
+            <td>
+                <a class="color-admin-blue" title="当我屡次不经意地凝视自己的博客时" href="#">查看</a>
+                <i class="ml-3 mr-3">|</i>
+                <a class="c-pointer color-admin-blue" title="修改" data-id="69"
+                   href="/index.php/admin/news/edit/id/{$v['id']}>"">修改</a>
+                <i class="ml-3 mr-3">|</i>
+                <span class="c-pointer color-admin-blue vdouw-delete" data-id="69" title="删除">删除</span>
+            </td>
+        </tr>
+    </form>
+    </tbody>
+</table>
+
+<script>
+    var SCOPE = {
+        "save_url": "/index.php/admin/news/add",
+        "set_status_url": "/index.php/admin/news/setStatus",
+        "set_show_url": "/index.php/admin/new/setshow",
+        "set_top_url": "/index.php/admin/article/setTop"
+    };
+
+    //审核
+    $(".vdouw-show").click(function () {
+        alert('is_show');
+        return;
+        var $value = ($(this).attr("data-value") == "1" ? "你确定要取消审核吗？" : "你确定要恢复审核吗？");
+        var $type = ($(this).attr("data-value") == "1" ? "0" : "1");
+        var $data = {};
+        $data["aid"] = $(this).attr("data-id");
+        $data["is_show"] = $type;
+        layer.open({
+            type: 0,
+            title: '审核确认框',
+            btn: ['确定', '取消'],
+            icon: 3,
+            closeBtn: 2,
+            content: $value,
+            scrollbar: true,
+            yes: function () {
+                $.post(SCOPE.set_show_url, $data, function (s) {
+                    if (s.status == 1) {
+                        return dialog.success(s.message, '');
+                    } else {
+                        return dialog.error(s.message);
+                    }
+                }, "JSON");
+            }
+        });
+    });
+
+    //置顶
+    $(".vdouw-top").click(function () {
+        alert('top');
+        return;
+        var $value = ($(this).attr("data-value") == "1" ? "你确定要取消置顶吗？" : "你确定要恢复置顶吗？");
+        var $type = ($(this).attr("data-value") == "1" ? "0" : "1");
+        var $data = {};
+        $data["aid"] = $(this).attr("data-id");
+        $data["is_top"] = $type;
+        layer.open({
+            type: 0,
+            title: '审核确认框',
+            btn: ['确定', '取消'],
+            icon: 3,
+            closeBtn: 2,
+            content: $value,
+            scrollbar: true,
+            yes: function () {
+                $.post(SCOPE.set_top_url, $data, function (s) {
+                    if (s.status == 1) {
+                        return dialog.success(s.message, '');
+                    } else {
+                        return dialog.error(s.message);
+                    }
+                }, "JSON");
+            }
+        });
+    });
+
+    //删除
+    $('.vdouw-delete').on('click', function () {
+        $data = {};
+        $data['id'] = $(this).attr('data-id');
+        $data['status'] = "0";
+        console.log($data);
+        layer.open({
+            type: 0,
+            title: '删除确认框',
+            btn: ['确定', '取消'],
+            icon: 3,
+            closeBtn: 2,
+            content: "您确定要删除吗？",
+            scrollbar: true,
+            yes: function () {
+                $.post(SCOPE.set_status_url, $data, function (s) {
+                    if (s.status == 1) {
+                        return dialog.success(s.message, '');
+                    } else {
+                        return dialog.error(s.message);
+                    }
+                }, "JSON");
+            }
+        });
+    });
+
+</script>
+
+<{include file="public/footer" /}>
