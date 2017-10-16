@@ -32,26 +32,43 @@ var dialog = {
     }
 };
 
+var vdouwTool = {
+    //数据去重
+    unique2: function ($array) {
+        var res = [];
+        var json = {};
+        for (var i = 0; i < $array.length; i++) {
+            if (!json[$array[i]]) {
+                res.push($array[i]);
+                json[this[i]] = 1;
+            }
+        }
+        return res;
+    }
+};
+
 $(function () {
     //多选
     $(document).on("click", "[data-choice=more] span", function () {
         var i = $(this).find("i");
         var str = $(this).parents('[data-choice=more]').find('input').val();
-        console.log(str);
+        console.log(str + "|" + i.attr('data-id'));
         if (i.hasClass("icon-check-empty")) {
-            var array = str.split(',');
-            array.push(i.attr('data-id'));
-            var strr = array.toString();
+            var array1 = !!str ? str.split(',') : [];
+            array1.push(i.attr('data-id'));
+            var array111 = vdouwTool.unique2(array1);
+            var strr = array111.toString();
             $(this).parents('[data-choice=more]').find('input').val(strr);
             i.removeClass("icon-check-empty").addClass("icon-check");
         } else {
             var array = str.split(',');
+            var tmp = [];
             for (var k = 0; k < array.length; k++) {
-                if (array[k] == i.attr('data-id')) {
-                    array[k] = '';
+                if (array[k] != i.attr('data-id')) {
+                    tmp.push(array[k]);
                 }
             }
-            $(this).parents('[data-choice=more]').find('input').val(array.toString());
+            $(this).parents('[data-choice=more]').find('input').val(tmp.toString());
             i.removeClass("icon-check").addClass("icon-check-empty");
         }
         console.log($(this).parents('[data-choice=more]').find('input').val());

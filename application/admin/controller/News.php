@@ -28,8 +28,19 @@ class News extends \app\admin\controller\Basecontroller
 
     public function add()
     {
-        return $this->fetch('', [
-            'categorys' => $this->categorys
-        ]);
+        $data = input('post.');
+        if ($data) {
+//            $resId = model('Tag')->add($data);
+//            if ($resId) {
+//                return show(1, "添加成功", $resId);
+//            }
+//            return show(0, '添加失败', $resId);
+        } else {
+            $allTags = model('Tag')->getAllTags();
+            return $this->fetch('', [
+                'categorys' => $this->categorys,
+                'allTags' => $allTags
+            ]);
+        }
     }
 }

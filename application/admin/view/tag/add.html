@@ -1,0 +1,36 @@
+<{include file="public/header" /}>
+
+<body class="vdouw-main-body">
+<div class="vdouw-admin-position">
+    <i class="icon-home mr-3"></i><span>后台首页</span>
+    <cite class="ml-3 mr-3">></cite>
+    <span>标签管理</span>
+</div>
+<div class="mt-10 mb-10 vdouw-admin-title">
+    <b class="font20 height-100">添加标签</b>
+    <i class="ml-10 mr-10">|</i>
+    <a class="c-pointer color-admin-blue" href="/index.php/admin/tag/index" target="right_content">标签列表</a>
+</div>
+<form id="vdouw-form">
+    <table class="width100 vdouw-table mb-20" cellpadding="0" cellspacing="0">
+        <tbody>
+        <tr>
+            <td>标签名称</td>
+            <td><input type="text" name="name" class="form-control width300 height-30"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" class="btn btn-primary width200 color-white" id="vdouw_submit" value="提交"/></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<script>
+    var SCOPE = {
+        "save_url": "/index.php/admin/tag/add",
+        "jump_url": "/index.php/admin/tag/index"
+    }
+</script>
+
+<{include file="public/footer" /}>

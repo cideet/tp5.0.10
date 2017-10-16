@@ -44,10 +44,16 @@
         <tr>
             <td>标签</td>
             <td data-choice="more" class="se_category_id">
-                <div>
-                    <span class="mr-10 c-pointer"><i
-                            class="icon-check-empty font18 color-admin-blue mr-3"></i>所属子类1</span>
-                    <span class="mr-10 c-pointer"><i class="icon-check font18 color-admin-blue mr-3"></i>所属子类2</span>
+                <div class="pt-10 pb-10">
+                    <{volist name="allTags" id="vo"}>
+                    <span class="mr-10 c-pointer">
+                        <i data-id="<{$vo.id}>" class="icon-check-empty font18 color-admin-blue mr-3"></i><{$vo.name}>
+                    </span>
+                    <{/volist}>
+                    <!--<span class="mr-10 c-pointer">-->
+                    <!--<i data-id="12" class="icon-check-empty font18 color-admin-blue mr-3"></i>所属子类1</span>-->
+                    <!--<span class="mr-10 c-pointer">-->
+                    <!--<i data-id="13" class="icon-check font18 color-admin-blue mr-3"></i>所属子类2</span>-->
                 </div>
                 <input value="" type="hidden" name="tag"/>
             </td>
@@ -68,9 +74,10 @@
         <tr>
             <td>原创</td>
             <td data-choice="one">
-                <span class="mr-10 c-pointer" data-value="1"><i class="icon-ok-sign font18 color-admin-blue mr-3"></i>是</span>
-                <span class="mr-10 c-pointer" data-value="0"><i
-                        class="icon-circle-blank font18 color-admin-blue mr-3"></i>否</span>
+                <span class="mr-10 c-pointer" data-value="1">
+                    <i class="icon-ok-sign font18 color-admin-blue mr-3"></i>是</span>
+                <span class="mr-10 c-pointer" data-value="0">
+                    <i class="icon-circle-blank font18 color-admin-blue mr-3"></i>否</span>
                 <input type="hidden" value="1" name="is_original"/>
             </td>
         </tr>
@@ -78,9 +85,10 @@
         <tr>
             <td>置顶</td>
             <td data-choice="one">
-                <span class="mr-10 c-pointer" data-value="1"><i
-                        class="icon-circle-blank font18 color-admin-blue mr-3"></i>是</span>
-                <span class="mr-10 c-pointer" data-value="0"><i class="icon-ok-sign font18 color-admin-blue mr-3"></i>否</span>
+                <span class="mr-10 c-pointer" data-value="1">
+                    <i class="icon-circle-blank font18 color-admin-blue mr-3"></i>是</span>
+                <span class="mr-10 c-pointer" data-value="0">
+                    <i class="icon-ok-sign font18 color-admin-blue mr-3"></i>否</span>
                 <input type="hidden" value="0" name="is_top"/>
             </td>
         </tr>
@@ -88,9 +96,10 @@
         <tr>
             <td>显示</td>
             <td data-choice="one">
-                <span class="mr-10 c-pointer" data-value="1"><i class="icon-ok-sign font18 color-admin-blue mr-3"></i>是</span>
-                <span class="mr-10 c-pointer" data-value="0"><i
-                        class="icon-circle-blank font18 color-admin-blue mr-3"></i>否</span>
+                <span class="mr-10 c-pointer" data-value="1">
+                    <i class="icon-ok-sign font18 color-admin-blue mr-3"></i>是</span>
+                <span class="mr-10 c-pointer" data-value="0">
+                    <i class="icon-circle-blank font18 color-admin-blue mr-3"></i>否</span>
                 <input type="hidden" value="1" name="is_show"/>
             </td>
         </tr>
@@ -110,6 +119,15 @@
         "save_url": "/index.php/admin/news/add",
         "jump_url": "/index.php/admin/news/index"
     };
+
+    //表单提交时的验证
+    function submitValidateCallback() {
+        if ($('[name=category_id]').val() == '') {
+            dialog.error('分类必填');
+            return false;
+        }
+        return true;
+    }
 
     $(function () {
         var ue = UE.getEditor('editor');

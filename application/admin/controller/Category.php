@@ -38,11 +38,11 @@ class Category extends \app\admin\controller\Basecontroller
             $data['status'] = 1;
             //$data['create_time'] = time();
             //$data['update_time'] = time();
-            $cateID = $this->obj->add($data);
-            if ($cateID) {
-                return show(1, "添加成功", $cateID);
+            $resId = $this->obj->add($data);
+            if ($resId) {
+                return show(1, "添加成功", $resId);
             }
-            return show(0, '添加失败', $cateID);
+            return show(0, '添加失败', $resId);
         } else {
             return $this->fetch('', [
                 'categorys' => $this->categorys
