@@ -19,7 +19,11 @@ class Tag extends \app\common\model\Basemodel
         return $this->select();
     }
 
-
+    /**
+     * 根据标签ID获取标签name
+     * @param $tagId
+     * @return array|false|\PDOStatement|string|\think\Model
+     */
     public function getTagNamesByTagId($tagId)
     {
         $where = ['id' => $tagId];

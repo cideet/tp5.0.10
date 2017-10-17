@@ -40,12 +40,22 @@
                 <{/volist}>
             </td>
             <td><{$vo.author}></td>
-            <td class="text-align-center"><i class="icon-ok"></i></td>
             <td class="text-align-center">
-                <i data-id="<{$vo.id}>" data-value="<{$vo.is_show}>" class='vdouw-show c-pointer icon-remove'></i>
+                <{if condition=" $vo.is_original=='1'"}>
+                <i class="c-pointer vdouw_original icon-ok" title="点击切换状态" data-id="<{$vo.id}>"
+                   data-value="<{$vo.is_original}>"></i>
+                <{else/}>
+                <i class="c-pointer vdouw_original icon-remove" title="点击切换状态" data-id="<{$vo.id}>"
+                   data-value="<{$vo.is_original}>"></i>
+                <{/if}>
             </td>
             <td class="text-align-center">
-                <i data-id="<{$vo.id}>" data-value="<{$vo.is_top}>" class='vdouw-top c-pointer icon-remove'></i>
+                <i data-id="<{$vo.id}>" data-value="<{$vo.is_show}>" title="点击切换状态"
+                   class='vdouw-show c-pointer icon-remove'></i>
+            </td>
+            <td class="text-align-center">
+                <i data-id="<{$vo.id}>" data-value="<{$vo.is_top}>" title="点击切换状态"
+                   class='vdouw-top c-pointer icon-remove'></i>
             </td>
             <td class="text-align-center"><{$vo.click}></td>
             <td><{$vo.addtime}></td>
@@ -64,11 +74,38 @@
 
 <script>
     var SCOPE = {
+        "set_original_url": "/index.php/admin/news/original",    //原创
+        "set_show_url": "/index.php/admin/news/setshow",
         "save_url": "/index.php/admin/news/add",
         "set_status_url": "/index.php/admin/news/setStatus",
-        "set_show_url": "/index.php/admin/new/setshow",
         "set_top_url": "/index.php/admin/article/setTop"
     };
+
+    //是否原创
+    $('.vdouw_original').click(function () {
+        var $data = {
+            'id': $(this).attr('data-id'),
+            'is_original': Number($(this).attr('data-value') == "1" ? "0" : "1")
+        };
+        layer.open({
+            type: 0,
+            title: '审核确认框',
+            btn: ['确定', '取消'],
+            icon: 3,
+            closeBtn: 2,
+            content: '你确定要切换原创的状态吗？',
+            scrollbar: true,
+            yes: function () {
+                $.post(SCOPE.set_original_url, $data, function (s) {
+                    if (s.status == 1) {
+                        return dialog.success(s.message, '');
+                    } else {
+                        return dialog.error(s.message);
+                    }
+                }, "JSON");
+            }
+        })
+    });
 
     //审核
     $(".vdouw-show").click(function () {

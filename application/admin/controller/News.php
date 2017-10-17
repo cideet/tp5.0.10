@@ -79,6 +79,20 @@ class News extends \app\admin\controller\Basecontroller
         }
     }
 
+    /**
+     * 切换文章是否是原创
+     * @return array|void
+     */
+    public function original()
+    {
+        $data = input('post.');
+        $res = model('News')->updateById($data['id'], ['is_original' => $data['is_original']]);
+        if ($res) {
+            return show(1, "修改成功", $res);
+        }
+        return show(0, '修改失败');
+    }
+
     public function setStatus()
     {
         var_dump(input('post.'));
