@@ -25,7 +25,7 @@ class Basemodel extends \think\Model
     {
         if (!$data || !is_array($data)) return 0;
         //return $this->save($data);
-        $this->allowField(true)->save($data);
+        $this->allowField(true)->save($data);   //返回新增数据的ID
         return $this->id;
     }
 

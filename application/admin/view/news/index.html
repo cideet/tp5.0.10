@@ -16,9 +16,9 @@
     <tr>
         <td class="width5 text-overflow">ID</td>
         <td class="width10">所属栏目</td>
-        <td class="width20">标题</td>
+        <td class="width15">标题</td>
         <td class="width15">标签</td>
-        <td class="width5">作者</td>
+        <td class="width10">作者</td>
         <td class="width5 text-align-center">原创</td>
         <td class="width5 text-align-center">审核</td>
         <td class="width5 text-align-center">置顶</td>
@@ -29,32 +29,35 @@
     </thead>
     <tbody>
     <form id="vdouw-form">
+        <{volist name="allNews" id="vo"}>
         <tr>
-            <td>69</td>
-            <td></td>
-            <td>当我屡次不经意地凝视自己的博客时</td>
-            <td>标签</td>
-            <td>张三丰</td>
-            <td class="text-align-center">
-                <i class="icon-ok"></i>
-            </td>
-            <td class="text-align-center">
-                <i data-id="69" data-value="1" class='vdouw-show c-pointer icon-remove'></i>
-            </td>
-            <td class="text-align-center">
-                <i data-id="69" data-value="1" class='vdouw-top c-pointer icon-remove'></i>
-            </td>
-            <td class="text-align-center">0</td>
-            <td>2016-11-25 10:00:07</td>
+            <td><{$vo.id}></td>
+            <td>栏目名</td>
+            <td><{$vo.title}></td>
             <td>
-                <a class="color-admin-blue" title="当我屡次不经意地凝视自己的博客时" href="#">查看</a>
+                <{volist name="$vo.tag" id="t"}>
+                <span class="mr-10"><{$t.name}></span>
+                <{/volist}>
+            </td>
+            <td><{$vo.author}></td>
+            <td class="text-align-center"><i class="icon-ok"></i></td>
+            <td class="text-align-center">
+                <i data-id="<{$vo.id}>" data-value="<{$vo.is_show}>" class='vdouw-show c-pointer icon-remove'></i>
+            </td>
+            <td class="text-align-center">
+                <i data-id="<{$vo.id}>" data-value="<{$vo.is_top}>" class='vdouw-top c-pointer icon-remove'></i>
+            </td>
+            <td class="text-align-center"><{$vo.click}></td>
+            <td><{$vo.addtime}></td>
+            <td>
+                <a class="color-admin-blue" title="<{$vo.title}>" href="#">查看</a>
                 <i class="ml-3 mr-3">|</i>
-                <a class="c-pointer color-admin-blue" title="修改" data-id="69"
-                   href="/index.php/admin/news/edit/id/{$v['id']}>"">修改</a>
+                <a class="c-pointer color-admin-blue" title="修改" href="/index.php/admin/news/edit/id/<{$vo.id}>">修改</a>
                 <i class="ml-3 mr-3">|</i>
-                <span class="c-pointer color-admin-blue vdouw-delete" data-id="69" title="删除">删除</span>
+                <span class="c-pointer color-admin-blue vdouw-delete" data-id="<{$vo.id}>" title="删除">删除</span>
             </td>
         </tr>
+        <{/volist}>
     </form>
     </tbody>
 </table>
@@ -69,8 +72,6 @@
 
     //审核
     $(".vdouw-show").click(function () {
-        alert('is_show');
-        return;
         var $value = ($(this).attr("data-value") == "1" ? "你确定要取消审核吗？" : "你确定要恢复审核吗？");
         var $type = ($(this).attr("data-value") == "1" ? "0" : "1");
         var $data = {};

@@ -18,4 +18,12 @@ class Tag extends \app\common\model\Basemodel
     {
         return $this->select();
     }
+
+
+    public function getTagNamesByTagId($tagId)
+    {
+        $where = ['id' => $tagId];
+        $ret = $this->where($where)->field('name')->find();
+        return $ret;
+    }
 }

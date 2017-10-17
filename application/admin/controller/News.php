@@ -19,13 +19,24 @@ class News extends \app\admin\controller\Basecontroller
         $this->categorys = model('Category')->getCategorys();
     }
 
+    /**
+     * 首页
+     * @return mixed
+     */
     public function index()
     {
+        $allNews = model('News')->getAllDatas();
+        print_r(json_encode($allNews));
         return $this->fetch('', [
-            'categorys' => $this->categorys
+            'categorys' => $this->categorys,
+            'allNews' => $allNews
         ]);
     }
 
+    /**
+     * 添加
+     * @return array|mixed|void
+     */
     public function add()
     {
         $data = input('post.');
@@ -52,12 +63,12 @@ class News extends \app\admin\controller\Basecontroller
             }
             $tagData = explode(',', $data['tag']);
             foreach ($tagData as $k => $v) {
-                $tag_data1[] = array(
+                $tag_data[] = array(
                     'news_id' => $newsId,
                     'tag_id' => $v,
                 );
             }
-            model('NewsTag')->insertAll($tag_data1);
+            model('NewsTag')->insertAll($tag_data);
             return show(1, '添加成功', $newsContentId);
         } else {
             $allTags = model('Tag')->getAllTags();
@@ -66,5 +77,10 @@ class News extends \app\admin\controller\Basecontroller
                 'allTags' => $allTags
             ]);
         }
+    }
+
+    public function setStatus()
+    {
+        var_dump(input('post.'));
     }
 }
