@@ -26,7 +26,7 @@ class News extends \app\admin\controller\Basecontroller
     public function index()
     {
         $allNews = model('News')->getAllDatas();
-        print_r(json_encode($allNews));
+        //print_r(json_encode($allNews));
         return $this->fetch('', [
             'categorys' => $this->categorys,
             'allNews' => $allNews
@@ -80,7 +80,7 @@ class News extends \app\admin\controller\Basecontroller
     }
 
     /**
-     * 切换文章是否是原创
+     * 切换文章状态之“原创”
      * @return array|void
      */
     public function original()
