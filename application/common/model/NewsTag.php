@@ -10,15 +10,5 @@ namespace app\common\model;
 
 class NewsTag extends \app\common\model\Basemodel
 {
-    public function addData($news_id, $tag_ids)
-    {
-        foreach ($tag_ids as $k => $v) {
-            $tag_data = array(
-                'news_id' => $news_id,
-                'tag_id' => $v,
-            );
-            return $this->add($tag_data);
-        }
-        return true;
-    }
+   
 }

@@ -39,8 +39,6 @@ class News extends \app\admin\controller\Basecontroller
             $newsData['is_original'] = $data['is_original'];
             $newsData['is_show'] = $data['is_show'];
             $newsData['is_top'] = $data['is_top'];
-            $newsData['title'] = $data['title'];
-            $newsData['title'] = $data['title'];
             $newsData['addtime'] = time();
             $newsId = model('News')->add($newsData);
             if (!$newsId) {
@@ -53,14 +51,13 @@ class News extends \app\admin\controller\Basecontroller
                 return show(0, "添加“文章正文”数据表失败", $newsContentData);
             }
             $tagData = explode(',', $data['tag']);
-            //model('NewsTag')->addData($newsId, $tagData);     //第一种方法有问题
-//            foreach ($tagData as $k => $v) {                    //第二种方法也只加进去了一个
-//                $tag_data1 = array(
-//                    'news_id' => $newsId,
-//                    'tag_id' => $v,
-//                );
-//                model('NewsTag')->add($tag_data1);
-//            }
+            foreach ($tagData as $k => $v) {
+                $tag_data1[] = array(
+                    'news_id' => $newsId,
+                    'tag_id' => $v,
+                );
+            }
+            model('NewsTag')->insertAll($tag_data1);
             return show(1, '添加成功', $newsContentId);
         } else {
             $allTags = model('Tag')->getAllTags();
