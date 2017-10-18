@@ -68,6 +68,7 @@ class News extends \app\admin\controller\Basecontroller
                     'tag_id' => $v,
                 );
             }
+            //这时有个问题，未选标签的文章，在news_tag表中插入了一个0值，后期需要修复一下
             model('NewsTag')->insertAll($tag_data);
             return show(1, '添加成功', $newsContentId);
         } else {
@@ -93,8 +94,45 @@ class News extends \app\admin\controller\Basecontroller
         return show(0, '修改失败');
     }
 
-    public function setStatus()
+    /**
+     * 切换文章状态之“审核”
+     * @return array|void
+     */
+    public function isshow()
     {
-        var_dump(input('post.'));
+        $data = input('post.');
+        $res = model('News')->updateById($data['id'], ['is_show' => $data['is_show']]);
+        if ($res) {
+            return show(1, "修改成功", $res);
+        }
+        return show(0, '修改失败');
+    }
+
+    /**
+     * 切换文章状态之“置顶”
+     * @return array|void
+     */
+    public function istop()
+    {
+        $data = input('post.');
+        $res = model('News')->updateById($data['id'], ['is_top' => $data['is_top']]);
+        if ($res) {
+            return show(1, "修改成功", $res);
+        }
+        return show(0, '修改失败');
+    }
+
+    /**
+     * 切换文章状态之“删除”
+     * @return array|void
+     */
+    public function delete()
+    {
+        $data = input('post.');
+        $res = model('News')->updateById($data['id'], ['status' => $data['status']]);
+        if ($res) {
+            return show(1, "删除成功", $res);
+        }
+        return show(0, '删除失败');
     }
 }

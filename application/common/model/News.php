@@ -12,8 +12,8 @@ class News extends \app\common\model\Basemodel
 {
     public function getAllDatas()
     {
-        $where = ['status' => 1, 'is_show' => 1];
-        $order = ['id' => 'desc'];
+        $where = ['status' => 1];
+        $order = ['is_top' => 'desc', 'id' => 'desc'];
         $res = $this->where($where)->order($order)->select();
         foreach ($res as $k => $v) {
             $tagTempData = model('NewsTag')->getDataByNewsId($v['id']);

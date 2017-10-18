@@ -50,12 +50,22 @@
                 <{/if}>
             </td>
             <td class="text-align-center">
-                <i data-id="<{$vo.id}>" data-value="<{$vo.is_show}>" title="点击切换状态"
-                   class='vdouw-show c-pointer icon-remove'></i>
+                <{if condition=" $vo.is_show=='1'"}>
+                <i class="c-pointer vdouw_isshow icon-ok" title="点击切换状态" data-id="<{$vo.id}>"
+                   data-value="<{$vo.is_show}>"></i>
+                <{else/}>
+                <i class="c-pointer vdouw_isshow icon-remove" title="点击切换状态" data-id="<{$vo.id}>"
+                   data-value="<{$vo.is_show}>"></i>
+                <{/if}>
             </td>
             <td class="text-align-center">
-                <i data-id="<{$vo.id}>" data-value="<{$vo.is_top}>" title="点击切换状态"
-                   class='vdouw-top c-pointer icon-remove'></i>
+                <{if condition=" $vo.is_top=='1'"}>
+                <i class="c-pointer vdouw_istop icon-ok" title="点击切换状态" data-id="<{$vo.id}>"
+                   data-value="<{$vo.is_top}>"></i>
+                <{else/}>
+                <i class="c-pointer vdouw_istop icon-remove" title="点击切换状态" data-id="<{$vo.id}>"
+                   data-value="<{$vo.is_top}>"></i>
+                <{/if}>
             </td>
             <td class="text-align-center"><{$vo.click}></td>
             <td><{$vo.addtime}></td>
@@ -75,10 +85,9 @@
 <script>
     var SCOPE = {
         "set_original_url": "/index.php/admin/news/original",    //原创
-        "set_show_url": "/index.php/admin/news/setshow",
-        "save_url": "/index.php/admin/news/add",
-        "set_status_url": "/index.php/admin/news/setStatus",
-        "set_top_url": "/index.php/admin/article/setTop"
+        "set_isshow_url": "/index.php/admin/news/isshow",        //审核
+        "set_istop_url": "/index.php/admin/news/istop",          //置顶
+        "set_status_url": "/index.php/admin/news/delete"         //删除
     };
 
     //是否原创
@@ -107,23 +116,22 @@
         })
     });
 
-    //审核
-    $(".vdouw-show").click(function () {
-        var $value = ($(this).attr("data-value") == "1" ? "你确定要取消审核吗？" : "你确定要恢复审核吗？");
-        var $type = ($(this).attr("data-value") == "1" ? "0" : "1");
-        var $data = {};
-        $data["aid"] = $(this).attr("data-id");
-        $data["is_show"] = $type;
+    //是否审核
+    $('.vdouw_isshow').click(function () {
+        var $data = {
+            'id': $(this).attr('data-id'),
+            'is_show': Number($(this).attr('data-value') == "1" ? "0" : "1")
+        };
         layer.open({
             type: 0,
             title: '审核确认框',
             btn: ['确定', '取消'],
             icon: 3,
             closeBtn: 2,
-            content: $value,
+            content: '你确定要切换审核的状态吗？',
             scrollbar: true,
             yes: function () {
-                $.post(SCOPE.set_show_url, $data, function (s) {
+                $.post(SCOPE.set_isshow_url, $data, function (s) {
                     if (s.status == 1) {
                         return dialog.success(s.message, '');
                     } else {
@@ -131,28 +139,25 @@
                     }
                 }, "JSON");
             }
-        });
+        })
     });
 
     //置顶
-    $(".vdouw-top").click(function () {
-        alert('top');
-        return;
-        var $value = ($(this).attr("data-value") == "1" ? "你确定要取消置顶吗？" : "你确定要恢复置顶吗？");
-        var $type = ($(this).attr("data-value") == "1" ? "0" : "1");
-        var $data = {};
-        $data["aid"] = $(this).attr("data-id");
-        $data["is_top"] = $type;
+    $('.vdouw_istop').click(function () {
+        var $data = {
+            'id': $(this).attr('data-id'),
+            'is_top': Number($(this).attr('data-value') == "1" ? "0" : "1")
+        };
         layer.open({
             type: 0,
             title: '审核确认框',
             btn: ['确定', '取消'],
             icon: 3,
             closeBtn: 2,
-            content: $value,
+            content: '你确定要切换审核的状态吗？',
             scrollbar: true,
             yes: function () {
-                $.post(SCOPE.set_top_url, $data, function (s) {
+                $.post(SCOPE.set_istop_url, $data, function (s) {
                     if (s.status == 1) {
                         return dialog.success(s.message, '');
                     } else {
@@ -160,22 +165,22 @@
                     }
                 }, "JSON");
             }
-        });
+        })
     });
 
     //删除
-    $('.vdouw-delete').on('click', function () {
-        $data = {};
-        $data['id'] = $(this).attr('data-id');
-        $data['status'] = "0";
-        console.log($data);
+    $('.vdouw-delete').click(function () {
+        var $data = {
+            'id': $(this).attr('data-id'),
+            'status': 0
+        };
         layer.open({
             type: 0,
-            title: '删除确认框',
+            title: '审核确认框',
             btn: ['确定', '取消'],
             icon: 3,
             closeBtn: 2,
-            content: "您确定要删除吗？",
+            content: '你确定要删除吗？',
             scrollbar: true,
             yes: function () {
                 $.post(SCOPE.set_status_url, $data, function (s) {
@@ -186,7 +191,7 @@
                     }
                 }, "JSON");
             }
-        });
+        })
     });
 
 </script>
