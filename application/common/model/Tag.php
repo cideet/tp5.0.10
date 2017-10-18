@@ -16,7 +16,9 @@ class Tag extends \app\common\model\Basemodel
      */
     public function getAllTags()
     {
-        return $this->select();
+        $where = ['status' => 1];
+        $order = ['id' => 'asc'];
+        return $this->where($where)->order($order)->select();
     }
 
     /**

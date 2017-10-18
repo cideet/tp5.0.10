@@ -43,7 +43,7 @@ class Tag extends \app\admin\controller\Basecontroller
         if (request()->isPost()) {
             $id = input('post.id');
             $data = array('status' => input('post.status'));
-            $res = $this->obj->updateById($id, $data);
+            $res = model('Tag')->updateById($id, $data);
             if ($res) {
                 return (show(1, "操作成功"));
             } else {
