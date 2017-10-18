@@ -24,7 +24,7 @@ function show($status, $message, $data = array())
 //MD5加密
 function getVdouwMD5($text)
 {
-    return md5($text . 'vdouw9geBB2');
+    return md5($text . config('extra_code'));
 }
 
 //一个扯犊子的JS方法
