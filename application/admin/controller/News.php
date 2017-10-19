@@ -90,11 +90,22 @@ class News extends \app\admin\controller\Basecontroller
         } else {
             $id = getParam('id');
             $info = model('News')->getNewsById($id);
-            var_dump($info);
+            //var_dump($info);
+            $tags = model('NewsTag')->getDataByNewsId($id);
+            //[{"id":25,"news_id":37,"tag_id":4},{"id":24,"news_id":37,"tag_id":3}]
+            $hasTagsIds = array();
+            foreach ($tags as $k => $v) {
+                array_push($hasTagsIds, $tags[$k]['tag_id']);
+            }
+            //print_r(json_encode($hasTagsIds));
+            //[4,3]
+            $content = model('NewsContent')->getDataByNewsId($id);
             return $this->fetch('', [
                 'categorys' => $this->categorys,
                 'allTags' => $this->allTags,
-                'info' => $info
+                'info' => $info,
+                'hasTagsIds' => $hasTagsIds,
+                'content' => $content
             ]);
         }
     }

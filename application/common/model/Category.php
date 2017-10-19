@@ -73,5 +73,22 @@ class Category extends \app\common\model\Basemodel
         $order = ['id' => 'asc'];
         return $this->where($where)->order($order)->select();
     }
-    
+
+    /**
+     * 根据ID获取name
+     * @param $id
+     * @return array|false|\PDOStatement|string|\think\Model
+     */
+    public function getNamesById($id)
+    {
+        $where = ['id' => $id];
+        $ret = $this->where($where)->field('name')->find();
+        return $ret;
+    }
+
 }
+
+?>
+
+
+

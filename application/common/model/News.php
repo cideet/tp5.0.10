@@ -28,6 +28,7 @@ class News extends \app\common\model\Basemodel
                 array_push($tagsIds, model('Tag')->getTagNamesByTagId($tagTempData[$k1]['tag_id']));
             }
             $res[$k]['tag'] = $tagsIds;
+            $res[$k]['category_name'] = model('Category')->getNamesById($res[$k]['category_id']);
         }
         return $res;
     }

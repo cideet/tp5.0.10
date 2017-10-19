@@ -14,17 +14,17 @@
 <table class="width100 vdouw-table" cellpadding="0" cellspacing="0">
     <thead>
     <tr>
-        <td class="width5 text-overflow">ID</td>
-        <td class="width10">所属栏目</td>
-        <td class="width15">标题</td>
-        <td class="width15">标签</td>
-        <td class="width10">作者</td>
-        <td class="width5 text-align-center">原创</td>
-        <td class="width5 text-align-center">审核</td>
-        <td class="width5 text-align-center">置顶</td>
-        <td class="width5 text-align-center">点击数</td>
-        <td class="width10 text-overflow">发布时间</td>
-        <td class="width20">操作</td>
+        <td class="text-overflow">ID</td>
+        <td>所属栏目</td>
+        <td>标题</td>
+        <td>标签</td>
+        <td>作者</td>
+        <td class="text-align-center">原创</td>
+        <td class="text-align-center">审核</td>
+        <td class="text-align-center">置顶</td>
+        <td class="text-align-center">点击数</td>
+        <td>发布时间</td>
+        <td>操作</td>
     </tr>
     </thead>
     <tbody>
@@ -32,8 +32,14 @@
         <{volist name="allNews" id="vo"}>
         <tr>
             <td><{$vo.id}></td>
-            <td><{$vo.category_id}></td>
-            <td><{$vo.title}></td>
+            <td><{$vo.category_name.name}></td>
+            <td>
+                <{if condition="strlen(json_encode($vo.titleimg))<3"}>
+                <{$vo.title}>
+                <{else/}>
+                <{$vo.title}><span class="color-admin-blue">【图】</span>
+                <{/if}>
+            </td>
             <td>
                 <{volist name="$vo.tag" id="t"}>
                 <span class="mr-10"><{$t.name}></span>
@@ -41,7 +47,7 @@
             </td>
             <td><{$vo.author}></td>
             <td class="text-align-center">
-                <{if condition=" $vo.is_original=='1'"}>
+                <{if condition="$vo.is_original=='1'"}>
                 <i class="c-pointer vdouw_original icon-ok" title="点击切换状态" data-id="<{$vo.id}>"
                    data-value="<{$vo.is_original}>"></i>
                 <{else/}>
@@ -68,7 +74,7 @@
                 <{/if}>
             </td>
             <td class="text-align-center"><{$vo.click}></td>
-            <td><{$vo.addtime}></td>
+            <td><{$vo.addtime|date="Y-m-d H:i:s",###}></td>
             <td>
                 <a class="color-admin-blue" title="<{$vo.title}>" href="#">查看</a>
                 <i class="ml-3 mr-3">|</i>

@@ -12,3 +12,4 @@ function getLoginUsername()
     //return (isset($_SESSION['think']['adminUser']['username']) ? $_SESSION['think']['adminUser']['username'] : "");
     return "";
 }
+
