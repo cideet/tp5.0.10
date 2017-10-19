@@ -86,7 +86,35 @@ class News extends \app\admin\controller\Basecontroller
     public function edit()
     {
         if (request()->isPost()) {
-
+            $data = input('post.');
+            if ($data['id']) {
+                $newsData['title'] = $data['title'];
+                $newsData['author'] = $data['author'];
+                $newsData['category_id'] = $data['category_id'];
+                $newsData['titleimg'] = $data['titleimg'];
+                $newsData['keywords'] = $data['keywords'];
+                $newsData['description'] = $data['description'];
+                $newsData['is_original'] = $data['is_original'];
+                $newsData['is_show'] = $data['is_show'];
+                $newsData['is_top'] = $data['is_top'];
+                $newsData['addtime'] = time();
+                $newsData['id'] = $data['id'];
+                $ret = model('News')->updateById($data['id'], $newsData);
+                if (!$ret) {
+                    return show(0, "更新主表失败");
+                }
+                $newsContentData['content'] = $data['content'];
+                $newsContentData['news_id'] = $data['id'];
+                $newsContentId = model('NewsContent')->updateByNewsId($data['id'], $newsContentData);
+                if (!$newsContentId) {
+                    return show(0, '更新文章正文失败');
+                }
+                model('NewsTag')->deleteTag($data['id']);
+//                if ($id) {
+//                    return show(1, "修改成功", $id);
+//                }
+                return show(1, '修改成功', $ret);
+            }
         } else {
             $id = getParam('id');
             $info = model('News')->getNewsById($id);

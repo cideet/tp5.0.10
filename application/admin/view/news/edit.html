@@ -129,7 +129,7 @@
         </tr>
 
         <tr>
-            <td></td>
+            <td><input type="hidden" name="id" value="<{$info.id}>"/></td>
             <td><input type="button" class="btn btn-primary width300 color-white" id="vdouw_submit" value="提交"/></td>
         </tr>
         </tbody>
@@ -139,7 +139,7 @@
 
 <script>
     var SCOPE = {
-        "save_url": "/index.php/admin/news/add",
+        "save_url": "/index.php/admin/news/edit",
         "jump_url": "/index.php/admin/news/index",
         "secondcity_url": "/index.php/api/city/getCitysByParentId",
         "secondcategory_url": "/index.php/api/category/getCategorysByParentId",
@@ -157,7 +157,7 @@
     }
 
     var ue = UE.getEditor('editor');
-    var content = '<{$content.content}>';
+    var content = '<{$content.content}>' + '&nbsp;';
     ue.addListener("ready", function () {
         // editor准备好之后才可以使用
         ue.setContent(content);

@@ -20,4 +20,16 @@ class NewsTag extends \app\common\model\Basemodel
         $ret = $this->where($where)->order($order)->select();
         return $ret;
     }
+
+    /**
+     * 更新文章时，先直接删除对应的tag
+     * @param $news_id
+     * @return bool
+     */
+    public function deleteTag($news_id)
+    {
+        $where = array("news_id" => $news_id);
+        $this->where($where)->delete();
+        return true;
+    }
 }
