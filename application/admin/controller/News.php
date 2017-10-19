@@ -110,9 +110,14 @@ class News extends \app\admin\controller\Basecontroller
                     return show(0, '更新文章正文失败');
                 }
                 model('NewsTag')->deleteTag($data['id']);
-//                if ($id) {
-//                    return show(1, "修改成功", $id);
-//                }
+                $tagData = explode(',', $data['tag']);
+                foreach ($tagData as $k => $v) {
+                    $tag_data[] = array(
+                        'news_id' => $data['id'],
+                        'tag_id' => $v,
+                    );
+                }
+                model('NewsTag')->insertAll($tag_data);
                 return show(1, '修改成功', $ret);
             }
         } else {
@@ -133,6 +138,7 @@ class News extends \app\admin\controller\Basecontroller
                 'allTags' => $this->allTags,
                 'info' => $info,
                 'hasTagsIds' => $hasTagsIds,
+                'tagIds' => implode(',', $hasTagsIds),
                 'content' => $content
             ]);
         }

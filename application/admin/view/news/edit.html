@@ -70,7 +70,6 @@
                         <{else/}>
                         <i data-id="<{$vo.id}>" class="icon-check-empty font18 color-admin-blue mr-3"></i><{$vo.name}>
                         <{/if}>
-
                     </span>
                     <{/volist}>
                     <!--<span class="mr-10 c-pointer">-->
@@ -79,13 +78,13 @@
                     <!--<i data-id="13" class="icon-check font18 color-admin-blue mr-3"></i>所属子类2</span>-->
                     <!--if (in_array("Irix", $os)) {  echo "Got Irix";}-->
                 </div>
-                <input value="" type="hidden" name="tag"/>
+                <input value="<{$tagIds}>" type="hidden" name="tag"/>
             </td>
         </tr>
 
         <tr>
             <td>作者</td>
-            <td><input type="text" class="form-control width500 height-30" value="张三丰" name="author"/></td>
+            <td><input type="text" class="form-control width500 height-30" value="<{$info.author}>" name="author"/></td>
         </tr>
 
         <tr class="vdouw-kingeditor">
@@ -98,33 +97,54 @@
         <tr>
             <td>原创</td>
             <td data-choice="one">
-                <span class="mr-10 c-pointer" data-value="1">
-                    <i class="icon-ok-sign font18 color-admin-blue mr-3"></i>是</span>
-                <span class="mr-10 c-pointer" data-value="0">
-                    <i class="icon-circle-blank font18 color-admin-blue mr-3"></i>否</span>
-                <input type="hidden" value="1" name="is_original"/>
+                <{if condition="$info.is_original==1"}>
+                <span class="mr-10 c-pointer" data-value="1"><i
+                        class="icon-ok-sign font18 color-admin-blue mr-3"></i>是</span>
+                <span class="mr-10 c-pointer" data-value="0"><i
+                        class="icon-circle-blank font18 color-admin-blue mr-3"></i>否</span>
+                <{else/}>
+                <span class="mr-10 c-pointer" data-value="1"><i
+                        class="icon-circle-blank font18 color-admin-blue mr-3"></i>是</span>
+                <span class="mr-10 c-pointer" data-value="0"><i
+                        class="icon-ok-sign font18 color-admin-blue mr-3"></i>否</span>
+                <{/if}>
+                <input type="hidden" value="<{$info.is_original}>" name="is_original"/>
             </td>
         </tr>
 
         <tr>
             <td>置顶</td>
             <td data-choice="one">
-                <span class="mr-10 c-pointer" data-value="1">
-                    <i class="icon-circle-blank font18 color-admin-blue mr-3"></i>是</span>
-                <span class="mr-10 c-pointer" data-value="0">
-                    <i class="icon-ok-sign font18 color-admin-blue mr-3"></i>否</span>
-                <input type="hidden" value="0" name="is_top"/>
+                <{if condition="$info.is_top==1"}>
+                <span class="mr-10 c-pointer" data-value="1"><i
+                        class="icon-ok-sign font18 color-admin-blue mr-3"></i>是</span>
+                <span class="mr-10 c-pointer" data-value="0"><i
+                        class="icon-circle-blank font18 color-admin-blue mr-3"></i>否</span>
+                <{else/}>
+                <span class="mr-10 c-pointer" data-value="1"><i
+                        class="icon-circle-blank font18 color-admin-blue mr-3"></i>是</span>
+                <span class="mr-10 c-pointer" data-value="0"><i
+                        class="icon-ok-sign font18 color-admin-blue mr-3"></i>否</span>
+                <{/if}>
+                <input type="hidden" value="<{$info.is_top}>" name="is_top"/>
             </td>
         </tr>
 
         <tr>
             <td>显示</td>
             <td data-choice="one">
-                <span class="mr-10 c-pointer" data-value="1">
-                    <i class="icon-ok-sign font18 color-admin-blue mr-3"></i>是</span>
-                <span class="mr-10 c-pointer" data-value="0">
-                    <i class="icon-circle-blank font18 color-admin-blue mr-3"></i>否</span>
-                <input type="hidden" value="1" name="is_show"/>
+                <{if condition="$info.is_show=='1'"}>
+                <span class="mr-10 c-pointer" data-value="1"><i
+                        class="icon-ok-sign font18 color-admin-blue mr-3"></i>是</span>
+                <span class="mr-10 c-pointer" data-value="0"><i
+                        class="icon-circle-blank font18 color-admin-blue mr-3"></i>否</span>
+                <{else/}>
+                <span class="mr-10 c-pointer" data-value="1"><i
+                        class="icon-circle-blank font18 color-admin-blue mr-3"></i>是</span>
+                <span class="mr-10 c-pointer" data-value="0"><i
+                        class="icon-ok-sign font18 color-admin-blue mr-3"></i>否</span>
+                <{/if}>
+                <input type="hidden" value="<{$info.is_show}>" name="is_show"/>
             </td>
         </tr>
 
