@@ -32,7 +32,7 @@
         <{volist name="allNews" id="vo"}>
         <tr>
             <td><{$vo.id}></td>
-            <td>栏目名</td>
+            <td><{$vo.category_id}></td>
             <td><{$vo.title}></td>
             <td>
                 <{volist name="$vo.tag" id="t"}>
@@ -59,7 +59,7 @@
                 <{/if}>
             </td>
             <td class="text-align-center">
-                <{if condition=" $vo.is_top=='1'"}>
+                <{if condition="$vo.is_top=='1'"}>
                 <i class="c-pointer vdouw_istop icon-ok" title="点击切换状态" data-id="<{$vo.id}>"
                    data-value="<{$vo.is_top}>"></i>
                 <{else/}>

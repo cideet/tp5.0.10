@@ -1,0 +1,178 @@
+<{include file="public/header" /}>
+
+<body class="vdouw-main-body">
+<div class="vdouw-admin-position">
+    <i class="icon-home mr-3"></i><span>后台首页</span>
+    <cite class="ml-3 mr-3">></cite>
+    <span>文章管理</span>
+</div>
+<div class="mt-10 mb-10 vdouw-admin-title">
+    <b class="font20 height-100">编辑文章</b>
+    <i class="ml-10 mr-10">|</i>
+    <a class="c-pointer color-admin-blue" href="/index.php/admin/news/add" target="right_content">添加文章</a>
+</div>
+<form id="vdouw-form">
+    <table class="width100 vdouw-table mb-20" cellpadding="0" cellspacing="0">
+        <tbody>
+        <tr>
+            <td style="width:100px;">所属分类</td>
+            <td>
+                <select class="form-control width500 height-30" name="category_id">
+                    <{volist name="categorys" id="cate"}>
+                    <{if condition="$cate.id==$info.category_id"}>
+                    <option value="<{$cate.id}>" selected="selected"><{$cate._name}></option>
+                    <{else/}>
+                    <option value="<{$cate.id}>"><{$cate._name}></option>
+                    <{/if}>
+                    <{/volist}>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>标题</td>
+            <td><input type="text" class="form-control width500 height-30" name="title" value="<{$info.title}>"/></td>
+        </tr>
+
+        <tr>
+            <td>标题图片</td>
+            <td>
+                <input id="file_upload" type="file" multiple="true">
+                <img style="display: none" id="upload_org_code_img" src="" width="150" height="150">
+                <input id="file_upload_image" name="titleimg" type="hidden" multiple="true" value="">
+            </td>
+        </tr>
+
+        <tr>
+            <td>关键词</td>
+            <td><input type="text" class="form-control width500 height-30" name="keywords" value="关键词"/></td>
+        </tr>
+
+        <tr class="vdouw-table-intro">
+            <td>描述</td>
+            <td><textarea type="text" class="form-control width500 height-100" name="description">描述</textarea></td>
+        </tr>
+
+        <tr>
+            <td>标签</td>
+            <td data-choice="more" class="se_category_id">
+                <div class="pt-10 pb-10">
+                    <{volist name="allTags" id="vo"}>
+                    <span class="mr-10 c-pointer">
+                        <i data-id="<{$vo.id}>" class="icon-check-empty font18 color-admin-blue mr-3"></i><{$vo.name}>
+                    </span>
+                    <{/volist}>
+                    <!--<span class="mr-10 c-pointer">-->
+                    <!--<i data-id="12" class="icon-check-empty font18 color-admin-blue mr-3"></i>所属子类1</span>-->
+                    <!--<span class="mr-10 c-pointer">-->
+                    <!--<i data-id="13" class="icon-check font18 color-admin-blue mr-3"></i>所属子类2</span>-->
+                </div>
+                <input value="" type="hidden" name="tag"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>作者</td>
+            <td><input type="text" class="form-control width500 height-30" value="张三丰" name="author"/></td>
+        </tr>
+
+        <tr class="vdouw-kingeditor">
+            <td>正文</td>
+            <td style="width:800px;">
+                <script id="editor" type="text/plain" name="content" style="width:760px; height:300px;"></script>
+            </td>
+        </tr>
+
+        <tr>
+            <td>原创</td>
+            <td data-choice="one">
+                <span class="mr-10 c-pointer" data-value="1">
+                    <i class="icon-ok-sign font18 color-admin-blue mr-3"></i>是</span>
+                <span class="mr-10 c-pointer" data-value="0">
+                    <i class="icon-circle-blank font18 color-admin-blue mr-3"></i>否</span>
+                <input type="hidden" value="1" name="is_original"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>置顶</td>
+            <td data-choice="one">
+                <span class="mr-10 c-pointer" data-value="1">
+                    <i class="icon-circle-blank font18 color-admin-blue mr-3"></i>是</span>
+                <span class="mr-10 c-pointer" data-value="0">
+                    <i class="icon-ok-sign font18 color-admin-blue mr-3"></i>否</span>
+                <input type="hidden" value="0" name="is_top"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>显示</td>
+            <td data-choice="one">
+                <span class="mr-10 c-pointer" data-value="1">
+                    <i class="icon-ok-sign font18 color-admin-blue mr-3"></i>是</span>
+                <span class="mr-10 c-pointer" data-value="0">
+                    <i class="icon-circle-blank font18 color-admin-blue mr-3"></i>否</span>
+                <input type="hidden" value="1" name="is_show"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="button" class="btn btn-primary width300 color-white" id="vdouw_submit" value="提交"/></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+
+<script>
+    var SCOPE = {
+        "save_url": "/index.php/admin/news/add",
+        "jump_url": "/index.php/admin/news/index",
+        "secondcity_url": "/index.php/api/city/getCitysByParentId",
+        "secondcategory_url": "/index.php/api/category/getCategorysByParentId",
+        "uploadify_swf": "/plugins/uploadify/uploadify.swf",
+        "image_upload": "/index.php/api/image/upload"
+    };
+
+    //表单提交时的验证
+    function submitValidateCallback() {
+//        if ($('[name=category_id]').val() == '') {
+//            dialog.error('分类必填');
+//            return false;
+//        }
+        return true;
+    }
+
+    var ue = UE.getEditor('editor');
+    var content = '<p>正文的内容</p>';
+    ue.addListener("ready", function () {
+        // editor准备好之后才可以使用
+        ue.setContent(content);
+    });
+
+    $(function () {
+
+        $("#file_upload").uploadify({
+            'swf': SCOPE.uploadify_swf,
+            'uploader': SCOPE.image_upload,
+            'buttonText': '图片上传',
+            'fileTypeDesc': 'Image files',
+            'fileObjName': 'file',
+            'fileTypeExts': '*.gif; *.jpg; *.png',
+            'onUploadSuccess': function (file, data, response) {
+                console.log(file);
+                console.log(data);
+                console.log(response);
+                if (response) {
+                    var obj = JSON.parse(data);
+                    $("#upload_org_code_img").attr("src", obj.data);
+                    $("#file_upload_image").attr("value", obj.data);
+                    $("#upload_org_code_img").show();
+                }
+            }
+        });
+    });
+</script>
+
+<{include file="public/footer" /}>

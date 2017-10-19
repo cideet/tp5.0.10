@@ -10,6 +10,10 @@ namespace app\common\model;
 
 class News extends \app\common\model\Basemodel
 {
+    /**
+     * 获取文章列表
+     * @return false|\PDOStatement|string|\think\Collection
+     */
     public function getAllDatas()
     {
         $where = ['status' => 1];
@@ -26,5 +30,17 @@ class News extends \app\common\model\Basemodel
             $res[$k]['tag'] = $tagsIds;
         }
         return $res;
+    }
+
+    /**
+     * 根据ID获取文章
+     * @param $id
+     * @return array|false|\PDOStatement|string|\think\Model
+     */
+    public function getNewsById($id)
+    {
+        $where = ['id' => $id];
+        $ret = $this->where($where)->find();
+        return $ret;
     }
 }

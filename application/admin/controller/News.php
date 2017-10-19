@@ -17,6 +17,7 @@ class News extends \app\admin\controller\Basecontroller
         parent::__construct();
         $this->obj = model('News');
         $this->categorys = model('Category')->getCategorys();
+        $this->allTags = model('Tag')->getAllTags();
     }
 
     /**
@@ -72,10 +73,28 @@ class News extends \app\admin\controller\Basecontroller
             model('NewsTag')->insertAll($tag_data);
             return show(1, '添加成功', $newsContentId);
         } else {
-            $allTags = model('Tag')->getAllTags();
             return $this->fetch('', [
                 'categorys' => $this->categorys,
-                'allTags' => $allTags
+                'allTags' => $this->allTags
+            ]);
+        }
+    }
+
+    /**
+     * 编辑
+     */
+    public function edit()
+    {
+        if (request()->isPost()) {
+
+        } else {
+            $id = getParam('id');
+            $info = model('News')->getNewsById($id);
+            var_dump($info);
+            return $this->fetch('', [
+                'categorys' => $this->categorys,
+                'allTags' => $this->allTags,
+                'info' => $info
             ]);
         }
     }
