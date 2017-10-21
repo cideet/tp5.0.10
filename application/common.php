@@ -44,6 +44,7 @@ function consolelog($a)
 function getParam($a)
 {
     $request = \think\Request::instance()->param();
+    if (count($request) % 2 != 0) return;
     $i = 0;
     $k = "";
     while ($i < count($request)) {
@@ -54,12 +55,6 @@ function getParam($a)
         $i++;
     }
     return $k;
-    //for ($i = 0; $i < count($request); $i++) {
-    //    if ($request[$i] == $a) {
-    //        return $request[$i + 1];
-    //    }
-    //}
-    //return '';
 }
 
 //href="<{:url('category/edit', ['id'=>$v.id,'id444'=>444])}>">修改</a>

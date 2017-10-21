@@ -40,8 +40,10 @@ class Index extends \app\home\controller\Basecontroller
     {
         $articleId = getParam('id');
         if (!!$articleId) {
+            $info = model('News')->getNewsById($articleId);
             return $this->fetch('', [
-                'memberUsername' => $this->memberUsername
+                'memberUsername' => $this->memberUsername,
+                'info' => $info
             ]);
         } else {
             echo('你丫坑爹呀');

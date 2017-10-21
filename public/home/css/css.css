@@ -173,6 +173,7 @@ article .pull-right .box.comment li .right .p {
 
 .article-box .content .con {
     line-height: 180%;
+    min-height: 500px;
 }
 
 .article-box .content .con img {
@@ -182,6 +183,9 @@ article .pull-right .box.comment li .right .p {
 
 .article-box .comment-box {
     display: flex;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .article-box .comment-box .left, .comment-box .left img {
@@ -204,7 +208,8 @@ article .pull-right .box.comment li .right .p {
 
 .article-box .comment-list dt {
     border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
+    margin-top: 40px;
+    padding-bottom: 10px;
 }
 
 .article-box .comment-list dd li, .article-box .comment-list dd li .son {
