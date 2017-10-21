@@ -35,7 +35,7 @@ ul, li, dl, dd, dt {
     font-weight: bolder;
 }
 
-.font-nobold {
+.font-nobold, .font-normal {
     font-weight: normal;
 }
 
@@ -288,6 +288,14 @@ ul, li, dl, dd, dt {
 
 .mt-40 {
     margin-top: 40px;
+}
+
+.mb-100 {
+    margin-bottom: 100px;
+}
+
+.pb-100 {
+    padding-bottom: 100px;
 }
 
 .p-relative {
