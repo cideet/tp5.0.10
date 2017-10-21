@@ -1,0 +1,43 @@
+<{if condition="$memberUsername!=''"}>
+<header>
+    <div class="width1200 middle-left-right">
+        <div class="pull-left">
+            <ul>
+                <li class="pull-left mr-20"><a href="/index.php/home/index/index" class="color-white">LOGO</a></li>
+                <li class="pull-left mr-20"><a href="/index.php/admin/login/index" target="_blank">后台</a></li>
+                <li class="pull-left mr-20"><a href="/index.php/home/register/index">注册</a></li>
+            </ul>
+        </div>
+        <div class="pull-right">
+            <img src="/home/images/listpic.jpg" class="member-headpic pull-left ml-10"/>
+            <span class="pull-left color-white ml-10"><{$memberUsername}></span>
+            <span class="color-white pull-left ml-10 c-pointer vdouw-exit">退出</span>
+        </div>
+    </div>
+</header>
+<{else/}>
+<header>
+    <div class="width1200 middle-left-right">
+        <div class="pull-left">
+            <ul>
+                <li class="pull-left mr-20"><a href="/index.php/home/index/index" class="color-white">LOGO</a></li>
+                <li class="pull-left mr-20"><a href="/index.php/admin/login/index" target="_blank">后台</a></li>
+                <li class="pull-left mr-20"><a href="/index.php/home/register/index">注册</a></li>
+            </ul>
+        </div>
+        <div class="pull-right">
+            <a href="/index.php/home/login/index" class="color-white">登录</a>
+        </div>
+    </div>
+</header>
+<{/if}>
+
+<script>
+    $(document).on('click', '.vdouw-exit', function () {
+        layer.open({
+            content: '您确定要退出吗？', icon: 3, btn: ['确定', '取消'], yes: function () {
+                window.location.href = '/index.php/home/login/logout';
+            }
+        });
+    });
+</script>

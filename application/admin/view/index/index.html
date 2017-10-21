@@ -4,10 +4,8 @@
     <div class="pull-left pl-15"><b class="font16 color-white">后台管理</b></div>
     <div class="pull-right pl-10 pr-10 tran-all">
         <span class="mr-3 color-white pull-left">你好，<{$adminUsername}></span>
-        <a class="ml-20 color-white" href="/index.php/admin/login/logout">
-            <i class="mr-3 icon-signout color-white"></i>
-            <span>退出登录</span>
-        </a>
+        <i class="ml-20 mr-3 icon-signout color-white"></i>
+        <span class="color-white c-pointer vdouw-exit">退出登录</span>
     </div>
 </header>
 <article class="height-100">
@@ -21,5 +19,15 @@
         </div>
     </div>
 </article>
+
+<script>
+    $(document).on('click', '.vdouw-exit', function () {
+        layer.open({
+            content: '您确定要退出吗？', icon: 3, btn: ['确定', '取消'], yes: function () {
+                window.location.href = '/index.php/admin/login/logout';
+            }
+        });
+    });
+</script>
 
 <{include file="public/footer"/}>
