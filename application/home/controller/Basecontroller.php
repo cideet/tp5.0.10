@@ -6,7 +6,7 @@
  * Time: 17:18
  */
 
-namespace app\index\controller;
+namespace app\home\controller;
 
 class Basecontroller extends \app\common\controller\Commoncontroller
 {

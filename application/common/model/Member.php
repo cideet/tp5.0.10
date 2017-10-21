@@ -16,7 +16,7 @@ class Member extends \app\common\model\Basemodel
      * @param $username
      * @return array|false|\PDOStatement|string|\think\Model
      */
-    public function checkUsernameOnly($username)
+    public function getMemberuserByUsername($username)
     {
         $where = ['username' => $username];
         $ret = $this->where($where)->find();
@@ -28,7 +28,7 @@ class Member extends \app\common\model\Basemodel
      * @param $email
      * @return array|false|\PDOStatement|string|\think\Model
      */
-    public function checkEmailOnly($email)
+    public function getMemberuserByEmail($email)
     {
         $where = ['email' => $email];
         $ret = $this->where($where)->find();

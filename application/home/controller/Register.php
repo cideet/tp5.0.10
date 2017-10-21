@@ -6,7 +6,7 @@
  * Time: 17:12
  */
 
-namespace app\index\controller;
+namespace app\home\controller;
 
 class Register extends \think\Controller
 {
@@ -19,8 +19,8 @@ class Register extends \think\Controller
         $data = input('post.');
         if ($data) {
             if (trim($data['rpassword']) != trim($data['password'])) return show(0, '密码不一致');
-            if (model('Member')->checkUsernameOnly(trim($data['username']))) return show(0, '用户名不唯一');
-            if (model('Member')->checkEmailOnly(trim($data['email']))) return show(0, ',邮件不唯一');
+            if (model('Member')->getMemberuserByUsername(trim($data['username']))) return show(0, '此用户名已存在');
+            if (model('Member')->getMemberuserByEmail(trim($data['email']))) return show(0, ',此邮件已注册');
             $data['password'] = getVdouwMD5($data['password']);
             $resId = model('Member')->add($data);
             if ($resId) {
