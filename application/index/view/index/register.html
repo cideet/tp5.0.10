@@ -8,11 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <link type="text/css" rel="stylesheet" href="../admin/css/global.css"/>
-    <link type="text/css" rel="stylesheet" href="css/css.css"/>
-    <script src="../plugins/jquery/jquery.min.js"></script>
-    <script src="../admin/js/global.js"></script>
-    <script src="js/js.js"></script>
+    <link type="text/css" rel="stylesheet" href="/admin/css/global.css"/>
+    <link type="text/css" rel="stylesheet" href="/home/css/css.css"/>
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script src="/plugins/layer/layer.js"></script>
+    <script src="/admin/js/global.js"></script>
+    <script src="/home/js/js.js"></script>
 </head>
 <body class="vdouw-home">
 <header>
@@ -39,19 +40,19 @@
             </div>
             <div class="p">
                 <div class="left">用户名</div>
-                <div class="right"><input type="text" name="nickname" class="form-control width100"/></div>
+                <div class="right"><input type="text" name="nickname" value="zhangsanfeng" class="form-control width100"/></div>
             </div>
             <div class="p mt-20">
                 <div class="left">邮箱</div>
-                <div class="right"><input type="text" name="email" class="form-control width100"/></div>
+                <div class="right"><input type="text" name="email" value="vdouw@qq.com" class="form-control width100"/></div>
             </div>
             <div class="p mt-20">
                 <div class="left">密码</div>
-                <div class="right"><input type="password" name="password" class="form-control width100"/></div>
+                <div class="right"><input type="password" name="password" value="123456" class="form-control width100"/></div>
             </div>
             <div class="p mt-20">
                 <div class="left">确认密码</div>
-                <div class="right"><input type="password" class="form-control width100"/></div>
+                <div class="right"><input type="password" value="123456" class="form-control width100"/></div>
             </div>
             <div class="p mt-20">
                 <div class="left">验证码</div>
@@ -87,6 +88,11 @@
     <p>footer第一行</p>
     <p>footer第二行</p>
 </footer>
-
+<script>
+    var SCOPE = {
+        "save_url": "/index.php/index/index/register",
+        "jump_url": "/index.php/index/index/index"
+    }
+</script>
 </body>
 </html>
