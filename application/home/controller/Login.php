@@ -47,4 +47,5 @@ class Login extends \app\home\controller\Basecontroller
         session(null, 'memberUser');
         $this->redirect('/index.php/home/login/index');
     }
+    
 }
