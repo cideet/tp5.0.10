@@ -10,12 +10,12 @@
                     <p class="mt-5 text-align-center">
                         <span class="mr-20">作者：<{$info.author}></span>
                         <span class="mr-20">更新时间：<{$info.addtime|date="Y:m:d H:i:s",###}></span>
-                        <span class="mr-20">所属分类：1111</span>
-                        <span class="mr-20">所属标签：1111</span>
+                        <span class="mr-20">所属分类：<{$info.categoryName.name}></span>
+                        <span class="mr-20">所属标签：<{volist name="$info.tag" id="v"}><b class="mr-10 font-normal"><{$v.name}></b><{/volist}></span>
                     </p>
                 </div>
                 <div class="content">
-                    <div class="con">11111</div>
+                    <div class="con"><{$info.content}></div>
                     <div class="">
                         <p><span>上一篇：</span><a href="#">上一篇文章</a></p>
                         <p><span>下一篇：</span><a href="#">下一篇文章</a></p>

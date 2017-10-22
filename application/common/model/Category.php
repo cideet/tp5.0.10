@@ -85,7 +85,7 @@ class Category extends \app\common\model\Basemodel
         $ret = $this->where($where)->field('name')->find();
         return $ret;
     }
-
+    
 }
 
 ?>

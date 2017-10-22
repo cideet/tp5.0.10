@@ -41,6 +41,15 @@ class Index extends \app\home\controller\Basecontroller
         $articleId = getParam('id');
         if (!!$articleId) {
             $info = model('News')->getNewsById($articleId);
+            $info['categoryName'] = model('Category')->getNamesById($info['category_id']);  //获取到文章的分类名
+            $tagTempData = model('NewsTag')->getDataByNewsId($info['id']);
+            $tagsNames = array();
+            foreach ($tagTempData as $k1 => $v2) {
+                array_push($tagsNames, model('Tag')->getTagNamesByTagId($tagTempData[$k1]['tag_id']));
+            }
+            $info['tag'] = $tagsNames;  //获取到文章的Tags
+            $info['content'] = model('NewsContent')->getDataByNewsId($info['id'])['content'];
+            //echo(json_encode($info));
             return $this->fetch('', [
                 'memberUsername' => $this->memberUsername,
                 'info' => $info
