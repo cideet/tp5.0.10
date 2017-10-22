@@ -45,7 +45,8 @@
                 <img id="upload_org_code_img" class="mb-10" src="<{:str_replace('\','/',$info.titleimg)}>"
                      width="150" height="150">
                 <{/if}>
-                <input id="file_upload_image" name="titleimg" type="hidden" multiple="true" value="">
+                <input id="file_upload_image" name="titleimg" type="hidden" multiple="true"
+                       value="<{:str_replace('\','/',$info.titleimg)}>">
             </td>
         </tr>
 
