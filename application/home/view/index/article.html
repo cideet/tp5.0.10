@@ -119,14 +119,13 @@
         }
     });
 
-    alert(vdouwTool.getCookie('memberInfo')['id'])
     //一级评论
     function comment() {
         var postData = {
             'news_id': '<{$info.id}>',
             'content': $('[name=comment-content]').val(),
             'parent_id': 0,
-            'member_id': vdouwTool.getCookie('memberInfo')['id']
+            'member_id': JSON.parse(vdouwTool.getCookie('memberInfo'))['id']
         };
 
         console.log(postData);
