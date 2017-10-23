@@ -44,8 +44,26 @@ var vdouwTool = {
             }
         }
         return res;
+    },
+    setCookie: function (name, value, iDay, iPath) {
+        var oDate = new Date();
+        iDay = arguments[2] ? arguments[2] : 7;
+        iPath = arguments[3] ? arguments[3] : "/";
+        oDate.setDate(oDate.getDate() + iDay);
+        document.cookie = name + "=" + escape(value) + ";expires=" + oDate + ";path=" + iPath;
+    },
+    getCookie: function (name) {
+        var arr = document.cookie.split("; ");
+        for (var i = 0; i < arr.length; i++) {
+            var arr2 = arr[i].split("=");
+            if (arr2[0] == name) {
+                return unescape(arr2[1]);
+            }
+        }
+        return "";
     }
 };
+
 
 $(function () {
     //多选

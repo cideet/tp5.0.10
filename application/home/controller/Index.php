@@ -59,4 +59,15 @@ class Index extends \app\home\controller\Basecontroller
         }
     }
 
+    public function comment()
+    {
+        $data = input('post.');
+        $commentId = model('NewsComment')->add($data);
+        //echo $commentId;
+        if ($commentId) {
+            return show(1, "添加成功", $commentId);
+        }
+        return show(0, '添加失败');
+    }
+
 }
