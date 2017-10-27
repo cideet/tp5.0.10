@@ -46,8 +46,8 @@ class Login extends \app\home\controller\Basecontroller
 
     public function logout()
     {
-        session(null, 'memberUser');
-        cookie('memberUser', null);
+        session('memberUserSession', null, 'memberUserSession');
+        cookie('memberUserCookie', null);
         $this->redirect('/index.php/home/login/index');
     }
 

@@ -3,7 +3,7 @@
  */
 
 function isLogin() {
-    if (vdouwTool.getCookie('memberUser')) {
+    if (vdouwTool.getCookie('memberUserCookie')) {
         return true;
     } else {
         //vdouwTool.setCookie('recordUrl', location.href);

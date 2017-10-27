@@ -165,7 +165,7 @@
                 'news_id': '<{$info.id}>',
                 'content': $('[name=comment-content]').val(),
                 'parent_id': 0,
-                'member_id': vdouwTool.getCookie('memberUser')['id']
+                'member_id': JSON.parse(vdouwTool.getCookie('memberUserCookie'))['id']
             };
             console.log(postData);
             $.post(SCOPE.save_url, postData, function (result) {

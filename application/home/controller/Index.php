@@ -15,7 +15,7 @@ class Index extends \app\home\controller\Basecontroller
     public function _initialize()
     {
         parent::_initialize();
-        //$this->memberUsername = $this->memberUname;
+        $this->memberUsername = $this->memberUname;
     }
 
     /**
@@ -27,7 +27,7 @@ class Index extends \app\home\controller\Basecontroller
         $allNews = model('News')->getAllDatas();
         //echo(json_encode($allNews));
         return $this->fetch('', [
-            //'memberUsername' => $this->memberUsername,
+            'memberUsername' => $this->memberUsername,
             'allNews' => $allNews
         ]);
     }
@@ -56,7 +56,7 @@ class Index extends \app\home\controller\Basecontroller
             $info['comments'] = $comments;
             //echo(json_encode($info));
             return $this->fetch('', [
-                //'memberUsername' => $this->memberUsername,
+                'memberUsername' => $this->memberUsername,
                 'info' => $info
             ]);
         } else {
