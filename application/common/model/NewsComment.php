@@ -12,7 +12,7 @@ class NewsComment extends \app\common\model\Basemodel
 {
     public function getNewsComments($articleId, $parentId)
     {
-        $where = ['news_id' => $articleId, 'parent_id' => $parentId];
+        $where = ['news_id' => $articleId, 'parents_id' => $parentId];
         $order = ['date' => 'desc'];
         $res = $this->where($where)->order($order)->select();
         foreach ($res as $k => $v) {

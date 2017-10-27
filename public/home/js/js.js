@@ -8,9 +8,12 @@
  * @returns {boolean}
  */
 function isLogin() {
+    console.log(vdouwTool.getCookie('memberUserCookie'));
     if (!vdouwTool.getCookie('memberUserCookie')) {
         vdouwTool.setCookie('recordUrl', location.href);
         dialog.confirm('请先登录', '/index.php/home/login/index');
+        return false;
     }
+    //这里不要加else{return true;}
 }
 

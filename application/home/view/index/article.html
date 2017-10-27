@@ -41,14 +41,21 @@
                             <ul>
                                 <{volist name="$info.comments" id="vc"}>
                                 <!--一级评论开始-->
-                                <li>
+                                <li class="mb-15">
                                     <div class="left"><img src="/home/images/listpic.jpg"/></div>
                                     <div class="right">
                                         <div>
                                             <p><span><{$vc.memberName}></span><span>：</span><span><{$vc.content}></span>
                                             </p>
                                             <p class="mt-3"><span><{$vc.date|date='Y-m-d H:i:s',###}></span><span
-                                                    class="color-blue ml-5 c-pointer">回复</span>
+                                                    data-current="false"
+                                                    data-memberName="<{$vc.memberName}>"
+                                                    data-memberId="<{$vc.member_id}>"
+                                                    data-articleId="<{$vc.news_id}>"
+                                                    data-parentId="0"
+                                                    data-commentId="<{$vc.id}>"
+                                                    class="color-blue ml-5 c-pointer"
+                                                    onclick="checkTextarea(this)">回复</span>
                                             </p>
                                         </div>
                                         <{volist name="$vc.sonComments" id="vson"}>
@@ -59,15 +66,23 @@
                                                 <p><span><{$vson.memberName}></span><span>：</span><span><{$vson.content}></span>
                                                 </p>
                                                 <p class="mt-3"><span><{$vson.date|date='Y-m-d H:i:s',###}></span><span
-                                                        class="color-blue ml-5 c-pointer">回复</span></p>
+                                                        class="color-blue ml-5 c-pointer" data-current="false"
+                                                        data-memberName="<{$vc.memberName}>"
+                                                        data-memberId="<{$vson.member_id}>"
+                                                        data-articleId="<{$vc.news_id}>"
+                                                        data-parentId="<{$vson.parent_id}>"
+                                                        data-commentId="<{$vson.id}>"
+                                                        onclick="checkTextarea(this)">回复</span></p>
                                             </div>
                                         </div>
                                         <!--二级评论结束-->
                                         <{/volist}>
-                                        <div class="comment-box overflow-hidden mt-10 hidden">
+                                        <div class="comment-box overflow-hidden mt-10 comment-box-hook"
+                                             style="display:none;">
                                             <div class="right" style="margin-left:0">
                                                 <textarea>二级回复输入框</textarea>
-                                                <input type="button" class="btn btn-primary width150 mt-5" value="提交"/>
+                                                <input type="button" onclick="addSecondComment()"
+                                                       class="btn btn-primary width150 mt-5" value="提交"/>
                                             </div>
                                         </div>
                                     </div>
@@ -76,57 +91,57 @@
                                 <{/volist}>
                             </ul>
                             <ul>
-                            <!--&lt;!&ndash;一级评论开始&ndash;&gt;-->
-                            <!--<li>-->
-                            <!--<div class="left"><img src="/home/images/listpic.jpg"/></div>-->
-                            <!--<div class="right">-->
-                            <!--<div>-->
-                            <!--<p><span>张一丰</span><span>：</span><span>一级回复</span></p>-->
-                            <!--<p><span>2017-12-12 12:12:12</span><span class="color-blue ml-5">回复</span>-->
-                            <!--</p>-->
-                            <!--</div>-->
-                            <!--&lt;!&ndash;二级评论开始&ndash;&gt;-->
-                            <!--<div class="son">-->
-                            <!--<div class="left"><img src="/home/images/listpic.jpg"/></div>-->
-                            <!--<div class="right">-->
-                            <!--<p><span>张二丰</span><span>：</span><span>二级回复</span></p>-->
-                            <!--<p><span>2017-12-12 12:12:12</span><span-->
-                            <!--class="color-blue ml-5">回复</span></p>-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--&lt;!&ndash;二级评论结束&ndash;&gt;-->
-                            <!--<div class="son">-->
-                            <!--<div class="left"><img src="/home/images/listpic.jpg"/></div>-->
-                            <!--<div class="right">-->
-                            <!--<p><span>张二丰</span><span>：</span><span>二级回复</span></p>-->
-                            <!--<p><span>2017-12-12 12:12:12</span><span-->
-                            <!--class="color-blue ml-5">回复</span>-->
-                            <!--</p>-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="comment-box overflow-hidden mt-10">-->
-                            <!--<div class="right" style="margin-left:0">-->
-                            <!--<textarea>二级回复输入框</textarea>-->
-                            <!--<input type="button" class="btn btn-primary width150 mt-5" value="提交"/>-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--</li>-->
-                            <!--&lt;!&ndash;一级评论结束&ndash;&gt;-->
-                            <!--<li>-->
-                            <!--<div class="left"><img src="/home/images/listpic.jpg"/></div>-->
-                            <!--<div class="right">-->
-                            <!--<p><span>张一丰</span><span>：</span><span>不行是学院的做派，而不是技术人的品格。一名技术人，本身就是知和行的统一。-->
-                            <!--“问题在于改变世界”——从青年黑格尔派初次提出这样的命题，到马克思在《关于费尔巴哈提纲》中正式确立全新的</span></p>-->
-                            <!--<p><span>2017-12-12 12:12:12</span><span class="color-blue ml-5">回复</span></p>-->
-                            <!--<div class="comment-box overflow-hidden mt-10">-->
-                            <!--<div class="right" style="margin-left:0">-->
-                            <!--<textarea>二级回复输入框</textarea>-->
-                            <!--<input type="button" class="btn btn-primary width150 mt-5" value="提交"/>-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--</li>-->
+                                <!--&lt;!&ndash;一级评论开始&ndash;&gt;-->
+                                <!--<li>-->
+                                <!--<div class="left"><img src="/home/images/listpic.jpg"/></div>-->
+                                <!--<div class="right">-->
+                                <!--<div>-->
+                                <!--<p><span>张一丰</span><span>：</span><span>一级回复</span></p>-->
+                                <!--<p><span>2017-12-12 12:12:12</span><span class="color-blue ml-5">回复</span>-->
+                                <!--</p>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash;二级评论开始&ndash;&gt;-->
+                                <!--<div class="son">-->
+                                <!--<div class="left"><img src="/home/images/listpic.jpg"/></div>-->
+                                <!--<div class="right">-->
+                                <!--<p><span>张二丰</span><span>：</span><span>二级回复</span></p>-->
+                                <!--<p><span>2017-12-12 12:12:12</span><span-->
+                                <!--class="color-blue ml-5">回复</span></p>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash;二级评论结束&ndash;&gt;-->
+                                <!--<div class="son">-->
+                                <!--<div class="left"><img src="/home/images/listpic.jpg"/></div>-->
+                                <!--<div class="right">-->
+                                <!--<p><span>张二丰</span><span>：</span><span>二级回复</span></p>-->
+                                <!--<p><span>2017-12-12 12:12:12</span><span-->
+                                <!--class="color-blue ml-5">回复</span>-->
+                                <!--</p>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="comment-box overflow-hidden mt-10">-->
+                                <!--<div class="right" style="margin-left:0">-->
+                                <!--<textarea>二级回复输入框</textarea>-->
+                                <!--<input type="button" class="btn btn-primary width150 mt-5" value="提交"/>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--</li>-->
+                                <!--&lt;!&ndash;一级评论结束&ndash;&gt;-->
+                                <!--<li>-->
+                                <!--<div class="left"><img src="/home/images/listpic.jpg"/></div>-->
+                                <!--<div class="right">-->
+                                <!--<p><span>张一丰</span><span>：</span><span>不行是学院的做派，而不是技术人的品格。一名技术人，本身就是知和行的统一。-->
+                                <!--“问题在于改变世界”——从青年黑格尔派初次提出这样的命题，到马克思在《关于费尔巴哈提纲》中正式确立全新的</span></p>-->
+                                <!--<p><span>2017-12-12 12:12:12</span><span class="color-blue ml-5">回复</span></p>-->
+                                <!--<div class="comment-box overflow-hidden mt-10">-->
+                                <!--<div class="right" style="margin-left:0">-->
+                                <!--<textarea>二级回复输入框</textarea>-->
+                                <!--<input type="button" class="btn btn-primary width150 mt-5" value="提交"/>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--</li>-->
                             </ul>
                         </dd>
                     </dl>
@@ -149,7 +164,7 @@
 
 <script>
     var SCOPE = {
-        'save_url': '/index.php/home/index/addFirstComment',
+        'save_url': '/index.php/home/index/addComment',
         'jump_url': location.href
     };
     $('.article-ul li').each(function () {
@@ -160,7 +175,7 @@
 
     //添加一级评论
     function addFirstComment() {
-        if (isLogin()) {
+        if (!isLogin()) {
             var postData = {
                 'news_id': '<{$info.id}>',
                 'content': $('[name=comment-content]').val(),
@@ -176,6 +191,32 @@
                 }
             }, "JSON");
         }
+    }
+
+    function addSecondComment() {
+        if (!isLogin()) {
+            var postData = {
+                'member_id': $('[data-current=true]').attr('data-memberId'),
+                'news_id': $('[data-current=true]').attr('data-articleId'),
+                'parent_id': $('[data-current=true]').attr('data-commentid'),
+                'content': $('[data-current=true]').parents('li').find('textarea').val()
+            };
+            console.log(postData);
+            $.post(SCOPE.save_url, postData, function (result) {
+                if (result.status == 1) {
+                    return (dialog.toconfirm(result.message));
+                } else if (result.status == 0) {
+                    return (dialog.error(result.message));
+                }
+            }, "JSON");
+        }
+    }
+
+    function checkTextarea(o) {
+        $('.comment-box-hook').hide();
+        $('[data-current]').attr('data-current', 'false');
+        $(o).parents('li').find('.comment-box-hook').css({'display': 'block'});
+        $(o).attr('data-current', 'true');
     }
 </script>
 

@@ -68,7 +68,7 @@ class Index extends \app\home\controller\Basecontroller
      * 添加一级评论
      * @return array|void
      */
-    public function addFirstComment()
+    public function addComment()
     {
         $data = input('post.');
         $data['date'] = time();

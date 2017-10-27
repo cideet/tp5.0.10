@@ -258,6 +258,10 @@ ul, li, dl, dd, dt {
     margin-bottom: 10px !important;
 }
 
+.mb-15 {
+    margin-bottom: 15px !important;
+}
+
 .ml-10 {
     margin-left: 10px !important;
 }
@@ -335,10 +339,6 @@ ul, li, dl, dd, dt {
 }
 
 /* 仿bootstrap */
-.hidden {
-    display: none !important;
-}
-
 .pull-right {
     float: right
 }
