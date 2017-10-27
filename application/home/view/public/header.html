@@ -1,6 +1,3 @@
-<{:json_encode(session('memberUserSession', "", 'memberUserSession'))}>
-
-<{if condition="$memberUsername!=''"}>
 <header>
     <div class="width1200 middle-left-right">
         <div class="pull-left">
@@ -13,32 +10,19 @@
                 <li class="pull-left mr-20"><a href="javascript:;" onclick="showSession()">查看session</a></li>
             </ul>
         </div>
+        <{if condition="$memberUsername!=''"}>
         <div class="pull-right">
             <img src="/home/images/listpic.jpg" class="member-headpic pull-left ml-10"/>
             <span class="pull-left color-white ml-10"><{$memberUsername}></span>
             <span class="color-white pull-left ml-10 c-pointer vdouw-exit">退出</span>
         </div>
-    </div>
-</header>
-<{else/}>
-<header>
-    <div class="width1200 middle-left-right">
-        <div class="pull-left">
-            <ul>
-                <li class="pull-left mr-20"><a href="/index.php/home/index/index" class="color-white">LOGO</a></li>
-                <li class="pull-left mr-20"><a href="/index.php/admin/login/index" target="_blank">后台</a></li>
-                <li class="pull-left mr-20"><a href="/index.php/home/register/index">注册</a></li>
-                <li class="pull-left mr-20"><a href="/index.php/home/login/index">登录</a></li>
-                <li class="pull-left mr-20"><a href="javascript:;" onclick="showCookie()">查看cookie</a></li>
-                <li class="pull-left mr-20"><a href="javascript:;" onclick="showSession()">查看session</a></li>
-            </ul>
-        </div>
+        <{else/}>
         <div class="pull-right">
             <a href="/index.php/home/login/index" class="color-white">登录</a>
         </div>
+        <{/if}>
     </div>
 </header>
-<{/if}>
 
 <script>
     $(document).on('click', '.vdouw-exit', function () {

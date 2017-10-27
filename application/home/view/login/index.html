@@ -54,7 +54,7 @@
 </footer>
 
 <script>
-    if (!!vdouwTool.getCookie('recordUrl')) {
+    if (vdouwTool.getCookie('recordUrl')) {
         var SCOPE = {
             "save_url": "/index.php/home/login/index",
             "jump_url": vdouwTool.getCookie('recordUrl')
@@ -77,14 +77,13 @@
         $.post(SCOPE.save_url, postData, function (result) {
             if (result.status == 1) {
                 console.log(result);
-                //vdouwTool.setCookie('memberUserCookie', json.stringify(result.data));
+                vdouwTool.setCookie('recordUrl', '');
                 return (dialog.success(result.message, SCOPE.jump_url));
             } else if (result.status == 0) {
                 return (dialog.error(result.message));
             }
         }, "JSON");
-    })
-
+    });
 
 </script>
 

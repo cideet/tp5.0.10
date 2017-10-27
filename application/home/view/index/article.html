@@ -27,7 +27,7 @@
                     <div class="left"><img src="/home/images/listpic.jpg"/></div>
                     <div class="right">
                         <textarea name="comment-content">一级回复输入框</textarea>
-                        <input type="button" class="btn btn-primary width150 mt-5" onclick="addFirstComment(isLogin)"
+                        <input type="button" class="btn btn-primary width150 mt-5" onclick="addFirstComment()"
                                value="提交"/>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                                             <p><span><{$vc.memberName}></span><span>：</span><span><{$vc.content}></span>
                                             </p>
                                             <p class="mt-3"><span><{$vc.date|date='Y-m-d H:i:s',###}></span><span
-                                                    class="color-blue ml-5">回复</span>
+                                                    class="color-blue ml-5 c-pointer">回复</span>
                                             </p>
                                         </div>
                                         <{volist name="$vc.sonComments" id="vson"}>
@@ -59,7 +59,7 @@
                                                 <p><span><{$vson.memberName}></span><span>：</span><span><{$vson.content}></span>
                                                 </p>
                                                 <p class="mt-3"><span><{$vson.date|date='Y-m-d H:i:s',###}></span><span
-                                                        class="color-blue ml-5">回复</span></p>
+                                                        class="color-blue ml-5 c-pointer">回复</span></p>
                                             </div>
                                         </div>
                                         <!--二级评论结束-->
@@ -75,7 +75,7 @@
                                 <!--一级评论结束-->
                                 <{/volist}>
                             </ul>
-                            <!--<ul>-->
+                            <ul>
                             <!--&lt;!&ndash;一级评论开始&ndash;&gt;-->
                             <!--<li>-->
                             <!--<div class="left"><img src="/home/images/listpic.jpg"/></div>-->
@@ -127,7 +127,7 @@
                             <!--</div>-->
                             <!--</div>-->
                             <!--</li>-->
-                            <!--</ul>-->
+                            </ul>
                         </dd>
                     </dl>
                 </div>
@@ -145,6 +145,7 @@
     <p>footer第一行</p>
     <p>footer第二行</p>
 </footer>
+</body>
 
 <script>
     var SCOPE = {
@@ -158,9 +159,8 @@
     });
 
     //添加一级评论
-    function addFirstComment(isLogin) {
-        var isLoginn = isLogin();
-        if (isLoginn) {
+    function addFirstComment() {
+        if (isLogin()) {
             var postData = {
                 'news_id': '<{$info.id}>',
                 'content': $('[name=comment-content]').val(),
@@ -176,7 +176,6 @@
                 }
             }, "JSON");
         }
-
     }
 </script>
 
