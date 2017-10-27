@@ -44,12 +44,17 @@ class Index extends \app\home\controller\Basecontroller
             $info['categoryName'] = model('Category')->getNamesById($info['category_id']);  //获取到文章的分类名
             $tagTempData = model('NewsTag')->getDataByNewsId($info['id']);
             $tagsNames = array();
-            foreach ($tagTempData as $k1 => $v2) {
-                array_push($tagsNames, model('Tag')->getTagNamesByTagId($tagTempData[$k1]['tag_id']));
+            foreach ($tagTempData as $k => $v) {
+                array_push($tagsNames, model('Tag')->getTagNamesByTagId($tagTempData[$k]['tag_id']));
             }
             $info['tag'] = $tagsNames;  //获取到文章的Tags
             $info['content'] = model('NewsContent')->getDataByNewsId($info['id'])['content'];
-            //echo(json_encode($info));
+            $comments = model('NewsComment')->getNewsComments($articleId, 0);
+            foreach ($comments as $k => $v) {
+                $comments[$k]['sonComments'] = model('NewsComment')->getNewsComments($articleId, $comments[$k]['id']);
+            }
+            $info['comments'] = $comments;
+            echo(json_encode($info));
             return $this->fetch('', [
                 'memberUsername' => $this->memberUsername,
                 'info' => $info
@@ -59,9 +64,14 @@ class Index extends \app\home\controller\Basecontroller
         }
     }
 
-    public function comment()
+    /**
+     * 添加一级评论
+     * @return array|void
+     */
+    public function addFirstComment()
     {
         $data = input('post.');
+        $data['date'] = time();
         $commentId = model('NewsComment')->add($data);
         //echo $commentId;
         if ($commentId) {
