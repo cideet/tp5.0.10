@@ -31,7 +31,8 @@ class Register extends \app\home\controller\Basecontroller
             if (model('Member')->getMemberuserByEmail(trim($data['email']))) return show(0, ',此邮件已注册');
             $data['password'] = getVdouwMD5($data['password']);
             $resId = model('Member')->add($data);
-            session('memberUser', $data, 'memberUser');
+            session('memberUserSession', json_encode($data), 'memberUserSession');
+            cookie('memberUserCookie', json_encode($data));
             if ($resId) {
                 return show(1, "添加成功", $resId);
             }

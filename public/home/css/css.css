@@ -214,7 +214,7 @@ article .pull-right .box.comment li .right .p {
 
 .article-box .comment-list dd li, .article-box .comment-list dd li .son {
     display: flex;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .article-box .comment-list dd li .left, .article-box .comment-list dd li .left img {

@@ -45,7 +45,7 @@
                                     <div class="left"><img src="/home/images/listpic.jpg"/></div>
                                     <div class="right">
                                         <div>
-                                            <p class="mt-3"><span><{$vc.member_id}></span><span>：</span><span><{$vc.content}></span>
+                                            <p><span><{$vc.memberName}></span><span>：</span><span><{$vc.content}></span>
                                             </p>
                                             <p class="mt-3"><span><{$vc.date|date='Y-m-d H:i:s',###}></span><span
                                                     class="color-blue ml-5">回复</span>
@@ -56,10 +56,9 @@
                                         <div class="son">
                                             <div class="left"><img src="/home/images/listpic.jpg"/></div>
                                             <div class="right">
-                                                <p>
-                                                    <span><{$vson.member_id}></span><span>：</span><span><{$vson.content}></span>
+                                                <p><span><{$vson.memberName}></span><span>：</span><span><{$vson.content}></span>
                                                 </p>
-                                                <p><span><{$vson.date|date='Y-m-d H:i:s',###}></span><span
+                                                <p class="mt-3"><span><{$vson.date|date='Y-m-d H:i:s',###}></span><span
                                                         class="color-blue ml-5">回复</span></p>
                                             </div>
                                         </div>
@@ -166,8 +165,9 @@
                 'news_id': '<{$info.id}>',
                 'content': $('[name=comment-content]').val(),
                 'parent_id': 0,
-                'member_id': JSON.parse(vdouwTool.getCookie('memberInfo'))['id']
+                'member_id': vdouwTool.getCookie('memberUser')['id']
             };
+            console.log(postData);
             $.post(SCOPE.save_url, postData, function (result) {
                 if (result.status == 1) {
                     return (dialog.toconfirm(result.message));

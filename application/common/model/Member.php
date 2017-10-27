@@ -34,4 +34,16 @@ class Member extends \app\common\model\Basemodel
         $ret = $this->where($where)->find();
         return $ret;
     }
+
+    /**
+     * 根据会员ID获取会员名字
+     * @param $id
+     * @return mixed
+     */
+    public function getMembernameById($id)
+    {
+        $where = ['id' => $id];
+        return $this->where($where)->find()['username'];
+    }
+
 }

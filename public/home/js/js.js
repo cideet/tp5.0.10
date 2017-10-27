@@ -3,10 +3,12 @@
  */
 
 function isLogin() {
-    if (vdouwTool.getCookie('memberInfo')) {
+    if (vdouwTool.getCookie('memberUser')) {
         return true;
     } else {
-        dialog.error('请先登录');
-        return false;
+        //vdouwTool.setCookie('recordUrl', location.href);
+        dialog.confirm('请先登录', '/index.php/home/login/index');
+        // dialog.error('请先登录');
+        // return false;
     }
 }

@@ -1,4 +1,4 @@
-<{if condition="$memberUsername!=''"}>
+
 <header>
     <div class="width1200 middle-left-right">
         <div class="pull-left">
@@ -7,7 +7,7 @@
                 <li class="pull-left mr-20"><a href="/index.php/admin/login/index" target="_blank">后台</a></li>
                 <li class="pull-left mr-20"><a href="/index.php/home/register/index">注册</a></li>
                 <li class="pull-left mr-20"><a href="/index.php/home/login/index">登录</a></li>
-                <li class="pull-left mr-20"><a href="javascript:;" onclick="showSession()">查看session</a></li>
+                <li class="pull-left mr-20"><a href="javascript:;" onclick="showCookie()">查看cookie</a></li>
             </ul>
         </div>
         <div class="pull-right">
@@ -17,24 +17,25 @@
         </div>
     </div>
 </header>
-<{else/}>
-<header>
-    <div class="width1200 middle-left-right">
-        <div class="pull-left">
-            <ul>
-                <li class="pull-left mr-20"><a href="/index.php/home/index/index" class="color-white">LOGO</a></li>
-                <li class="pull-left mr-20"><a href="/index.php/admin/login/index" target="_blank">后台</a></li>
-                <li class="pull-left mr-20"><a href="/index.php/home/register/index">注册</a></li>
-                <li class="pull-left mr-20"><a href="/index.php/home/login/index">登录</a></li>
-                <li class="pull-left mr-20"><a href="javascript:;" onclick="showSession()">查看session</a></li>
-            </ul>
-        </div>
-        <div class="pull-right">
-            <a href="/index.php/home/login/index" class="color-white">登录</a>
-        </div>
-    </div>
-</header>
-<{/if}>
+
+<!--<header>-->
+    <!--<div class="width1200 middle-left-right">-->
+        <!--<div class="pull-left">-->
+            <!--<ul>-->
+                <!--<li class="pull-left mr-20"><a href="/index.php/home/index/index" class="color-white">LOGO</a></li>-->
+                <!--<li class="pull-left mr-20"><a href="/index.php/admin/login/index" target="_blank">后台</a></li>-->
+                <!--<li class="pull-left mr-20"><a href="/index.php/home/register/index">注册</a></li>-->
+                <!--<li class="pull-left mr-20"><a href="/index.php/home/login/index">登录</a></li>-->
+                <!--<li class="pull-left mr-20"><a href="javascript:;" onclick="showCookie()">查看cookie</a></li>-->
+                <!--&lt;!&ndash;<li class="pull-left mr-20"><a href="javascript:;" onclick="showSession()">查看session</a></li>&ndash;&gt;-->
+            <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="pull-right">-->
+            <!--<a href="/index.php/home/login/index" class="color-white">登录</a>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</header>-->
+
 
 <script>
     $(document).on('click', '.vdouw-exit', function () {
@@ -45,7 +46,16 @@
         });
     });
 
+    function showCookie() {
+        alert(JSON.stringify(document.cookie));
+        console.log(JSON.stringify(vdouwTool.getCookie('memberUser')));
+    }
+
     function showSession() {
-        console.log(JSON.parse(vdouwTool.getCookie('memberInfo')));
+        //if (!!vdouwTool.getCookie('memberInfo')) {
+        //    alert(JSON.stringify(vdouwTool.getCookie('memberInfo')));
+        //} else {
+        //    alert('暂无内容');
+        //}
     }
 </script>

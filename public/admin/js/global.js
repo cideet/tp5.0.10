@@ -20,7 +20,7 @@ var dialog = {
     // 确认弹出层
     confirm: function (message, url) {
         layer.open({
-            content: message, icon: 3, btn: ['是', '否'], yes: function () {
+            content: message, icon: 3, btn: ['确定', '取消'], yes: function () {
                 location.href = url;
             }
         });

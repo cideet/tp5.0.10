@@ -10,11 +10,13 @@
             </div>
             <div class="p">
                 <div class="left">用户名</div>
-                <div class="right"><input type="text" name="username" value="zhangsanfeng" class="form-control width100"/></div>
+                <div class="right"><input type="text" name="username" value="zhangsanfeng"
+                                          class="form-control width100"/></div>
             </div>
             <div class="p mt-20">
                 <div class="left">密码</div>
-                <div class="right"><input type="password" name="password" value="123456" class="form-control width100"/></div>
+                <div class="right"><input type="password" name="password" value="123456" class="form-control width100"/>
+                </div>
             </div>
             <div class="p mt-20">
                 <div class="left">验证码</div>
@@ -26,7 +28,7 @@
             <div class="p mt-20">
                 <div class="left"></div>
                 <div class="right">
-                    <input type="button" id="vdouw_submit" class="btn btn-primary width100" value="登录"/>
+                    <input type="button" id="login" class="btn btn-primary width100" value="登录"/>
                 </div>
             </div>
             <div class="p mt-20">
@@ -52,10 +54,38 @@
 </footer>
 
 <script>
-    var SCOPE = {
-        "save_url": "/index.php/home/login/index",
-        "jump_url": "/index.php/home/index/index"
+    if (!!vdouwTool.getCookie('recordUrl')) {
+        var SCOPE = {
+            "save_url": "/index.php/home/login/index",
+            "jump_url": vdouwTool.getCookie('recordUrl')
+        };
+    } else {
+        var SCOPE = {
+            "save_url": "/index.php/home/login/index",
+            "jump_url": "/index.php/home/index/index"
+        };
     }
+
+    $('#login').click(function () {
+        var data = $("#vdouw-form").serializeArray();
+        console.log(data);
+        var postData = {};
+        $(data).each(function () {
+            postData[this.name] = this.value;
+        });
+        console.log(postData);
+        $.post(SCOPE.save_url, postData, function (result) {
+            if (result.status == 1) {
+                console.log(result);
+                vdouwTool.setCookie('memberUser', result.data);
+                return (dialog.success(result.message, SCOPE.jump_url));
+            } else if (result.status == 0) {
+                return (dialog.error(result.message));
+            }
+        }, "JSON");
+    })
+
+
 </script>
 
 <{include file="public/footer"}>

@@ -18,7 +18,7 @@ class Basecontroller extends \app\common\controller\Commoncontroller
         if (session('memberUser', '', 'memberUser') && session('memberUser', '', 'memberUser')['username']) {
             //$this->error('请先登录', '/index.php/index/login/index');
             $this->memberUname = session('memberUser', '', 'memberUser')['username'];
-            setcookie('memberInfo',json_encode(session('memberUser', '', 'memberUser')));
+            json_encode(session('memberUserSession', '', 'memberUserSession'));
         } else {
             $this->memberUname = '';
         }

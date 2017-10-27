@@ -33,9 +33,11 @@ class Login extends \app\home\controller\Basecontroller
             } elseif ($ret['password'] != $password) {
                 return show(0, '密码错误');
             }
-            session('memberUser', $ret, 'memberUser');
-            return show(1, '登录成功');
+            session('memberUserSession', json_encode($ret), 'memberUserSession');
+            cookie('memberUserCookie', json_encode($ret));
+            return show(1, '登录成功', $ret);
         } else {
+            //echo(session('memberUser','','memberUser'));
             return $this->fetch('', [
                 'memberUsername' => $this->memberUsername
             ]);
@@ -45,7 +47,8 @@ class Login extends \app\home\controller\Basecontroller
     public function logout()
     {
         session(null, 'memberUser');
+        cookie('memberUser', null);
         $this->redirect('/index.php/home/login/index');
     }
-    
+
 }

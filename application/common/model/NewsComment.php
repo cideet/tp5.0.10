@@ -15,6 +15,10 @@ class NewsComment extends \app\common\model\Basemodel
         $where = ['news_id' => $articleId, 'parent_id' => $parentId];
         $order = ['date' => 'desc'];
         $res = $this->where($where)->order($order)->select();
+        foreach ($res as $k => $v) {
+            //$res['memberName'] = model('Member')->getMembernameById($res[$k]['member_id']);
+            $res[$k]['memberName'] = model('Member')->getMembernameById($res[$k]['member_id']);
+        }
         return $res;
     }
 }
