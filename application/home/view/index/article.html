@@ -1,5 +1,3 @@
-<{include file="public/head"}>
-<body class="vdouw-home">
 <{include file="public/header"}>
 <article>
     <div class="width1200 middle-left-right pb-100">
@@ -35,7 +33,7 @@
                     <dl>
                         <dt class="overflow-hidden">
                             <span class="pull-left font16 font-bold">最新评论</span>
-                            <span class="pull-right">总共18条评论</span>
+                            <span class="pull-right">总共<{$commentCount}>条评论</span>
                         </dt>
                         <dd>
                             <ul>
@@ -51,12 +49,12 @@
                                                     data-current="false"
                                                     data-memberName="<{$vc.memberName}>"
                                                     data-memberId="<{$vc.member_id}>"
-                                                    data-articleId="<{$vc.news_id}>"
+                                                    data-newsId="<{$vc.news_id}>"
                                                     data-parentId="<{$vc.parent_id}>"
-                                                    data-parentsId="<{$vc.parents_id}>"
+                                                    data-parentsId="<{$vc.id}>"
                                                     data-commentId="<{$vc.id}>"
                                                     class="color-blue ml-5 c-pointer"
-                                                    onclick="checkTextarea(this)">回复</span>
+                                                    onclick="checkCurrent(this)">回复</span>
                                             </p>
                                         </div>
                                         <{volist name="$vc.sonComments" id="vson"}>
@@ -64,16 +62,18 @@
                                         <div class="son">
                                             <div class="left"><img src="/home/images/listpic.jpg"/></div>
                                             <div class="right">
-                                                <p><span><{$vson.memberName}></span><span>：</span><span><{$vson.content}></span>
+                                                <p><span><{$vson.memberName}></span><span class="ml-3">回复</span><span
+                                                        class="ml-3"><{$vson.parent_name}></span><span>：</span><span><{$vson.content}></span>
                                                 </p>
                                                 <p class="mt-3"><span><{$vson.date|date='Y-m-d H:i:s',###}></span><span
-                                                        class="color-blue ml-5 c-pointer" data-current="false"
-                                                        data-memberName="<{$vc.memberName}>"
+                                                        data-current="false"
+                                                        data-memberName="<{$vson.memberName}>"
                                                         data-memberId="<{$vson.member_id}>"
-                                                        data-articleId="<{$vc.news_id}>"
-                                                        data-parentId="<{$vson.parent_id}>"
-                                                        data-commentId="<{$vson.id}>"
-                                                        onclick="checkTextarea(this)">回复</span></p>
+                                                        data-newsId="<{$vson.news_id}>"
+                                                        data-parentId="<{$vson.member_id}>"
+                                                        data-parentsId="<{$vc.id}>"
+                                                        class="color-blue ml-5 c-pointer"
+                                                        onclick="checkCurrent(this)">回复</span></p>
                                             </div>
                                         </div>
                                         <!--二级评论结束-->
@@ -155,13 +155,7 @@
         </div>
         <div class="clearfix"></div>
     </div>
-
 </article>
-<footer>
-    <p>footer第一行</p>
-    <p>footer第二行</p>
-</footer>
-</body>
 
 <script>
     var SCOPE = {
@@ -178,10 +172,11 @@
     function addFirstComment() {
         if (!isLogin()) {
             var postData = {
+                'member_id': JSON.parse(vdouwTool.getCookie('memberUserCookie'))['id'],
                 'news_id': '<{$info.id}>',
-                'content': $('[name=comment-content]').val(),
                 'parent_id': 0,
-                'member_id': JSON.parse(vdouwTool.getCookie('memberUserCookie'))['id']
+                'parents_id': 0,
+                'content': $('[name=comment-content]').val()
             };
             console.log(postData);
             $.post(SCOPE.save_url, postData, function (result) {
@@ -197,10 +192,16 @@
     function addSecondComment() {
         if (!isLogin()) {
             var postData = {
-                'member_id': $('[data-current=true]').attr('data-memberId'),
-                'news_id': $('[data-current=true]').attr('data-articleId'),
-                'parent_id': $('[data-current=true]').attr('data-commentid'),
+                'member_id': JSON.parse(vdouwTool.getCookie('memberUserCookie'))['id'],
+                'news_id': $('[data-current=true]').attr('data-newsId'),
+                'parent_id': $('[data-current=true]').attr('data-parentId'),
+                'parents_id': $('[data-current=true]').attr('data-parentsId'),
                 'content': $('[data-current=true]').parents('li').find('textarea').val()
+                //memberName:当前评论人的姓名
+                //memberId:当前评论人的ID
+                //newsId:当前评论的文章ID
+                //parentId:当前评论的上一级ID
+                //parentsId:当前评论的顶级ID
             };
             console.log(postData);
             $.post(SCOPE.save_url, postData, function (result) {
@@ -213,7 +214,7 @@
         }
     }
 
-    function checkTextarea(o) {
+    function checkCurrent(o) {
         $('.comment-box-hook').hide();
         $('[data-current]').attr('data-current', 'false');
         $(o).parents('li').find('.comment-box-hook').css({'display': 'block'});

@@ -49,15 +49,20 @@ class Index extends \app\home\controller\Basecontroller
             }
             $info['tag'] = $tagsNames;  //获取到文章的Tags
             $info['content'] = model('NewsContent')->getDataByNewsId($info['id'])['content'];
-            $comments = model('NewsComment')->getNewsComments($articleId, 0);
+            $comments = model('NewsComment')->getNewsFirstComments($articleId);
             foreach ($comments as $k => $v) {
-                $comments[$k]['sonComments'] = model('NewsComment')->getNewsComments($articleId, $comments[$k]['id']);
+                $comments[$k]['sonComments'] = model('NewsComment')->getNewsSecondComments($articleId, $comments[$k]['id']);
+                foreach ($comments[$k]['sonComments'] as $k1 => $v1) {
+                    $v1['parent_name'] = model('Member')->getMembernameById($v1['parent_id']);
+                }
             }
             $info['comments'] = $comments;
+            $commentCount = model('NewsComment')->getCount($articleId);
             //echo(json_encode($info));
             return $this->fetch('', [
                 'memberUsername' => $this->memberUsername,
-                'info' => $info
+                'info' => $info,
+                'commentCount' => $commentCount
             ]);
         } else {
             echo('你丫坑爹呀');
@@ -65,7 +70,7 @@ class Index extends \app\home\controller\Basecontroller
     }
 
     /**
-     * 添加一级评论
+     * 添加评论
      * @return array|void
      */
     public function addComment()
