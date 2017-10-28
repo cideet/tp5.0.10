@@ -85,4 +85,13 @@ class Index extends \app\home\controller\Basecontroller
         return show(0, '添加失败');
     }
 
+    /**
+     * 浏览量加1
+     */
+    public function clickAdd()
+    {
+        $data = input('post.');
+        model('News')->where(array('id' => $data['id']))->setInc('click', 1);
+    }
+
 }

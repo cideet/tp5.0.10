@@ -9,7 +9,10 @@
                         <span class="mr-20">作者：<{$info.author}></span>
                         <span class="mr-20">更新时间：<{$info.addtime|date="Y:m:d H:i:s",###}></span>
                         <span class="mr-20">所属分类：<{$info.categoryName.name}></span>
-                        <span class="mr-20">所属标签：<{volist name="$info.tag" id="v"}><b class="mr-10 font-normal"><{$v.name}></b><{/volist}></span>
+                        <span class="mr-20">浏览量：<{$info.click}></span>
+                    </p>
+                    <p class="mt-5 text-align-center">
+                        <span>所属标签：<{volist name="$info.tag" id="v"}><b class="mr-10 font-normal"><{$v.name}></b><{/volist}></span>
                     </p>
                 </div>
                 <div class="content">
@@ -160,12 +163,24 @@
 <script>
     var SCOPE = {
         'save_url': '/index.php/home/index/addComment',
-        'jump_url': location.href
+        'jump_url': location.href,
+        'click_url': '/index.php/home/index/clickAdd'
     };
     $('.article-ul li').each(function () {
         if ($(this).find('.img').attr('src') == "") {
             $(this).find('.img').attr('src', '/home/images/listpic.jpg');
         }
+    });
+
+    //浏览量加1
+    $(function () {
+        setTimeout(function () {
+            var postData = {
+                'id': '<{$info.id}>'
+            };
+            $.post(SCOPE.click_url, postData, function (result) {
+            }, "JSON");
+        }, 100);
     });
 
     //添加一级评论
@@ -189,6 +204,7 @@
         }
     }
 
+    //回复评论
     function addSecondComment() {
         if (!isLogin()) {
             var postData = {
@@ -214,6 +230,7 @@
         }
     }
 
+    //切换评论准备进行回复
     function checkCurrent(o) {
         $('.comment-box-hook').hide();
         $('[data-current]').attr('data-current', 'false');
