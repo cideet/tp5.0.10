@@ -28,7 +28,8 @@ class Index extends \app\home\controller\Basecontroller
         //echo(json_encode($allNews));
         return $this->fetch('', [
             'memberUsername' => $this->memberUsername,
-            'allNews' => $allNews
+            'allNews' => $allNews,
+            'topNews' => model('News')->field('id,title')->limit(20)->select()
         ]);
     }
 
@@ -57,12 +58,13 @@ class Index extends \app\home\controller\Basecontroller
                 }
             }
             $info['comments'] = $comments;
-            $commentCount = model('NewsComment')->getCount($articleId);
             //echo(json_encode($info));
+            $commentCount = model('NewsComment')->getCount($articleId);
             return $this->fetch('', [
                 'memberUsername' => $this->memberUsername,
                 'info' => $info,
-                'commentCount' => $commentCount
+                'commentCount' => $commentCount,
+                'topNews' => model('News')->field('id,title')->limit(20)->select()
             ]);
         } else {
             echo('你丫坑爹呀');

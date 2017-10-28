@@ -9,11 +9,12 @@
 <div class="box recommend">
     <h4 class="font18">推荐</h4>
     <ul>
-        <li class="text-overflow"><a href="#">标签1</a></li>
+        <{volist name="topNews" id="vo"}>
+        <li class="text-overflow"><a href="/index.php/home/index/article/id/<{$vo.id}>"><{$vo.title}></a></li>
+        <{/volist}>
     </ul>
     <div class="clearfix"></div>
 </div>
-
 <div class="box comment">
     <h4 class="font18">评论</h4>
     <ul class="">
@@ -37,3 +38,9 @@
     </ul>
     <div class="clearfix"></div>
 </div>
+
+<script>
+    $(function(){
+
+    });
+</script>

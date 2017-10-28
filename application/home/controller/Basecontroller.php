@@ -11,6 +11,7 @@ namespace app\home\controller;
 class Basecontroller extends \app\common\controller\Commoncontroller
 {
     public $memberUname;
+    public $top20News;
 
     public function _initialize()
     {
@@ -21,5 +22,7 @@ class Basecontroller extends \app\common\controller\Commoncontroller
             $this->memberUname = '';
             //$this->error('请先登录', '/index.php/index/login/index');
         }
+        $this->top20News = model('News')->field('id,title')->limit(20)->select();
+        //$this->assign(['topNews' => $top20News]);
     }
 }
