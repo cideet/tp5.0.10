@@ -45,6 +45,7 @@ var vdouwTool = {
         }
         return res;
     },
+    //设置cookie
     setCookie: function (name, value, iDay, iPath) {
         var oDate = new Date();
         iDay = arguments[2] ? arguments[2] : 7;
@@ -52,6 +53,7 @@ var vdouwTool = {
         oDate.setDate(oDate.getDate() + iDay);
         document.cookie = name + "=" + escape(value) + ";expires=" + oDate + ";path=" + iPath;
     },
+    //获取cookie
     getCookie: function (name) {
         var arr = document.cookie.split("; ");
         for (var i = 0; i < arr.length; i++) {
@@ -61,6 +63,40 @@ var vdouwTool = {
             }
         }
         return "";
+    },
+    /**
+     * 获取min到max之间的随机整数
+     * @param min
+     * @param max
+     * @returns {number}
+     */
+    mathRandom: function (min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    },
+
+    /**
+     * 从数组中随机筛选n个元素，组成新的数组
+     * @param arr 原数组
+     * @param n 需要筛选出的数据
+     * @returns {Array}
+     */
+    chooseSomeByArray: function (arr, n) {
+        var oldArr = arr;
+        var oldLength = oldArr.length;
+        var newArr = [];
+        var newLength = n;
+        while (newLength > 0) {
+            var r = vdouwTool.mathRandom(1, oldLength);
+            console.log(r);
+            newArr.push(oldArr[r - 1]);
+            console.error(oldArr);
+            oldArr.splice(r, 1);
+            console.error(oldArr);
+            console.log('---------');
+            newLength--;
+            oldLength--;
+        }
+        return newArr;
     }
 };
 

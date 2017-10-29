@@ -9,9 +9,7 @@
 <div class="box recommend">
     <h4 class="font18">推荐</h4>
     <ul>
-        <{volist name="topNews" id="vo"}>
-        <li class="text-overflow"><a href="/index.php/home/index/article/id/<{$vo.id}>"><{$vo.title}></a></li>
-        <{/volist}>
+        <!--<li class="text-overflow"><a href="/index.php/home/index/article/id/11">$vo.title</a></li>-->
     </ul>
     <div class="clearfix"></div>
 </div>
@@ -40,7 +38,22 @@
 </div>
 
 <script>
-    $(function(){
+    $(function () {
+        var top20News = JSON.parse('<{:json_encode($topNews)}>');
+        //console.log((top20News));   //得到推荐文章20条
 
-    });
+        var arr20 = [];
+        for (var i = 0; i < 20; i++) {
+            arr20.push(i);
+        }
+        var arr10 = vdouwTool.chooseSomeByArray(arr20, 10);
+        console.log(arr10);
+        var oHtml = '';
+        for (var i = 0; i < arr10.length; i++) {
+            oHtml += '<li class="text-overflow"><a href="/index.php/home/index/article/id/' + top20News[arr10[i]]['id'] + '">' + top20News[arr10[i]]['title'] + '</a></li>';
+        }
+        //console.log(oHtml);
+        $('.box.recommend ul').html(oHtml);
+    })
+
 </script>
