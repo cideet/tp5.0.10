@@ -33,7 +33,11 @@ var dialog = {
 };
 
 var vdouwTool = {
-    //数据去重
+    /**
+     * 数据去重
+     * @param $array
+     * @returns {Array}
+     */
     unique2: function ($array) {
         var res = [];
         var json = {};
@@ -45,7 +49,14 @@ var vdouwTool = {
         }
         return res;
     },
-    //设置cookie
+
+    /**
+     * 设置cookie
+     * @param name
+     * @param value
+     * @param iDay
+     * @param iPath
+     */
     setCookie: function (name, value, iDay, iPath) {
         var oDate = new Date();
         iDay = arguments[2] ? arguments[2] : 7;
@@ -53,7 +64,12 @@ var vdouwTool = {
         oDate.setDate(oDate.getDate() + iDay);
         document.cookie = name + "=" + escape(value) + ";expires=" + oDate + ";path=" + iPath;
     },
-    //获取cookie
+
+    /**
+     * 获取cookie
+     * @param name
+     * @returns {string}
+     */
     getCookie: function (name) {
         var arr = document.cookie.split("; ");
         for (var i = 0; i < arr.length; i++) {
@@ -80,24 +96,35 @@ var vdouwTool = {
      * @param n 需要筛选出的数据
      * @returns {Array}
      */
-    chooseSomeByArray: function (arr, n) {
-        var oldArr = arr;
-        var oldLength = oldArr.length;
-        var newArr = [];
-        var newLength = n;
-        while (newLength > 0) {
-            var r = vdouwTool.mathRandom(1, oldLength);
-            console.log(r);
-            newArr.push(oldArr[r - 1]);
-            console.error(oldArr);
-            oldArr.splice(r, 1);
-            console.error(oldArr);
-            console.log('---------');
-            newLength--;
-            oldLength--;
+    chooseSomeByArray: function (arr, count) {
+        var shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
+        while (i-- > min) {
+            index = Math.floor((i + 1) * Math.random());
+            temp = shuffled[index];
+            shuffled[index] = shuffled[i];
+            shuffled[i] = temp;
         }
-        return newArr;
+        return shuffled.slice(min);
     }
+
+    // 自己写的，有点问题，在网上找了一个
+    // chooseSomeByArray: function (arr, n) {
+    //     var newArr = [];
+    //     var len = arr.length;
+    //     for (n; n > 0; n--, len--) {
+    //         var r = this.mathRandom(1, len - n);
+    //         arr.splice(r, 1);
+    //         newArr.push(arr[r - 1]);
+    //     }
+    //     // while (n > 0) {
+    //     //     var r = vdouwTool.mathRandom(1, len);
+    //     //     newArr.push(arr[r - 1]);
+    //     //     arr.splice(r, 1);
+    //     //     len--;
+    //     //     n--;
+    //     // }
+    //     return newArr;
+    // }
 };
 
 
