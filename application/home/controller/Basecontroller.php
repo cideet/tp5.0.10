@@ -33,6 +33,5 @@ class Basecontroller extends \app\common\controller\Commoncontroller
         //base文件，切忌瞎JS输出
         $this->assign('topNews', $top20News);
         $this->assign('topComments', $top20Comments);
-        //test
     }
 }
