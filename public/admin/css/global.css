@@ -709,41 +709,45 @@ img.middle {
 }
 
 /* 分页 */
-.page {
+.pagination {
     width: 100%;
-    padding: 30px 15px;
-    background: #FFF;
-    text-align: center;
-    overflow: hidden;
 }
 
-.page .first, .page .prev, .page .current, .page .num, .page .current, .page .next, .page .end {
-    padding: 5px 16px;
-    margin: 0px 5px;
+.pagination li {
+    float: left;
+    margin-right: 5px;
+}
+
+.pagination li a, .pagination li span {
     display: inline-block;
-    border-radius: 5px;
-    color: #008CBA;
-    border: 1px solid #F2F2F2;
+    width: 30px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    background: #ddd;
+    border-radius: 3px;
 }
 
-.page .first:hover, .page .prev:hover, .page .current:hover, .page .num:hover, .page .current:hover, .page .next:hover, .page .end:hover {
-    text-decoration: none;
-    background: #F8F5F5;
+.pagination li a:hover {
+    background: #337ab7;
+    color: white;
+    transition: all 0.3s;
 }
 
-.page .current {
-    background-color: #008CBA;
-    color: #FFF;
-    border-radius: 5px;
-    border: 1px solid #008CBA;
+.pagination li span {
+    background: #337ab7;
+    color: white;
 }
 
-.page .current:hover {
-    text-decoration: none;
-    background: #008CBA;
+.pagination li.disabled span {
+    background: #ddd;
+    color: #333;
 }
 
-.page .not-allowed {
-    cursor: not-allowed;
+.pagination li span:hover {
+    background: #2b6699;
+    transition: all 0.3s;
+    color: white;
 }
+
 

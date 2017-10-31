@@ -18,7 +18,7 @@ class News extends \app\common\model\Basemodel
     {
         $where = ['status' => 1];
         $order = ['is_top' => 'desc', 'id' => 'desc'];
-        $res = $this->where($where)->order($order)->select();
+        $res = $this->where($where)->order($order)->paginate(10);
         foreach ($res as $k => $v) {
             $tagTempData = model('NewsTag')->getDataByNewsId($v['id']);
             //根据文章id，在news_tag数据表，获取到此文章id对应的所有tag_id

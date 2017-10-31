@@ -50,10 +50,11 @@
         for (var i = 0; i < arr10.length; i++) {
             oHtml += '<li class="text-overflow"><a href="/index.php/home/index/article/id/' + top20News[arr10[i]]['id'] + '">' + top20News[arr10[i]]['title'] + '</a></li>';
             if (topComments[i]["head_img"]) {
-                oComment += '<li><div class="left"><img src="' + topComments[i]["head_img"] + '"/></div><div class="right"><div class="overflow-hidden"><div class="pull-left">' + topComments[i]["member_name"] + '</div><div class="pull-right c-light font12">' + vdouwTool.getDate(new Date(Number(topComments[i]["date"] + "000"))).dayTime() + '</div></div><div class="overflow-hidden"><span class="c-light display-iblock pull-left">在</span><a href="/index.php/home/index/article/id/' + topComments[i]["news_id"] + '" class="a text-overflow pull-left ml-3 mr-3">' + topComments[i]["article_title"] + '</a><span class="c-light display-iblock pull-left">中回复</span></div><div class="c-light font12 p">' + topComments[i]["content"] + '</div></div></li>';
+                oComment += '<li><div class="left"><img src="' + topComments[i]["head_img"] + '"/>';
             } else {
-                oComment += '<li><div class="left"><img src="/home/images/listpic.jpg"/></div><div class="right"><div class="overflow-hidden"><div class="pull-left">' + topComments[i]["member_name"] + '</div><div class="pull-right c-light font12">' + vdouwTool.getDate(new Date(Number(topComments[i]["date"] + "000"))).dayTime() + '</div></div><div class="overflow-hidden"><span class="c-light display-iblock pull-left">在</span><a href="/index.php/home/index/article/id/' + topComments[i]["news_id"] + '" class="a text-overflow pull-left ml-3 mr-3">' + topComments[i]["article_title"] + '</a><span class="c-light display-iblock pull-left">中回复</span></div><div class="c-light font12 p">' + topComments[i]["content"] + '</div></div></li>';
+                oComment += '<li><div class="left"><img src="/home/images/listpic.jpg"/>';
             }
+            oComment += '</div><div class="right"><div class="overflow-hidden"><div class="pull-left">' + topComments[i]["member_name"] + '</div><div class="pull-right c-light font12">' + vdouwTool.getDate(new Date(Number(topComments[i]["date"] + "000"))).dayTime() + '</div></div><div class="overflow-hidden"><span class="c-light display-iblock pull-left">在</span><a href="/index.php/home/index/article/id/' + topComments[i]["news_id"] + '" class="a text-overflow pull-left ml-3 mr-3">' + topComments[i]["article_title"] + '</a><span class="c-light display-iblock pull-left">中回复</span></div><div class="c-light font12 p">' + topComments[i]["content"] + '</div></div></li>';
         }
         $('.box.recommend ul').html(oHtml);
         $('.box.comment ul').html(oComment);
