@@ -34,6 +34,37 @@ var dialog = {
 
 var vdouwTool = {
     /**
+     * 获取不同的日期和时间格式
+     * @param t
+     * @returns {{showTime: showTime, showDay: showDay, dayTime: dayTime}}
+     */
+    getDate: function (t) {
+        var oYear = t.getFullYear(), oMonth = t.getMonth() + 1, oDate = t.getDate(), oHours = t.getHours(), oMinutes = t.getMinutes(), oSeconds = t.getSeconds();
+        var arr = [];
+        arr.push("" + oYear, "" + this.ddigit(oMonth), "" + this.ddigit(oDate), "" + this.ddigit(oHours), "" + this.ddigit(oMinutes), "" + this.ddigit(oSeconds));
+        return {
+            showTime: function () {
+                return (arr[3] + ":" + arr[4] + ":" + arr[5])
+            },
+            showDay: function () {
+                return (arr[0] + "-" + arr[1] + "-" + arr[2])
+            },
+            dayTime: function () {
+                return (this.showDay() + " " + this.showTime())
+            }
+        }
+    },
+
+    /**
+     * 个位数补0（12:2:2=>12:02:02）
+     * @param a
+     * @returns {string}
+     */
+    ddigit: function (a) {
+        return a < 10 ? '0' + a : a;
+    },
+
+    /**
      * 数据去重
      * @param $array
      * @returns {Array}
@@ -80,6 +111,7 @@ var vdouwTool = {
         }
         return "";
     },
+
     /**
      * 获取min到max之间的随机整数
      * @param min
@@ -93,7 +125,7 @@ var vdouwTool = {
     /**
      * 从数组中随机筛选n个元素，组成新的数组
      * @param arr 原数组
-     * @param n 需要筛选出的数据
+     * @param count 需要筛选出的数据
      * @returns {Array}
      */
     chooseSomeByArray: function (arr, count) {
@@ -106,27 +138,7 @@ var vdouwTool = {
         }
         return shuffled.slice(min);
     }
-
-    // 自己写的，有点问题，在网上找了一个
-    // chooseSomeByArray: function (arr, n) {
-    //     var newArr = [];
-    //     var len = arr.length;
-    //     for (n; n > 0; n--, len--) {
-    //         var r = this.mathRandom(1, len - n);
-    //         arr.splice(r, 1);
-    //         newArr.push(arr[r - 1]);
-    //     }
-    //     // while (n > 0) {
-    //     //     var r = vdouwTool.mathRandom(1, len);
-    //     //     newArr.push(arr[r - 1]);
-    //     //     arr.splice(r, 1);
-    //     //     len--;
-    //     //     n--;
-    //     // }
-    //     return newArr;
-    // }
 };
-
 
 $(function () {
     //多选

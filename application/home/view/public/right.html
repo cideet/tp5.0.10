@@ -16,23 +16,23 @@
 <div class="box comment">
     <h4 class="font18">评论</h4>
     <ul class="">
-        <li>
-            <div class="left"><img src="/home/images/listpic.jpg"/></div>
-            <div class="right">
-                <div class="overflow-hidden">
-                    <div class="pull-left">回复人姓名</div>
-                    <div class="pull-right c-light font12">回复时间</div>
-                </div>
-                <div class="overflow-hidden">
-                    <span class="c-light display-iblock pull-left">在</span>
-                    <a href="#" class="a text-overflow pull-left">这篇文章这篇文章这篇文章这篇文章这篇文章</a>
-                    <span class="c-light display-iblock pull-left">中回复</span>
-                </div>
-                <div class="c-light font12 p">
-                    这是回复的内容这是回复的内容,这是回复的内容这是回复的内容,这是回复的内容这是回复的内容这是回复的内容这是回复的内容这是回复的内容这是回复的内容
-                </div>
-            </div>
-        </li>
+        <!--<li>-->
+        <!--<div class="left"><img src="/home/images/listpic.jpg"/></div>-->
+        <!--<div class="right">-->
+        <!--<div class="overflow-hidden">-->
+        <!--<div class="pull-left">回复人姓名</div>-->
+        <!--<div class="pull-right c-light font12">回复时间</div>-->
+        <!--</div>-->
+        <!--<div class="overflow-hidden">-->
+        <!--<span class="c-light display-iblock pull-left">在</span>-->
+        <!--<a href="#" class="a text-overflow pull-left">这篇文章这篇文章这篇文章这篇文章这篇文章</a>-->
+        <!--<span class="c-light display-iblock pull-left">中回复</span>-->
+        <!--</div>-->
+        <!--<div class="c-light font12 p">-->
+        <!--这是回复的内容这是回复的内容,这是回复的内容这是回复的内容,这是回复的内容这是回复的内容这是回复的内容这是回复的内容这是回复的内容这是回复的内容-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</li>-->
     </ul>
     <div class="clearfix"></div>
 </div>
@@ -40,20 +40,18 @@
 <script>
     $(function () {
         var top20News = JSON.parse('<{:json_encode($topNews)}>');
+        var topComments = JSON.parse('<?php echo json_encode($topComments); ?>');
         //console.log((top20News));   //得到推荐文章20条
-
+        //console.log((topComments));   //得到推荐评论20条
         var arr20 = [];
-        for (var i = 0; i < 20; i++) {
-            arr20.push(i);
-        }
+        for (var i = 0; i < 20; i++) arr20.push(i);
         var arr10 = vdouwTool.chooseSomeByArray(arr20, 10);
-        console.log(arr10);
-        var oHtml = '';
+        var oHtml = '', oComment = '';
         for (var i = 0; i < arr10.length; i++) {
             oHtml += '<li class="text-overflow"><a href="/index.php/home/index/article/id/' + top20News[arr10[i]]['id'] + '">' + top20News[arr10[i]]['title'] + '</a></li>';
+            oComment += '<li><div class="left"><img src="/home/images/listpic.jpg"/></div><div class="right"><div class="overflow-hidden"><div class="pull-left">' + topComments[i]["member_name"] + '</div><div class="pull-right c-light font12">' + vdouwTool.getDate(new Date(Number(topComments[i]["date"] + "000"))).dayTime() + '</div></div><div class="overflow-hidden"><span class="c-light display-iblock pull-left">在</span><a href="/index.php/home/index/article/id/' + topComments[i]["news_id"] + '" class="a text-overflow pull-left ml-3 mr-3">' + topComments[i]["article_title"] + '</a><span class="c-light display-iblock pull-left">中回复</span></div><div class="c-light font12 p">' + topComments[i]["content"] + '</div></div></li>';
         }
-        //console.log(oHtml);
         $('.box.recommend ul').html(oHtml);
-    })
-
+        $('.box.comment ul').html(oComment);
+    });
 </script>

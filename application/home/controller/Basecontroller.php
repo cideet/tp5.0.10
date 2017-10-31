@@ -12,6 +12,7 @@ class Basecontroller extends \app\common\controller\Commoncontroller
 {
     public $memberUname;
     public $top20News;
+    public $top20Comments;
 
     public function _initialize()
     {
@@ -22,7 +23,15 @@ class Basecontroller extends \app\common\controller\Commoncontroller
             $this->memberUname = '';
             //$this->error('请先登录', '/index.php/index/login/index');
         }
-        $this->top20News = model('News')->field('id,title')->limit(20)->select();
-        //$this->assign(['topNews' => $top20News]);
+        $top20News = model('News')->field('id,title')->limit(20)->select();
+        $top20Comments = model('NewsComment')->limit(20)->select();
+        foreach ($top20Comments as $k => $v) {
+            $v['article_title'] = model('News')->getNewsById($top20Comments[$k]['news_id'])['title'];
+            $v['member_name'] = model('Member')->getMembernameById($top20Comments[$k]['member_id']);
+        }
+        //echo(json_encode($top20Comments));
+        //base文件，切忌瞎JS输出
+        $this->assign('topNews', $top20News);
+        $this->assign('topComments', $top20Comments);
     }
 }
