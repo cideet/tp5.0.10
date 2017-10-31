@@ -43,7 +43,7 @@
                                 <{volist name="$info.comments" id="vc"}>
                                 <!--一级评论开始-->
                                 <li class="mb-15">
-                                    <div class="left"><img src="/home/images/listpic.jpg"/></div>
+                                    <div class="left"><img class="img" src="/home/images/listpic.jpg"/></div>
                                     <div class="right">
                                         <div>
                                             <p><span><{$vc.memberName}></span><span>：</span><span><{$vc.content}></span>
@@ -63,7 +63,7 @@
                                         <{volist name="$vc.sonComments" id="vson"}>
                                         <!--二级评论开始-->
                                         <div class="son">
-                                            <div class="left"><img src="/home/images/listpic.jpg"/></div>
+                                            <div class="left"><img class="img" src="/home/images/listpic.jpg"/></div>
                                             <div class="right">
                                                 <p><span><{$vson.memberName}></span><span class="ml-3">回复</span><span
                                                         class="ml-3"><{$vson.parent_name}></span><span>：</span><span><{$vson.content}></span>
@@ -166,9 +166,9 @@
         'jump_url': location.href,
         'click_url': '/index.php/home/index/clickAdd'
     };
-    $('.article-ul li').each(function () {
-        if ($(this).find('.img').attr('src') == "") {
-            $(this).find('.img').attr('src', '/home/images/listpic.jpg');
+    $('.comment-list img').each(function () {
+        if ($(this).attr('src') == "") {
+            $(this).attr('src', '/home/images/listpic.jpg');
         }
     });
 
@@ -181,6 +181,11 @@
             $.post(SCOPE.click_url, postData, function (result) {
             }, "JSON");
         }, 100);
+        $('.article-ul li').each(function () {
+            if ($(this).find('.img').attr('src') == "") {
+                $(this).find('.img').attr('src', '/home/images/listpic.jpg');
+            }
+        });
     });
 
     //添加一级评论

@@ -46,4 +46,15 @@ class Member extends \app\common\model\Basemodel
         return $this->where($where)->find()['username'];
     }
 
+    /**
+     * 根据会员ID获取会员头像
+     * @param $id
+     * @return mixed
+     */
+    public function getMemberHeadImgById($id)
+    {
+        $where = ['id' => $id];
+        return $this->where($where)->find()['head_img'];
+    }
+
 }

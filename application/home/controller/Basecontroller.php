@@ -28,6 +28,7 @@ class Basecontroller extends \app\common\controller\Commoncontroller
         foreach ($top20Comments as $k => $v) {
             $v['article_title'] = model('News')->getNewsById($top20Comments[$k]['news_id'])['title'];
             $v['member_name'] = model('Member')->getMembernameById($top20Comments[$k]['member_id']);
+            $v['head_img'] = model('Member')->getMemberHeadImgById($top20Comments[$k]['member_id']);
         }
         //echo(json_encode($top20Comments));
         //base文件，切忌瞎JS输出
