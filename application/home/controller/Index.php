@@ -64,11 +64,26 @@ class Index extends \app\home\controller\Basecontroller
                 }
             }
             $info['comments'] = $comments;
+            $info['prev'] = model('News')->getPrevNews($info['category_id'], $info['id']);
+            $info['next'] = model('News')->getNextNews($info['category_id'], $info['id']);
+            if ($info['prev']['id']) {
+                $info['prev_url'] = '/index.php/home/index/article/id/' . $info['prev']['id'];
+                $info['prev_title'] = $info['prev']['title'];
+            } else {
+                $info['prev_url'] = '/index.php/home/index/index/id/' . $info['category_id'];
+                $info['prev_title'] = '返回列表页';
+            }
+            if ($info['next']['id']) {
+                $info['next_url'] = '/index.php/home/index/article/id/' . $info['next']['id'];
+                $info['next_title'] = $info['next']['title'];
+            } else {
+                $info['next_url'] = '/index.php/home/index/index/id/' . $info['category_id'];
+                $info['next_title'] = '返回列表页';
+            }
+            $info['commentCount'] = model('NewsComment')->getCount($articleId);
             //echo(json_encode($info));
-            $commentCount = model('NewsComment')->getCount($articleId);
             return $this->fetch('', [
-                'info' => $info,
-                'commentCount' => $commentCount
+                'info' => $info
             ]);
         } else {
             echo('你丫坑爹呀');

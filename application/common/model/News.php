@@ -50,8 +50,18 @@ class News extends \app\common\model\Basemodel
             $ret = $this->where($where)->find();
             return $ret;
         } else {
-
         }
+    }
 
+    public function getNextNews($categoryId, $thisNewsId)
+    {
+        $where = ['category_id' => $categoryId, 'id' => array('gt', $thisNewsId)];
+        return $this->where($where)->field('id,title')->find();
+    }
+
+    public function getPrevNews($categoryId, $thisNewsId)
+    {
+        $where = ['category_id' => $categoryId, 'id' => array('lt', $thisNewsId)];
+        return $this->where($where)->field('id,title')->find();
     }
 }

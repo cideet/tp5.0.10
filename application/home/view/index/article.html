@@ -19,8 +19,8 @@
                 <div class="content">
                     <div class="con"><{$info.content}></div>
                     <div class="">
-                        <p><span>上一篇：</span><a href="#">上一篇文章</a></p>
-                        <p><span>下一篇：</span><a href="#">下一篇文章</a></p>
+                        <p><span>上一篇：</span><a class="color-blue" href="<{$info['prev_url']}>"><{$info['prev_title']}></a></p>
+                        <p><span>下一篇：</span><a class="color-blue" href="<{$info['next_url']}>"><{$info['next_title']}></a></p>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                     <dl>
                         <dt class="overflow-hidden">
                             <span class="pull-left font16 font-bold">最新评论</span>
-                            <span class="pull-right">总共<{$commentCount}>条评论</span>
+                            <span class="pull-right">总共<{$info.commentCount}>条评论</span>
                         </dt>
                         <dd>
                             <ul>
