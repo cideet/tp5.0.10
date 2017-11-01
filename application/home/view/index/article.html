@@ -19,13 +19,15 @@
                 <div class="content">
                     <div class="con"><{$info.content}></div>
                     <div class="">
-                        <p><span>上一篇：</span><a class="color-blue" href="<{$info['prev_url']}>"><{$info['prev_title']}></a></p>
-                        <p><span>下一篇：</span><a class="color-blue" href="<{$info['next_url']}>"><{$info['next_title']}></a></p>
+                        <p><span>上一篇：</span><a class="color-blue"
+                                               href="<{$info['prev_url']}>"><{$info['prev_title']}></a></p>
+                        <p><span>下一篇：</span><a class="color-blue"
+                                               href="<{$info['next_url']}>"><{$info['next_title']}></a></p>
                     </div>
                 </div>
             </div>
             <div class="article-box">
-                <div class="comment-box overflow-hidden border-bottom-1px">
+                <div class="comment-box overflow-hidden">
                     <div class="left"><img src="/home/images/listpic.jpg"/></div>
                     <div class="right">
                         <textarea name="comment-content">一级回复输入框</textarea>
@@ -33,7 +35,7 @@
                                value="提交"/>
                     </div>
                 </div>
-                <div class="comment-list">
+                <div class="comment-list mt-10" data-comment-count="<{$info.commentCount}>">
                     <dl>
                         <dt class="overflow-hidden">
                             <span class="pull-left font16 font-bold">最新评论</span>
@@ -189,8 +191,12 @@
             }
         });
         //无标签的处理
-        if ($('[data-tag]').attr('data-tag') == '[null]') {
+        if ($('[data-tag]').attr('data-tag') == '[null]' || $('[data-tag]').attr('data-tag') == '[]') {
             $('[data-tag]').hide();
+        }
+        //无评论的处理
+        if ($('.comment-list').attr('data-comment-count') == 0) {
+            $('.comment-list').hide();
         }
     });
 

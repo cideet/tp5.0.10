@@ -11,17 +11,17 @@
 
 return [
 
-    'hostname' => '222.182.202.13',
-    'database' => 'vdouwtp5',
-    'username' => 'vdouwtp5',
-    'password' => 'vdouwtp5',
-    'prefix'   => 'vdouw_',
-
-//    'hostname' => 'localhost',
+//    'hostname' => '222.182.202.13',
 //    'database' => 'vdouwtp5',
-//    'username' => 'root',
-//    'password' => '',
-//    'prefix' => 'vdouw_',
+//    'username' => 'vdouwtp5',
+//    'password' => 'vdouwtp5',
+//    'prefix'   => 'vdouw_',
+
+    'hostname' => 'localhost',
+    'database' => 'vdouwtp5',
+    'username' => 'root',
+    'password' => '',
+    'prefix' => 'vdouw_',
 
     'type' => 'mysql',                      // 数据库类型
     'hostport' => '3306',                   // 端口
