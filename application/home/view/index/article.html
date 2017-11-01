@@ -8,7 +8,8 @@
                     <p class="mt-5 text-align-center">
                         <span class="mr-20">作者：<{$info.author}></span>
                         <span class="mr-20">更新时间：<{$info.addtime|date="Y:m:d H:i:s",###}></span>
-                        <span class="mr-20">所属分类：<{$info.categoryName.name}></span>
+                        <span class="mr-20">所属分类：<a class="color-blue"
+                                                    href="/index.php/home/index/index/id/<{$info.category_id}>"><{$info.categoryName.name}></a></span>
                         <span class="mr-20">浏览量：<{$info.click}></span>
                     </p>
                     <p class="mt-5 text-align-center" data-tag="<{:json_encode($info.tag)}>">
@@ -187,8 +188,8 @@
                 $(this).find('.img').attr('src', '/home/images/listpic.jpg');
             }
         });
-        var tagData = $('[data-tag]').attr('data-tag');
-        if (tagData == '[null]') {
+        //无标签的处理
+        if ($('[data-tag]').attr('data-tag') == '[null]') {
             $('[data-tag]').hide();
         }
     });

@@ -9,7 +9,8 @@
                     <p class="mt-5">
                         <span class="mr-20">作者：<{$vo.author}></span>
                         <span class="mr-20">更新时间：<{$vo.addtime|date='Y-m-d H:i:s',###}></span>
-                        <span class="mr-20">所属分类：<{$vo.category_name.name}></span>
+                        <span class="mr-20">所属分类：<a class="color-blue" title="<{$vo.category_name.name}>"
+                                                    href="/index.php/home/index/index/id/<{$vo.category_id}>"><{$vo.category_name.name}></a></span>
                         <span class="mr-20 tag" data-tag="<{:json_encode($vo.tag)}>">标签：<{volist name="$vo.tag" id="v"}><b
                                 class="mr-10 font-normal"><{$v.name}></b><{/volist}></span>
                     </p>
@@ -42,7 +43,7 @@
                 $(this).find('.img').attr('src', '/home/images/listpic.jpg');
             }
             var tagData = $(this).find('.tag').attr('data-tag');
-            if (tagData == '[null]') {
+            if (tagData == '[null]' || tagData == '[]') {
                 $(this).find('.tag').hide();
             }
         });

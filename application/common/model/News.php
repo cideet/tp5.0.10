@@ -14,9 +14,13 @@ class News extends \app\common\model\Basemodel
      * 获取文章列表
      * @return false|\PDOStatement|string|\think\Collection
      */
-    public function getAllDatas()
+    public function getAllDatas($categoryId = 0)
     {
-        $where = ['status' => 1];
+        if ($categoryId) {
+            $where = ['status' => 1, 'category_id' => $categoryId];
+        } else {
+            $where = ['status' => 1];
+        }
         $order = ['is_top' => 'desc', 'id' => 'desc'];
         $res = $this->where($where)->order($order)->paginate(10);
         foreach ($res as $k => $v) {

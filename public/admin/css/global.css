@@ -693,7 +693,7 @@ img.middle {
 }
 
 .color-blue {
-    color: #005196;
+    color: #005196 !important;
 }
 
 .color-llgray {

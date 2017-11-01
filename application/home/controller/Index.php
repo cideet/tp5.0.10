@@ -18,29 +18,24 @@ class Index extends \app\home\controller\Basecontroller
     }
 
     /**
-     * 网站首页
+     * 网站首页 || 列表页
      * @return mixed
      */
     public function index()
     {
-        $allNews = model('News')->getAllDatas();
-        //echo(json_encode($allNews));
-        return $this->fetch('', [
-            'allNews' => $allNews
-        ]);
-    }
-
-    public function category()
-    {
         $categoryId = getParam('id');
         if (!!$categoryId) {
-            $allNews = model('News')->getAllDatas();
+            $allNews = model('News')->getAllDatas($categoryId);
             //echo(json_encode($allNews));
             return $this->fetch('', [
                 'allNews' => $allNews
             ]);
         } else {
-            echo('你丫坑爹呀');
+            $allNews = model('News')->getAllDatas();
+            //echo(json_encode($allNews));
+            return $this->fetch('', [
+                'allNews' => $allNews
+            ]);
         }
     }
 
