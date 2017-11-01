@@ -10,16 +10,8 @@
                         <span class="mr-20">作者：<{$vo.author}></span>
                         <span class="mr-20">更新时间：<{$vo.addtime|date='Y-m-d H:i:s',###}></span>
                         <span class="mr-20">所属分类：<{$vo.category_name.name}></span>
-                        <script>
-                            if (JSON.stringify('<{:json_encode($vo.tag)}>') != '[]' || JSON.stringify('<{:json_encode($vo.tag)}>') != '[null]'||'<{:json_encode($vo.tag)}>') != '' || JSON.stringify('<{:json_encode($vo.tag)}>') != 'null') {
-                                document.write('<span class="mr-20">所属标签：<{volist name="$vo.tag" id="v"}><b class="mr-10 font-normal"><{$v.name}></b><{/volist}></span>');
-                            } else {
-                                document.write(123)
-                            }
-                        </script>
-
-
-
+                        <span class="mr-20 tag" data-tag="<{:json_encode($vo.tag)}>">标签：<{volist name="$vo.tag" id="v"}><b
+                                class="mr-10 font-normal"><{$v.name}></b><{/volist}></span>
                     </p>
                     <div class="mt-10">
                         <div class="pull-left"><img class="img" src="<{$vo.titleimg}>"/></div>
@@ -44,11 +36,18 @@
 </article>
 
 <script>
-    $('.article-ul li').each(function () {
-        if ($(this).find('.img').attr('src') == "") {
-            $(this).find('.img').attr('src', '/home/images/listpic.jpg');
-        }
+    $(function () {
+        $('.article-ul li').each(function () {
+            if ($(this).find('.img').attr('src') == "") {
+                $(this).find('.img').attr('src', '/home/images/listpic.jpg');
+            }
+            var tagData = $(this).find('.tag').attr('data-tag');
+            if (tagData == '[null]') {
+                $(this).find('.tag').hide();
+            }
+        });
     });
+
 </script>
 
 <{include file="public/footer"}>

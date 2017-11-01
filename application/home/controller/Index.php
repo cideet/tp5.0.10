@@ -24,7 +24,7 @@ class Index extends \app\home\controller\Basecontroller
     public function index()
     {
         $allNews = model('News')->getAllDatas();
-        echo(json_encode($allNews));
+        //echo(json_encode($allNews));
         return $this->fetch('', [
             'allNews' => $allNews
         ]);
