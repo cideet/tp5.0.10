@@ -69,7 +69,7 @@ var vdouwTool = {
      * @param $array
      * @returns {Array}
      */
-    unique2: function ($array) {
+    unique: function ($array) {
         var res = [];
         var json = {};
         for (var i = 0; i < $array.length; i++) {
@@ -149,7 +149,7 @@ $(function () {
         if (i.hasClass("icon-check-empty")) {
             var array1 = !!str ? str.split(',') : [];
             array1.push(i.attr('data-id'));
-            var array111 = vdouwTool.unique2(array1);
+            var array111 = vdouwTool.unique(array1);
             var strr = array111.toString();
             $(this).parents('[data-choice=more]').find('input').val(strr);
             i.removeClass("icon-check-empty").addClass("icon-check");
