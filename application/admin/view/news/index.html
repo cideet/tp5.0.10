@@ -32,13 +32,16 @@
         <{volist name="allNews" id="vo"}>
         <tr>
             <td><{$vo.id}></td>
-            <td><{$vo.category_name.name}></td>
+            <td><a target="_blank"
+                   href="/index.php/home/index/cate/id/<{$vo.category_id}>"><{$vo.category_name.name}></a></td>
             <td>
-                <{if condition="strlen(json_encode($vo.titleimg))<3"}>
-                <{$vo.title}>
-                <{else/}>
-                <{$vo.title}><span class="color-admin-blue">【图】</span>
-                <{/if}>
+                <a href="/index.php/home/index/article/id/<{$vo.id}>" target="_blank" title="<{$vo.title}>">
+                    <{if condition="strlen(json_encode($vo.titleimg))<3"}>
+                    <{$vo.title}>
+                    <{else/}>
+                    <{$vo.title}><span class="color-admin-blue">【图】</span>
+                    <{/if}>
+                </a>
             </td>
             <td>
                 <{volist name="$vo.tag" id="t"}>
@@ -76,7 +79,8 @@
             <td class="text-align-center"><{$vo.click}></td>
             <td><{$vo.addtime|date="Y-m-d H:i:s",###}></td>
             <td>
-                <a class="color-admin-blue" title="<{$vo.title}>" href="#">查看</a>
+                <a target="_blank" class="color-admin-blue" title="<{$vo.title}>"
+                   href="/index.php/home/index/article/id/<{$vo.id}>">查看</a>
                 <i class="ml-3 mr-3">|</i>
                 <a class="c-pointer color-admin-blue" title="修改" href="/index.php/admin/news/edit/id/<{$vo.id}>">修改</a>
                 <i class="ml-3 mr-3">|</i>
