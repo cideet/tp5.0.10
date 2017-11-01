@@ -30,7 +30,9 @@
                 <div class="left">验证码</div>
                 <div class="right">
                     <input type="password" class="form-control width60 pull-left"/>
-                    <img class="code" src="/home/images/listpic.jpg"/>
+                    <img class="code" src="<{:captcha_src()}>" onClick="this.src=this.src+'?'+Math.random()"
+                         alt="captcha"/>
+                    <!--<img class="code" src="/home/images/listpic.jpg"/>-->
                 </div>
             </div>
             <div class="p mt-20">

@@ -1,5 +1,5 @@
 /**
- * Created by zhangsf on 2016/11/7.
+ * Created by zhangsanfeng on 2017/10/01.
  * 测试dev分支
  * 测试dev-zhangsanfeng分支
  */
@@ -127,7 +127,7 @@ var vdouwTool = {
     /**
      * 从数组中随机筛选n个元素，组成新的数组
      * @param arr 原数组
-     * @param count 需要筛选出的数据
+     * @param count 需要筛选出的数量
      * @returns {Array}
      */
     chooseSomeByArray: function (arr, count) {
