@@ -11,7 +11,7 @@
                         <span class="mr-20">所属分类：<{$info.categoryName.name}></span>
                         <span class="mr-20">浏览量：<{$info.click}></span>
                     </p>
-                    <p class="mt-5 text-align-center">
+                    <p class="mt-5 text-align-center" data-tag="<{:json_encode($info.tag)}>">
                         <span>所属标签：<{volist name="$info.tag" id="v"}><b class="mr-10 font-normal"><{$v.name}></b><{/volist}></span>
                     </p>
                 </div>
@@ -172,8 +172,8 @@
         }
     });
 
-    //浏览量加1
     $(function () {
+        //浏览量加1
         setTimeout(function () {
             var postData = {
                 'id': '<{$info.id}>'
@@ -181,11 +181,16 @@
             $.post(SCOPE.click_url, postData, function (result) {
             }, "JSON");
         }, 100);
+        //无头像的处理
         $('.article-ul li').each(function () {
             if ($(this).find('.img').attr('src') == "") {
                 $(this).find('.img').attr('src', '/home/images/listpic.jpg');
             }
         });
+        var tagData = $('[data-tag]').attr('data-tag');
+        if (tagData == '[null]') {
+            $('[data-tag]').hide();
+        }
     });
 
     //添加一级评论
