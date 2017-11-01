@@ -1,25 +1,16 @@
 <{include file="public/header"}>
 <article>
     <div class="width1200 middle-left-right pb-100">
-        <div class="pull-left width800">
+        <div class="pull-left width800" >
             <ul class="article-ul mt-20">
                 <{volist name='allNews' id="vo"}>
                 <li>
                     <h3 class="font16"><{$vo.title}></h3>
                     <p class="mt-5">
-                        <span class="mr-20">作者：<{$vo.author}></span>
+                        <span class="mr-20">作者111：<{$vo.author}></span>
                         <span class="mr-20">更新时间：<{$vo.addtime|date='Y-m-d H:i:s',###}></span>
                         <span class="mr-20">所属分类：<{$vo.category_name.name}></span>
-                        <script>
-                            if (JSON.stringify('<{:json_encode($vo.tag)}>') != '[]' || JSON.stringify('<{:json_encode($vo.tag)}>') != '[null]'||'<{:json_encode($vo.tag)}>') != '' || JSON.stringify('<{:json_encode($vo.tag)}>') != 'null') {
-                                document.write('<span class="mr-20">所属标签：<{volist name="$vo.tag" id="v"}><b class="mr-10 font-normal"><{$v.name}></b><{/volist}></span>');
-                            } else {
-                                document.write(123)
-                            }
-                        </script>
-
-
-
+                        <span class="mr-20">所属标签：<{volist name="$vo.tag" id="v"}><b class="mr-10 font-normal"><{$v.name}></b><{/volist}></span>
                     </p>
                     <div class="mt-10">
                         <div class="pull-left"><img class="img" src="<{$vo.titleimg}>"/></div>

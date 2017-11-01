@@ -53,6 +53,9 @@ class News extends \app\admin\controller\Basecontroller
             $newsData['is_top'] = $data['is_top'];
             $newsData['addtime'] = time();
             $newsId = model('News')->add($newsData);
+            if (!$newsData['category_id']) {
+                return show(0, "请选择分类", $newsId);
+            }
             if (!$newsId) {
                 return show(0, "添加主表失败", $newsId);
             }

@@ -15,7 +15,6 @@ class Index extends \app\home\controller\Basecontroller
     public function _initialize()
     {
         parent::_initialize();
-        $this->memberUsername = $this->memberUname;
     }
 
     /**
@@ -25,11 +24,24 @@ class Index extends \app\home\controller\Basecontroller
     public function index()
     {
         $allNews = model('News')->getAllDatas();
-        //echo(json_encode($allNews));
+        echo(json_encode($allNews));
         return $this->fetch('', [
-            'memberUsername' => $this->memberUsername,
             'allNews' => $allNews
         ]);
+    }
+
+    public function category()
+    {
+        $categoryId = getParam('id');
+        if (!!$categoryId) {
+            $allNews = model('News')->getAllDatas();
+            //echo(json_encode($allNews));
+            return $this->fetch('', [
+                'allNews' => $allNews
+            ]);
+        } else {
+            echo('你丫坑爹呀');
+        }
     }
 
     /**
@@ -60,7 +72,6 @@ class Index extends \app\home\controller\Basecontroller
             //echo(json_encode($info));
             $commentCount = model('NewsComment')->getCount($articleId);
             return $this->fetch('', [
-                'memberUsername' => $this->memberUsername,
                 'info' => $info,
                 'commentCount' => $commentCount
             ]);
