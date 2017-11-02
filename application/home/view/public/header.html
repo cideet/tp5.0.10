@@ -21,6 +21,10 @@
         <div class="pull-left">
             <ul>
                 <li class="pull-left mr-20"><a href="/index.php/home/index/index" class="color-white">LOGO</a></li>
+                <{volist name="nav" id="n"}>
+                <li class="pull-left mr-20"><a href="/index.php/home/index/index/id/<{$n.id}>"><{$n.name}></a>
+                </li>
+                <{/volist}>
                 <li class="pull-left mr-20"><a href="/index.php/admin/login/index" target="_blank">后台</a></li>
                 <li class="pull-left mr-20"><a href="/index.php/home/register/index">注册</a></li>
                 <li class="pull-left mr-20"><a href="/index.php/home/login/index">登录</a></li>
@@ -59,5 +63,10 @@
 
     function showSession() {
         alert('memberUserSession:\n------------\n' + JSON.stringify(
-                        <{:session('memberUserSession', '', 'memberUserSession')}>));}
+                < {
+    :
+        session('memberUserSession', '', 'memberUserSession')
+    }>))
+        ;
+    }
 </script>

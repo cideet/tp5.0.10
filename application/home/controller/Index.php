@@ -24,6 +24,7 @@ class Index extends \app\home\controller\Basecontroller
     public function index()
     {
         $categoryId = getParam('id');
+        $this->getNavPid(12);
         if (!!$categoryId) {
             $allNews = model('News')->getAllDatas($categoryId);
             //echo(json_encode($allNews));
@@ -37,6 +38,16 @@ class Index extends \app\home\controller\Basecontroller
                 'allNews' => $allNews
             ]);
         }
+    }
+
+    public function getNavPid($id)
+    {
+        $nav = model('Category')->find($id);
+        echo(json_encode($nav));
+        if ($nav['parent_id'] != 0) {
+            return $this->getNavPid($nav['parent_id']);
+        }
+        return $nav['id'];
     }
 
     /**

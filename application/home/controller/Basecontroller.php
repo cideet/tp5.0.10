@@ -13,6 +13,7 @@ class Basecontroller extends \app\common\controller\Commoncontroller
     public $memberUname;
     public $top20News;
     public $top20Comments;
+    public $nav;
 
     public function _initialize()
     {
@@ -30,10 +31,12 @@ class Basecontroller extends \app\common\controller\Commoncontroller
             $v['member_name'] = model('Member')->getMembernameById($top20Comments[$k]['member_id']);
             $v['head_img'] = model('Member')->getMemberHeadImgById($top20Comments[$k]['member_id']);
         }
-        //echo(json_encode($top20Comments));
+        $nav = model('Category')->getNormalFirstCategory();
+        //echo(json_encode($nav));
         //base文件，切忌瞎JS输出
         $this->assign('topNews', $top20News);
         $this->assign('topComments', $top20Comments);
         $this->assign('memberUsername', $this->memberUname);
+        $this->assign('nav', $nav);
     }
 }
