@@ -16,10 +16,8 @@ class News extends \app\common\model\Basemodel
      */
     public function getAllDatas($categoryId = 0)
     {
-        if ($categoryId) {
-            $where = ['status' => 1, 'category_id' => $categoryId];
-        } else {
-            $where = ['status' => 1];
+        if (is_string($categoryId)) {
+            $where = ['status' => 1, 'category_id' => array('in', $categoryId)];
         }
         $order = ['is_top' => 'desc', 'id' => 'desc'];
         $res = $this->where($where)->order($order)->paginate(10);

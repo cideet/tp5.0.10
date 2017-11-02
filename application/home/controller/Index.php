@@ -25,10 +25,10 @@ class Index extends \app\home\controller\Basecontroller
     {
         $categoryId = getParam('id');
         if (!!$categoryId) {
-            //根据分类ID，获得其下级所有子栏目
+            //根据分类ID，获得其下级所有子栏目（包含本级分类）
             $childCategorys = model('Category')->getChildCategory($categoryId);
             echo(json_encode($childCategorys));
-            $allNews = model('News')->getAllDatas($categoryId);
+            $allNews = model('News')->getAllDatas($childCategorys);
             //echo(json_encode($allNews));
             return $this->fetch('', [
                 'allNews' => $allNews
