@@ -14,13 +14,16 @@ class News extends \app\common\model\Basemodel
      * 获取文章列表
      * @return false|\PDOStatement|string|\think\Collection
      */
-    public function getAllDatas($categoryId = 0)
+    public function getAllDatas($categoryId = array())
     {
-        if (is_string($categoryId)) {
+        if ($categoryId) {
             $where = ['status' => 1, 'category_id' => array('in', $categoryId)];
+            $order = ['is_top' => 'desc', 'id' => 'desc'];
+            $res = $this->where($where)->order($order)->paginate(10);
+        } else {
+            $order = ['is_top' => 'desc', 'id' => 'desc'];
+            $res = $this->order($order)->paginate(10);
         }
-        $order = ['is_top' => 'desc', 'id' => 'desc'];
-        $res = $this->where($where)->order($order)->paginate(10);
         foreach ($res as $k => $v) {
             $tagTempData = model('NewsTag')->getDataByNewsId($v['id']);
             //根据文章id，在news_tag数据表，获取到此文章id对应的所有tag_id
@@ -41,7 +44,8 @@ class News extends \app\common\model\Basemodel
      * @param string $map
      * @return array|false|\PDOStatement|string|\think\Model
      */
-    public function getNewsById($newsId)
+    public
+    function getNewsById($newsId)
     {
         $where = ['id' => $newsId];
         $ret = $this->where($where)->find();
@@ -54,7 +58,8 @@ class News extends \app\common\model\Basemodel
      * @param $thisNewsId
      * @return array|false|\PDOStatement|string|\think\Model
      */
-    public function getNextNews($categoryId, $thisNewsId)
+    public
+    function getNextNews($categoryId, $thisNewsId)
     {
         $where = ['category_id' => $categoryId, 'id' => array('gt', $thisNewsId)];
         return $this->where($where)->field('id,title')->find();
@@ -66,7 +71,8 @@ class News extends \app\common\model\Basemodel
      * @param $thisNewsId
      * @return array|false|\PDOStatement|string|\think\Model
      */
-    public function getPrevNews($categoryId, $thisNewsId)
+    public
+    function getPrevNews($categoryId, $thisNewsId)
     {
         $where = ['category_id' => $categoryId, 'id' => array('lt', $thisNewsId)];
         return $this->where($where)->field('id,title')->find();

@@ -22,24 +22,26 @@
             <ul>
                 <li class="pull-left mr-20"><a href="/index.php/home/index/index" class="color-white">LOGO</a></li>
                 <{volist name="nav" id="n"}>
-                <li class="pull-left mr-20"><a href="/index.php/home/index/index/id/<{$n.id}>"><{$n.name}></a>
+                <li class="pull-left mr-20"><a class="color-white" href="/index.php/home/index/index/id/<{$n.id}>"><{$n.name}></a>
                 </li>
                 <{/volist}>
-                <li class="pull-left mr-20"><a href="/index.php/admin/login/index" target="_blank">后台</a></li>
-                <li class="pull-left mr-20"><a href="/index.php/home/register/index">注册</a></li>
-                <li class="pull-left mr-20"><a href="/index.php/home/login/index">登录</a></li>
-                <li class="pull-left mr-20"><a href="javascript:;" onclick="showCookie()">查看cookie</a></li>
-                <li class="pull-left mr-20"><a href="javascript:;" onclick="showSession()">查看session</a></li>
             </ul>
         </div>
         <{if condition="$memberUsername!=''"}>
         <div class="pull-right">
             <img src="/home/images/listpic.jpg" class="member-headpic pull-left ml-10"/>
-            <span class="pull-left color-white ml-10"><{$memberUsername}></span>
-            <span class="color-white pull-left ml-10 c-pointer vdouw-exit">退出</span>
+            <a href="javascript:;" onclick="showCookie()" class="color-white ml-10">查看cookie</a>
+            <span class="ml-5 mr-5 color-white">|</span>
+            <a href="javascript:;" onclick="showSession()" class="color-white">查看session</a>
+            <span class="ml-5 mr-5 color-white">|</span>
+            <span class="color-white">欢迎你，<{$memberUsername}></span>
+            <span class="ml-5 mr-5 color-white">|</span>
+            <span class="color-white c-pointer vdouw-exit">退出</span>
         </div>
         <{else/}>
         <div class="pull-right">
+            <a href="/index.php/admin/login/index" class="color-white" target="_blank">后台登录</a>
+            <span class="ml-5 mr-5 color-white">|</span>
             <a href="/index.php/home/login/index" class="color-white">登录</a>
             <span class="ml-5 mr-5 color-white">|</span>
             <a href="/index.php/home/register/index" class="color-white">注册</a>
@@ -62,6 +64,6 @@
     }
 
     function showSession() {
-        alert('memberUserSession:\n------------\n' + JSON.stringify("<{:session('memberUserSession', '', 'memberUserSession')}>"));
+        alert("memberUserSession:\n------------\n" + JSON.stringify('<{:session("memberUserSession", "", "memberUserSession")}>'));
     }
 </script>
