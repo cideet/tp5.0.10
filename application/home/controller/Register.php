@@ -26,6 +26,7 @@ class Register extends \app\home\controller\Basecontroller
     {
         $data = input('post.');
         if ($data) {
+            if (!captcha_check($data['verifycode'])) return show(0, '请输入正确的验证码');
             if (trim($data['rpassword']) != trim($data['password'])) return show(0, '密码不一致');
             if (model('Member')->getMemberuserByUsername(trim($data['username']))) return show(0, '此用户名已存在');
             if (model('Member')->getMemberuserByEmail(trim($data['email']))) return show(0, ',此邮件已注册');
@@ -42,5 +43,17 @@ class Register extends \app\home\controller\Basecontroller
                 'memberUsername' => $this->memberUsername
             ]);
         }
+    }
+
+    public function verify()
+    {
+        $config = [
+            'fontSize' => 50, // 验证码字体大小
+            'length' => 4, // 验证码位数
+            'useNoise' => false, // 关闭验证码杂点
+            'codeset' => '2345678wertyuipkjhgfdsazxcvbnmQWERTYUPLKJHGFDSAZXCVBN'
+        ];
+        $captcha = new \think\captcha\Captcha($config);
+        return $captcha->entry();
     }
 }

@@ -22,6 +22,7 @@ class Login extends \app\home\controller\Basecontroller
     {
         $data = input('post.');
         if ($data) {
+            //if (!captcha_check($data['verifycode'])) return show(0, '请输入正确的验证码，未正式上线先注释掉');
             $username = $data['username'];
             $password = getVdouwMD5($data['password']);
             if (!trim($username) || !trim($password)) {
