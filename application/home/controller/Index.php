@@ -24,8 +24,10 @@ class Index extends \app\home\controller\Basecontroller
     public function index()
     {
         $categoryId = getParam('id');
-        $this->getNavPid(12);
         if (!!$categoryId) {
+            //根据分类ID，获得其下级所有子栏目
+            $childCategorys = model('Category')->getChildCategory($categoryId);
+            echo(json_encode($childCategorys));
             $allNews = model('News')->getAllDatas($categoryId);
             //echo(json_encode($allNews));
             return $this->fetch('', [
@@ -38,16 +40,6 @@ class Index extends \app\home\controller\Basecontroller
                 'allNews' => $allNews
             ]);
         }
-    }
-
-    public function getNavPid($id)
-    {
-        $nav = model('Category')->find($id);
-        echo(json_encode($nav));
-        if ($nav['parent_id'] != 0) {
-            return $this->getNavPid($nav['parent_id']);
-        }
-        return $nav['id'];
     }
 
     /**

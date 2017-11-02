@@ -61,7 +61,7 @@ final class Data
      * @param int $level 等级
      * @return array
      */
-    static public function channelList($data, $pid = 0, $html = "&nbsp;", $fieldPri = 'cid', $fieldPid = 'pid', $level = 1)
+    static public function channelList($data, $pid = 0, $html = "&nbsp;", $fieldPri = 'id', $fieldPid = 'parent_id', $level = 1)
     {
         $data = self::_channelList($data, $pid, $html, $fieldPri, $fieldPid, $level);
         if (empty($data)) return $data;

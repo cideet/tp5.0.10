@@ -35,6 +35,18 @@ class Category extends \app\common\model\Basemodel
         }
     }
 
+
+    // 传递cid获得所有子栏目
+    public function getChildCategory($category_id)
+    {
+        $data = $this->getCategorys('all', false);
+        $child = \Vdouw\Data::channelList($data, $category_id);
+        foreach ($child as $k => $v) {
+            $childs[] = $v['id'];
+        }
+        return $childs;
+    }
+
     /**
      * 获取一级分类
      */
@@ -75,6 +87,7 @@ class Category extends \app\common\model\Basemodel
     }
 
     /**
+     *
      * 根据ID获取name
      * @param $id
      * @return array|false|\PDOStatement|string|\think\Model
@@ -85,7 +98,62 @@ class Category extends \app\common\model\Basemodel
         $ret = $this->where($where)->field('name')->find();
         return $ret;
     }
-    
+
+    public function getChildCategorys($id)
+    {
+        $arr = [];
+        $where = ['parent_id' => $id];
+        $ret = $this->where($where)->field('id,name,parent_id')->select();
+        foreach ($ret as $k => $v) {
+            array_push($arr, $v);
+            $where1 = ['parent_id' => $v['id']];
+            $ret1 = $this->where($where1)->field('id,name,parent_id')->select();
+            if ($ret1) {
+                array_push($arr, $ret1);
+            }
+        }
+        return $arr;
+    }
+
+    //写死的二级
+    //public function getChildCategorys($id)
+    //{
+    //    $arr = [];
+    //    $where = ['parent_id' => $id];
+    //    $ret = $this->where($where)->field('id,name,parent_id')->select();
+    //    foreach ($ret as $k => $v) {
+    //        array_push($arr, $v);
+    //        $where1 = ['parent_id' => $v['id']];
+    //        $ret1 = $this->where($where1)->field('id,name,parent_id')->select();
+    //        if ($ret1) {
+    //            array_push($arr, $ret1);
+    //        }
+    //    }
+    //    return $arr;
+    //}
+
+
+    //private ClassConfig getOriginalConfig(ClassConfig config) {
+    //    if (null != config && null != config.getPid()) {
+    //        ClassConfig ccf = classConfigRepository.findBeforeClassConfigByPidAndTimeS(config.getPid());
+    //        if (ccf.getPriority() < 20) {
+    //            return config;
+    //        } else{
+    //            getOriginalConfig(ccf);
+    //        }
+    //    }
+    //    return config;
+    //}
+
+
+//    public List<Integer> getTab(int id){
+//        Map<List<Integer>> resutl = new HashMap();
+//        List<Interger> query = query(id);
+//        for(int i =0 ;i<query.size();i++){
+//            List<Interger> thread = getTab(query.get(i));
+//        }
+//    }
+
 }
 
 ?>

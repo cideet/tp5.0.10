@@ -10,16 +10,11 @@ namespace app\admin\controller;
 
 class Category extends \app\admin\controller\Basecontroller
 {
-    private $obj;
-
     public function __construct()
     {
         parent::__construct();
-        $this->obj = model('Category');
-        $order = ['listorder' => 'asc', 'id' => 'asc',];
-        $this->categorys = $this->obj->getCategorys();
-        $this->firstCategory = $this->obj->getNormalFirstCategory();
-        //dump($this->categorys);
+        $this->categorys = model('Category')->getCategorys();
+        //echo(json_encode($this->categorys));
     }
 
     //分类的列表页
@@ -38,7 +33,7 @@ class Category extends \app\admin\controller\Basecontroller
             $data['status'] = 1;
             //$data['create_time'] = time();
             //$data['update_time'] = time();
-            $resId = $this->obj->add($data);
+            $resId = model('Category')->add($data);
             if ($resId) {
                 return show(1, "添加成功", $resId);
             }
@@ -56,7 +51,7 @@ class Category extends \app\admin\controller\Basecontroller
         if (request()->isPost()) {
             $data = input('post.');
             $id = $data['id'];
-            $res = $this->obj->save($data, ['id' => intval($data['id'])]);
+            $res = model('Category')->save($data, ['id' => intval($data['id'])]);
             if ($res) {
                 return show(1, "更新成功");
             } else {
@@ -64,7 +59,7 @@ class Category extends \app\admin\controller\Basecontroller
             }
         } else {
             $id = getParam('id');
-            $thiscate = $this->obj->find($id);
+            $thiscate = model('Category')->find($id);
             return $this->fetch('', [
                 'categorys' => $this->categorys,
                 'thiscate' => $thiscate
@@ -78,7 +73,7 @@ class Category extends \app\admin\controller\Basecontroller
         if (request()->isPost()) {
             $id = input('post.id');
             $data = array('status' => input('post.status'));
-            $res = $this->obj->updateById($id, $data);
+            $res = model('Category')->updateById($id, $data);
             if ($res) {
                 return (show(1, "操作成功"));
             } else {
@@ -93,7 +88,7 @@ class Category extends \app\admin\controller\Basecontroller
         $data = input('post.');
         if ($data) {
             $data['status'] = 1;
-            $cateID = $this->obj->add($data);
+            $cateID = model('Category')->add($data);
             if ($cateID) {
                 return show(1, "添加成功", $cateID);
             }
@@ -112,7 +107,7 @@ class Category extends \app\admin\controller\Basecontroller
     {
         $id = input('post.id');
         $listorder = input('post.listorder');
-        $res = $this->obj->save(['listorder' => $listorder], ['id' => $id]);
+        $res = model('Category')->save(['listorder' => $listorder], ['id' => $id]);
         if ($res) {
             return (show(1, "操作成功", $res));
         } else {
