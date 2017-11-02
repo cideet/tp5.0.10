@@ -15,11 +15,13 @@
                         <!--class="mr-10 font-normal"><{$v.name}></b><{/volist}></span>-->
                     </p>
                     <div class="mt-10">
-                        <div class="pull-left"><a href="/index.php/home/index/article/id/<{$vo.id}>"><img class="img" src="<{$vo.titleimg}>"/></a></div>
+                        <div class="pull-left"><a class="img" href="/index.php/home/index/article/id/<{$vo.id}>">
+                            <div><img class="tran-all" src="<{$vo.titleimg}>"/></div>
+                        </a></div>
                         <div class="pull-left">
                             <div class="p color-lgray"><{$vo.description}></div>
                             <div class="pull-right a">
-                                <a href="/index.php/home/index/article/id/<{$vo.id}>">查看详细</a>
+                                <a class="font12 tran-all" href="/index.php/home/index/article/id/<{$vo.id}>">查看详细</a>
                             </div>
                         </div>
                     </div>
@@ -39,8 +41,8 @@
 <script>
     $(function () {
         $('.article-ul li').each(function () {
-            if ($(this).find('.img').attr('src') == "") {
-                $(this).find('.img').attr('src', '/home/images/listpic.jpg');
+            if ($(this).find('.img img').attr('src') == "") {
+                $(this).find('.img img').attr('src', '/home/images/listpic.jpg');
             }
             var tagData = $(this).find('.tag').attr('data-tag');
             if (tagData == '[null]' || tagData == '[]') {
