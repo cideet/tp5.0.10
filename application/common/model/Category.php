@@ -35,10 +35,16 @@ class Category extends \app\common\model\Basemodel
         }
     }
 
-
-    // 传递cid获得所有子栏目
+    /**
+     * 传递category_id获得所有子栏目
+     * 包含本级栏目
+     * @param $category_id
+     * @return array
+     */
     public function getChildCategory($category_id)
     {
+        $childs = array((int)$category_id);
+        //$childs[] = (int)$category_id;
         $data = $this->getCategorys('all', false);
         $child = \Vdouw\Data::channelList($data, $category_id);
         foreach ($child as $k => $v) {
