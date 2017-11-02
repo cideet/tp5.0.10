@@ -39,15 +39,15 @@ html, body {
     border-radius: 5px;
     -webkit-box-shadow: 0 0 3px #ccc;
     -moz-box-shadow:: 0 0 3px #ccc;
-    box-shadow:: 0 0 3px #ccc;
-    padding: 15px 20px;
+    box-shadow: 0 0 3px #ccc;
+    padding: 15px 20px 20px 20px;
     position: relative;
     margin-bottom: 20px;
 }
 
 .article-ul li .img {
-    width: 225px;
-    height: 150px;
+    width: 222px;
+    height: 152px;
     overflow: hidden;
     display: block;
     border: 1px solid #ccc;
@@ -60,13 +60,13 @@ html, body {
     left: 5px;
     top: 5px;
     overflow: hidden;
-    width: 213px;
-    height: 138px;
+    width: 210px;
+    height: 140px;
 }
 
 .article-ul li .img img {
-    width: 213px;
-    height: 138px;
+    width: 210px;
+    height: 140px;
 }
 
 .article-ul li .img img:hover {
@@ -74,11 +74,11 @@ html, body {
 }
 
 .article-ul li div .pull-left:nth-child(1) {
-    width: 250px;
+    width: 240px;
 }
 
 .article-ul li div .pull-left:nth-child(2) {
-    width: 500px;
+    width: 510px;
 }
 
 .article-ul li div .pull-left:nth-child(2) > div.p {
