@@ -29,7 +29,7 @@ if (isset($_COOKIE['qq_accesstoken']) && isset($_COOKIE['qq_openid'])) {
     $userinfo = $qc->get_user_info();
     debug($userinfo);
 } else {
-    echo('<a href="qqlogin.php">登录QQ</a>');
+    echo('<a href="index.php">登录QQ</a>');
 }
 ?>
 
