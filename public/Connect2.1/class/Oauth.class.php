@@ -77,6 +77,12 @@ class Oauth
         $params = array();
         parse_str($response, $params);
         $this->recorder->write("access_token", $params["access_token"]);
+        //debug($params);
+        //Array(
+        //    [access_token] => 9F076140427B09615B6C8F89D2FB6641
+        //    [expires_in] => 7776000
+        //    [refresh_token] => 4703D0FDDFD186874C19E8A451930AE7
+        //)
         return $params["access_token"];
     }
 

@@ -6,5 +6,12 @@
  * Time: 17:06
  */
 
-echo $_GET['code'];
+require 'Connect2.1/function.php';
+require 'Connect2.1/qqConnectAPI.php';
 
+//echo $_GET['code'];
+
+//请求accessToken
+$oauth = new Oauth();
+$accesstoken = $oauth->qq_callback();
+//debug($accesstoken);
