@@ -6,4 +6,8 @@
  * Time: 17:06
  */
 
-echo('oauth');
+if ($_GET && $_GET['code']) {
+    echo $_GET['code'];
+} else {
+    echo('123');
+}

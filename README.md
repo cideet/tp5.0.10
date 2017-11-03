@@ -14,6 +14,10 @@ http://www.imooc.com/learn/596
 已学到http://www.imooc.com/video/11010
 已向QQ互联提交申请，等待中
 20171101
+Recorder.class.php 配置读写与session存取
+URL.class.php 基于CURL库的GET和POST请求
+Oauth.class.php Oauth相关URL动态拼接与token操作
+
 
 
 
