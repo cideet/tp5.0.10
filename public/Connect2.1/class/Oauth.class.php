@@ -5,9 +5,9 @@
  * @copyright © 2013, Tencent Corporation. All rights reserved.
  */
 
-require_once(CLASS_PATH . "Recorder.class.php");
-require_once(CLASS_PATH . "URL.class.php");
-require_once(CLASS_PATH . "ErrorCase.class.php");
+require_once(QQ_CONNECT_SDK_CLASS_PATH . "Recorder.class.php");
+require_once(QQ_CONNECT_SDK_CLASS_PATH . "URL.class.php");
+require_once(QQ_CONNECT_SDK_CLASS_PATH . "ErrorCase.class.php");
 
 class Oauth
 {
@@ -42,6 +42,7 @@ class Oauth
             "state" => $state,
             "scope" => $scope
         );
+        //debug($keysArr);
         $login_url = $this->urlUtils->combineURL(self::GET_AUTH_CODE_URL, $keysArr);
         header("Location:$login_url");
     }

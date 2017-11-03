@@ -6,8 +6,5 @@
  * Time: 17:06
  */
 
-if ($_GET && $_GET['code']) {
-    echo $_GET['code'];
-} else {
-    echo('123');
-}
+echo $_GET['code'];
+

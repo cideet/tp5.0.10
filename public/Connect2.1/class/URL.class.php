@@ -5,7 +5,7 @@
  * @copyright © 2013, Tencent Corporation. All rights reserved.
  */
 
-require_once(CLASS_PATH . "ErrorCase.class.php");
+require_once(QQ_CONNECT_SDK_CLASS_PATH . "ErrorCase.class.php");
 
 /*
  * @brief url封装类，将常用的url请求操作封装在一起
@@ -31,14 +31,11 @@ class URL
     {
         $combined = $baseURL . "?";
         $valueArr = array();
-
         foreach ($keysArr as $key => $val) {
             $valueArr[] = "$key=$val";
         }
-
         $keyStr = implode("&", $valueArr);
         $combined .= ($keyStr);
-
         return $combined;
     }
 
@@ -60,12 +57,10 @@ class URL
             $response = curl_exec($ch);
             curl_close($ch);
         }
-
         //-------请求为空
         if (empty($response)) {
             $this->error->showError("50001");
         }
-
         return $response;
     }
 
@@ -92,7 +87,6 @@ class URL
      */
     public function post($url, $keysArr, $flag = 0)
     {
-
         $ch = curl_init();
         if (!$flag) curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -100,7 +94,6 @@ class URL
         curl_setopt($ch, CURLOPT_POSTFIELDS, $keysArr);
         curl_setopt($ch, CURLOPT_URL, $url);
         $ret = curl_exec($ch);
-
         curl_close($ch);
         return $ret;
     }

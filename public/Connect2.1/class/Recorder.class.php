@@ -5,55 +5,69 @@
  * @copyright © 2013, Tencent Corporation. All rights reserved.
  */
 
-require_once(CLASS_PATH."ErrorCase.class.php");
-class Recorder{
+require_once(QQ_CONNECT_SDK_CLASS_PATH . "ErrorCase.class.php");
+
+class Recorder
+{
     private static $data;
     private $inc;
     private $error;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->error = new ErrorCase();
 
         //-------读取配置文件
-        $incFileContents = file(ROOT."comm/inc.php");
-        $incFileContents = $incFileContents[1];
-        $this->inc = json_decode($incFileContents);
-        if(empty($this->inc)){
+        //$incFileContents = '{"appid":"101439632","appkey":"2258276bc846bcbbda4df3432c8759eb","callback":"http://127.0.0.65/oauth.php","scope":"get_user_info","errorReport":true,"storageType":"file","host":"localhost","user":"root","password":"root","database":"test"}';
+        //$this->inc = json_decode($incFileContents);
+        $this->inc = new stdClass();
+        $this->inc->appid = '101439632';
+        $this->inc->appkey = '2258276bc846bcbbda4df3432c8759eb';
+        $this->inc->callback = 'http://blog.vdouw.com/oauth.php';
+        $this->inc->scope = 'get_user_info';
+        $this->inc->errorReport = true;
+        $this->inc->storageType = 'file';
+
+        if (empty($this->inc)) {
             $this->error->showError("20001");
         }
-
-        if(empty($_SESSION['QC_userData'])){
+        if (empty($_SESSION['QC_userData'])) {
             self::$data = array();
-        }else{
+        } else {
             self::$data = $_SESSION['QC_userData'];
         }
     }
 
-    public function write($name,$value){
+    public function write($name, $value)
+    {
         self::$data[$name] = $value;
     }
 
-    public function read($name){
-        if(empty(self::$data[$name])){
+    public function read($name)
+    {
+        if (empty(self::$data[$name])) {
             return null;
-        }else{
+        } else {
             return self::$data[$name];
         }
     }
 
-    public function readInc($name){
-        if(empty($this->inc->$name)){
+    public function readInc($name)
+    {
+        if (empty($this->inc->$name)) {
             return null;
-        }else{
+        } else {
             return $this->inc->$name;
         }
     }
 
-    public function delete($name){
+    public function delete($name)
+    {
         unset(self::$data[$name]);
     }
 
-    function __destruct(){
+    function __destruct()
+    {
         $_SESSION['QC_userData'] = self::$data;
     }
 }
