@@ -6,8 +6,8 @@
  * Time: 11:26
  */
 
-require 'Connect2.1/function.php';
-require 'Connect2.1/qqConnectAPI.php';
+require 'function.php';
+require 'qqConnectAPI.php';
 ?>
 
 <!DOCTYPE html>

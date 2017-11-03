@@ -23,7 +23,7 @@ class Recorder
         $this->inc = new stdClass();
         $this->inc->appid = '101439632';
         $this->inc->appkey = '2258276bc846bcbbda4df3432c8759eb';
-        $this->inc->callback = 'http://blog.vdouw.com/oauth.php';
+        $this->inc->callback = 'http://blog.vdouw.com/plugins/qqlogin/callback.php';
         $this->inc->scope = 'get_user_info';
         $this->inc->errorReport = true;
         $this->inc->storageType = 'file';

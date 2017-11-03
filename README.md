@@ -18,7 +18,7 @@ Recorder.class.php 配置读写与session存取
 URL.class.php 基于CURL库的GET和POST请求
 Oauth.class.php Oauth相关URL动态拼接与token操作
 每个QQ的openid具有唯一性，可以判断是否是第一次登录
-基本完成，查看效果地址：http://blog.vdouw.com/qqlogin.php
+基本完成，查看效果地址：http://blog.vdouw.com/plugins/qqlogin/
 
 
 
