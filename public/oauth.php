@@ -23,3 +23,5 @@ $openid = $oauth->get_openid();
 setcookie('qq_accesstoken', $accesstoken, time() + 86400);
 setcookie('qq_openid', $openid, time() + 86400);
 
+header('location:qq.php');
+
