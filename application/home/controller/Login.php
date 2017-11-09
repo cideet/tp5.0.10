@@ -35,7 +35,9 @@ class Login extends \app\home\controller\Basecontroller
                 return show(0, '密码错误');
             }
             session('memberUserSession', json_encode($ret), 'memberUserSession');
-            cookie('memberUserCookie', json_encode($ret));
+            cookie('memberUser_name', $ret['username']);
+            cookie('memberUser_id', $ret['id']);
+            cookie('memberUser_headImg', $ret['head_img']);
             return show(1, '登录成功', $ret);
         } else {
             //echo(session('memberUser','','memberUser'));
@@ -48,7 +50,9 @@ class Login extends \app\home\controller\Basecontroller
     public function logout()
     {
         session('memberUserSession', null, 'memberUserSession');
-        cookie('memberUserCookie', null);
+        cookie('memberUser_name', null);
+        cookie('memberUser_id', null);
+        cookie('memberUser_headimg', null);
         $this->redirect('/index.php/home/login/index');
     }
 

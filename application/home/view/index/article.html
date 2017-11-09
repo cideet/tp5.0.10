@@ -13,7 +13,7 @@
                         <span class="mr-20">浏览量：<{$info.click}></span>
                     </p>
                     <!--<p class="mt-5 text-align-center" data-tag="<{:json_encode($info.tag)}>">-->
-                        <!--<span>所属标签：<{volist name="$info.tag" id="v"}><b class="mr-10 font-normal"><{$v.name}></b><{/volist}></span>-->
+                    <!--<span>所属标签：<{volist name="$info.tag" id="v"}><b class="mr-10 font-normal"><{$v.name}></b><{/volist}></span>-->
                     <!--</p>-->
                 </div>
                 <div class="content">
@@ -149,9 +149,11 @@
 
     //添加一级评论
     function addFirstComment() {
-        if (!isLogin()) {
+        console.log(vdouwTool.getCookie('memberUser_name'));
+        var flag = isLogin();
+        if (isLogin()) {
             var postData = {
-                'member_id': JSON.parse(vdouwTool.getCookie('memberUserCookie'))['id'],
+                'member_id': vdouwTool.getCookie('memberUser_id'),
                 'news_id': '<{$info.id}>',
                 'parent_id': 0,
                 'parents_id': 0,
@@ -170,7 +172,7 @@
 
     //回复评论
     function addSecondComment() {
-        if (!isLogin()) {
+        if (isLogin()) {
             var postData = {
                 'member_id': JSON.parse(vdouwTool.getCookie('memberUserCookie'))['id'],
                 'news_id': $('[data-current=true]').attr('data-newsId'),
