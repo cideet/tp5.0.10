@@ -28,11 +28,12 @@ class Image extends \think\Controller
      * kingeditor中的图片上传
      * @return bool|string
      */
-    public function imageUpload() {
+    public function imageUpload()
+    {
         $res = \think\Request::instance()->file('file');
-        if($res) {
+        if ($res) {
             return '/' . $res['file']['savepath'] . $res['file']['savename'];
-        }else{
+        } else {
             return false;
         }
     }
