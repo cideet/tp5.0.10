@@ -36,15 +36,17 @@ function consolelog($a)
 /**
  * 获取地址传递的param参数
  * 自己写的一个比较蛋疼的方法
+ * href="/index.php/admin/category/edit/id/<{$v['id']}>/id444/444">修改</a>
+ * Array ( [0] => id [1] => 1 [2] => id444 [3] => 444 )
  * @param $a string
  * @return string
  */
-//href="/index.php/admin/category/edit/id/<{$v['id']}>/id444/444">修改</a>
-//Array ( [0] => id [1] => 1 [2] => id444 [3] => 444 )
 function getParam($a)
 {
     $request = \think\Request::instance()->param();
-    if (count($request) % 2 != 0) return;
+    if (count($request) % 2 != 0) {
+        return '';
+    }
     $i = 0;
     $k = "";
     while ($i < count($request)) {

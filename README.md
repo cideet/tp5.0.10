@@ -24,6 +24,9 @@ Oauth.class.php Oauth相关URL动态拼接与token操作 <br>
 每个QQ的openid具有唯一性，可以判断是否是第一次登录 <br>
 基本完成，查看效果地址：http://blog.vdouw.com/plugins/qqlogin/ <br>
 
+获取最后一条SQL <br>
+echo $this->getLastSql(); <br>
+
 
 
 
