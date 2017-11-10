@@ -59,10 +59,14 @@ function getParam($a)
     return $k;
 }
 
-//href="<{:url('category/edit', ['id'=>$v.id,'id444'=>444])}>">修改</a>
-//Array ( [0] => 1 [1] => 444 )
-//此方法未使用，其链接形式为：index.php/admin/index/index/1/444
-//获取参数的方法为（比如获取id）：$id=getParams[1]
+/**
+ * 没啥卵用
+ * href="<{:url('category/edit', ['id'=>$v.id,'id444'=>444])}>">修改</a>
+ * Array ( [0] => 1 [1] => 444 )
+ * 此方法未使用，其链接形式为：index.php/admin/index/index/1/444
+ * 获取参数的方法为（比如获取id）：$id=getParams[1]
+ * @return mixed
+ */
 function getParams()
 {
     $request = \think\Request::instance()->param();
