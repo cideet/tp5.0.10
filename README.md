@@ -6,6 +6,11 @@ config('config.myname') <br>
 allowField(true)的作用：存数据库的时候，过滤掉数据表中没有的字段，防止报错。 <br>
 $this->allowField(true)->add($data); <br>
 
+$user=model('AdminUser')->get(['username'=>$data['username']); <br>
+ThinkPHP5提供的这个get方法不错 <br>
+
+halt($data) == var_dump($data);exit; <br>
+
 验证码配置：config.php <br>
 'captcha'=>['imageH'=>50,'imageW'=>200] <br>
 
