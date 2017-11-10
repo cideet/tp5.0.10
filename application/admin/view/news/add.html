@@ -144,12 +144,10 @@
     var ue = UE.getEditor('editor');
     var content = '<p>正文的内容</p>';
     ue.addListener("ready", function () {
-        // editor准备好之后才可以使用
         ue.setContent(content);
     });
 
     $(function () {
-
         $("#file_upload").uploadify({
             'swf': SCOPE.uploadify_swf,
             'uploader': SCOPE.image_upload,
