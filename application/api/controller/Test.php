@@ -50,10 +50,19 @@ class Test extends \think\Controller
      */
     public function save()
     {
-        return [
+        //return [
+        //    'status' => 1,
+        //    'message' => 'OK',
+        //    'data' => input('post.')
+        //];
+        //在postman中可以看出，输出的状态码是200，但是我们需要输出的是201
+        $data = [
             'status' => 1,
             'message' => 'OK',
             'data' => input('post.')
         ];
+        return json($data, 201);
+        //post方式 save方法中的状态码从200，就改成201了
+
     }
 }
