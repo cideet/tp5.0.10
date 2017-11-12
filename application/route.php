@@ -22,4 +22,7 @@
 
 //通过域名加test，就可以访问/index.php/api/test/index
 \think\Route::get('test', 'api/test/index');
-//postman对应的是get方法，输入网址“http://127.0.0.65/test”查看效果
+//postman对应的是get方式，输入网址“http://127.0.0.65/test”查看效果
+
+\think\Route::put('test/:id', 'api/test/update');
+//postman对应的是put方式，输入网址“http://127.0.0.65/test/12”查看效果，可以在body中添加参数

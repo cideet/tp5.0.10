@@ -16,5 +16,10 @@ class Test extends \think\Controller
             '1234', '4567777'
         ];
     }
-    
+
+    public function update($id = 0)
+    {
+        echo($id);
+        halt(input('put.'));
+    }
 }
