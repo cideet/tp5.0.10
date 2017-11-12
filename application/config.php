@@ -102,7 +102,8 @@ return [
     'exception_tmpl' => THINK_PATH . 'tpl' . DS . 'think_exception.tpl',    // 异常页面的模板文件
     'error_message' => '页面错误！请稍后再试～',   // 错误显示信息,非调试模式有效
     'show_error_msg' => false,                  // 显示错误信息
-    'exception_handle' => '',                   // 异常处理handle类 留空使用 \think\exception\Handle
+    //'exception_handle' => '',                   // 异常处理handle类 留空使用 \think\exception\Handle
+    'exception_handle' => '\vdouw\exception\ApiHandleException',   // 改写异常处理handle类，按指定的数据格式输出程序内部错误
 
     // +----------------------------------------------------------------------
     // | 日志设置

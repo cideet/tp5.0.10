@@ -65,10 +65,10 @@ class Test extends \think\Controller
         //return json($data, 201);
         //post方式 save方法中的状态码从200，就改成201了
 
-        return showApi(1, 'OK', input('post.'), 201);
+        //return showApi(1, 'OK', input('post.'), 201);
         //封装通用化API接口数据输出
 
-        //model('sdfsdg'); //接口报错
+        model('sdfsdg'); //接口报错
 
         //try {
         //    model('sdfsg');
