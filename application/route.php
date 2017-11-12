@@ -27,6 +27,8 @@
 \think\Route::put('test/:id', 'api/test/update');
 //postman对应的是put方式，输入网址“http://127.0.0.65/test/12”查看效果，可以在body中添加参数
 
+\think\Route::post('test', 'api/test/save');
+
 \think\Route::delete('test/:id', 'api/test/delete');
 
 //Route::resource('test', 'api/test');
