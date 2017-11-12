@@ -57,6 +57,9 @@ Route::resourse <br>
 比如Route::resourse('blog','index/blog'); 对应的index模块的blog控制器 <br>
 具体看一下TP5手册的96页，搜索“restful” <br>
 
+写接口的时候，先把debug关了 <br>
+
+
 
 
 
