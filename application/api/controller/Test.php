@@ -22,4 +22,9 @@ class Test extends \think\Controller
         echo($id);
         halt(input('put.'));
     }
+
+    public function delete($id = 0)
+    {
+        echo($id);
+    }
 }
