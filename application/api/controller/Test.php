@@ -66,6 +66,16 @@ class Test extends \think\Controller
         //post方式 save方法中的状态码从200，就改成201了
 
         return showApi(1, 'OK', input('post.'), 201);
-        //封装API输出公用方法
+        //封装通用化API接口数据输出
+
+        //model('sdfsdg'); //接口报错
+
+        //try {
+        //    model('sdfsg');
+        //} catch (\Exception $e) {
+        //    return showApi(0, $e->getMessage(),'this have error', 400);
+        //}
+        //当然，我们可以这么处理
+        //但是这，并不能处理更多的一些不可预支的程序错误
     }
 }
