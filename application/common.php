@@ -73,5 +73,23 @@ function getParams()
     return $request;
 }
 
+/**
+ * 通用化API接口数据输出
+ * @param $status 业务状态码
+ * @param $message 信息提示
+ * @param $data 数据
+ * @param $httpCode HTTP状态码
+ * @return array
+ */
+function showApi($status, $message, $data = [], $httpCode = 200)
+{
+    $data = [
+        'status' => $status,
+        'message' => $message,
+        'data' => $data
+    ];
+    return json($data, $httpCode);
+}
+
 
 
