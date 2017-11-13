@@ -75,6 +75,10 @@ app_type => android <br>
 did => 设备号 <br>
 model => 浏览器适配号，比如sanxing5.6 <br>
 
+API接口的数据安全解决方案之授权码sign解剖 <br>
+sign加密需要客户端工程师做，解密需要服务端工程师做 <br>
+
+
 
 
 
