@@ -10,7 +10,7 @@ namespace app\api\controller;
 
 use vdouw\exception\ApiException;
 
-class Test extends \think\Controller
+class Test extends \app\api\controller\Common
 {
     /**
      * 对应postman中的get方式

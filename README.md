@@ -59,6 +59,21 @@ Route::resourse <br>
 
 写接口的时候，先把debug关了 <br>
 
+APP-API数据安全 <br>
+基本参数放入header <br>
+每次http请求都携带唯一的sign <br>
+请求参数、返回数据按安全性适当加密 <br>
+access_token，登录时获取 <br>
+
+每次http请求，必须得验证请求的合法性，所以引入sign。可以放在header，也可以放在body里面。 <br>
+建议放在header头里，body里面就放一些业务相关的字段。 <br>
+基本参数每次请都放入header，比如: <br>
+Content-Type => application/x-www-form-urlencoded <br>
+sign => sdfsdfs <br>
+version => 版本号 <br>
+app_type => android <br>
+did => 设备号 <br>
+model => 浏览器适配号，比如sanxing5.6 <br>
 
 
 
@@ -68,6 +83,9 @@ Route::resourse <br>
 
 
 
+
+
+<br><br><br><br><br>
 PHP第三方登录 <br>
 OAuth is short for open authorization <br>
 理论学习地址：http://www.imooc.com/learn/557 <br>
