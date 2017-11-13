@@ -88,6 +88,7 @@ class Test extends \think\Controller
 
         $data = input('post.');
         if ($data['mt'] != 1) {
+            //exception("input('post.mt')!=1");    //错误码:500
             throw new ApiException("input('post.mt')!=1", 400);
         }
         return showApi(1, 'OK', input('post.'), 201);
