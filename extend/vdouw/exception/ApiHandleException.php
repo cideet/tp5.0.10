@@ -16,7 +16,7 @@ class ApiHandleException extends \think\exception\Handle
     public function render(\Exception $e)
     {
         if ($e instanceof ApiException) {
-            $this->httpCode = $e->httpCode;
+            $this->httpCodeErrorNum = $e->httpCode;
         }
         return showApi(0, $e->getMessage(), [], $this->httpCodeErrorNum);
     }
