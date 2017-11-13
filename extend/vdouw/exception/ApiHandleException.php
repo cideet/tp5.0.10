@@ -11,10 +11,13 @@ namespace vdouw\exception;
 class ApiHandleException extends \think\exception\Handle
 {
 
-    public $httpCodeError = 500;
+    public $httpCodeErrorNum = 500;
 
     public function render(\Exception $e)
     {
-        return showApi(0, $e->getMessage(), [], $this->httpCodeError);
+        if ($e instanceof ApiException) {
+            $this->httpCode = $e->httpCode;
+        }
+        return showApi(0, $e->getMessage(), [], $this->httpCodeErrorNum);
     }
 }

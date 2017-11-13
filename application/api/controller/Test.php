@@ -8,6 +8,8 @@
 
 namespace app\api\controller;
 
+use vdouw\exception\ApiException;
+
 class Test extends \think\Controller
 {
     /**
@@ -68,7 +70,7 @@ class Test extends \think\Controller
         //return showApi(1, 'OK', input('post.'), 201);
         //封装通用化API接口数据输出
 
-        model('sdfsdg'); //接口报错
+        //model('sdfsdg'); //接口报错
 
         //try {
         //    model('sdfsg');
@@ -77,5 +79,17 @@ class Test extends \think\Controller
         //}
         //当然，我们可以这么处理
         //但是这，并不能处理更多的一些不可预支的程序错误
+
+        //$data = input('post.');
+        //if($data['mt']!=1){
+        //    exception('您提交的数据不合法');
+        //}
+        //返回的状态码是500，这明显不是我们想要的值
+
+        $data = input('post.');
+        if ($data['mt'] != 1) {
+            throw new ApiException('data error', 400);
+        }
+        return showApi(1, 'OK', input('post.'), 201);
     }
 }
