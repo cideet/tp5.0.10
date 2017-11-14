@@ -23,6 +23,7 @@ class Common extends \think\Controller
         parent::_initialize();
         $this->checkRequestAuth();
         $this->testAes1();
+        $this->testAes2();
     }
 
     /**
@@ -38,7 +39,7 @@ class Common extends \think\Controller
 
     /**
      * 测试Aes加密
-     * return 6dDiaoQrSC2tPepBYWGFhyPSjU+TIWdLmgvFB/FvGoMWWLDOJuDq+/wovs/BUXxU
+     * return '6dDiaoQrSC2tPepBYWGFhyPSjU+TIWdLmgvFB/FvGoMWWLDOJuDq+/wovs/BUXxU'
      */
     public function testAes1()
     {
@@ -49,7 +50,17 @@ class Common extends \think\Controller
         echo('----testAes1 end-----');
     }
 
-
+    /**
+     * 测试Aes解密
+     * return 'id=1&ms=45&username=zhangsanfeng'
+     */
+    public function testAes2(){
+        $str = '6dDiaoQrSC2tPepBYWGFhyPSjU+TIWdLmgvFB/FvGoMWWLDOJuDq+/wovs/BUXxU';
+        $decry = (new \vdouw\Aes())->decrypt($str);
+        echo('----testAes2 start-----');
+        echo($decry);
+        echo('----testAes2 end-----');
+    }
 
 
 }
