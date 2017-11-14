@@ -16,6 +16,13 @@ namespace app\api\controller;
 class Common extends \think\Controller
 {
     /**
+     * headers信息
+     * 方便子类继承
+     * @var string
+     */
+    public $headers = '';
+
+    /**
      * 初始化方法
      */
     public function _initialize()
@@ -35,6 +42,17 @@ class Common extends \think\Controller
     {
         //首先需要获取headers里的数据
         $headers = request()->header();
+        //基础参数校验
+        if (empty($headers['sign'])) {
+            throw new \vdouw\exception\ApiException('sign不存在', 400);
+        }
+        if (!in_array($headers['app_type'], config('app.apptypes'))) {
+            throw new \vdouw\exception\ApiException('app_type不合法', 400);
+        }
+        if (!\vdouw\IAuth::checkSignPass($headers)) {
+            throw new \vdouw\exception\ApiException('Sign授权码失败', 401);
+        }
+        $this->headers = $headers;
     }
 
     /**

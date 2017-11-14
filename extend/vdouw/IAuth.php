@@ -22,8 +22,27 @@ class IAuth
         return $str2;
     }
 
+    /**
+     * 检验sign是否正常
+     * @param $data
+     * @return bool
+     */
+    public static function checkSignPass($data)
+    {
+        $str = (new \vdouw\Aes())->decrypt($data['sign']);
+        if (empty($str)) {
+            return false;
+        }
+        parse_str($str, $arr);  //把查询字符串解析到变量中//parse_str("name=Bill&age=60",$myArray);
+        if (!is_array($arr) || empty($arr['did']) || $arr['did'] != $data['did']) {
+            return false;
+        }
+        return true;
+    }
+
     public static function setPassword($data)
     {
         return md5($data . config('app.password_pre_halt'));
     }
+
 }
