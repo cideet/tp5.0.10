@@ -20,8 +20,9 @@ class Common extends \think\Controller
     /**
      * 初始化方法
      */
-    public function __initialize()
+    public function _initialize()
     {
+        parent::_initialize();
         $this->checkRequestAuth();
         $this->testAes();
     }
