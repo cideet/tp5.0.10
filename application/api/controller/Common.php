@@ -22,8 +22,8 @@ class Common extends \think\Controller
     {
         parent::_initialize();
         $this->checkRequestAuth();
-        //$this->testAes1();
-        //$this->testAes2();
+        $this->testAes1();
+        $this->testAes2();
         $this->testIAuth1();
         $this->testIAuth2();
     }
@@ -35,8 +35,6 @@ class Common extends \think\Controller
     {
         //首先需要获取headers里的数据
         $headers = request()->header();
-        //echo('-----headers-----');
-        //halt($headers);
     }
 
     /**
@@ -47,9 +45,9 @@ class Common extends \think\Controller
     {
         $str = 'id=1&ms=45&username=zhangsanfeng';
         $encry = (new \vdouw\Aes())->encrypt($str);
-        echo('----testAes1 start-----');
+        echo('<br>----testAes1 start-----<br>');
         echo($encry);
-        echo('----testAes1 end-----');
+        echo('<br>----testAes1 end-----<br>');
     }
 
     /**
@@ -60,9 +58,9 @@ class Common extends \think\Controller
     {
         $str = '6dDiaoQrSC2tPepBYWGFhyPSjU+TIWdLmgvFB/FvGoMWWLDOJuDq+/wovs/BUXxU';
         $decry = (new \vdouw\Aes())->decrypt($str);
-        echo('----testAes2 start-----');
+        echo('<br>----testAes2 start-----<br>');
         echo($decry);
-        echo('----testAes2 end-----');
+        echo('<br>----testAes2 end-----<br>');
     }
 
     /**
@@ -75,18 +73,21 @@ class Common extends \think\Controller
             'did' => '123ddd',
             'version' => 1
         ];
+        echo('<br>----testIAuth1 start----<br>');
         echo \vdouw\IAuth::setSign($data);
+        echo('<br>----testIAuth1 end----<br>');
         //exit;
     }
 
     /**
      * return 'did=123ddd&version=1'
      */
-    public function testIAuth2(){
+    public function testIAuth2()
+    {
         $str = 'Geo5T7xcjxkObRlfi8hQ2cPq8CZr/mHktjwNumtNgu0=';
-        echo('----testIAuth2 start----');
+        echo('<br>----testIAuth2 start----<br>');
         echo (new \vdouw\Aes())->decrypt($str);
-        echo('----testIAuth2 end----');
+        echo('<br>----testIAuth2 end----<br>');
     }
 
 
