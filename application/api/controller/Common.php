@@ -22,8 +22,10 @@ class Common extends \think\Controller
     {
         parent::_initialize();
         $this->checkRequestAuth();
-        $this->testAes1();
-        $this->testAes2();
+        //$this->testAes1();
+        //$this->testAes2();
+        $this->testIAuth1();
+        $this->testIAuth2();
     }
 
     /**
@@ -33,7 +35,7 @@ class Common extends \think\Controller
     {
         //首先需要获取headers里的数据
         $headers = request()->header();
-        echo('-----headers-----');
+        //echo('-----headers-----');
         //halt($headers);
     }
 
@@ -54,12 +56,37 @@ class Common extends \think\Controller
      * 测试Aes解密
      * return 'id=1&ms=45&username=zhangsanfeng'
      */
-    public function testAes2(){
+    public function testAes2()
+    {
         $str = '6dDiaoQrSC2tPepBYWGFhyPSjU+TIWdLmgvFB/FvGoMWWLDOJuDq+/wovs/BUXxU';
         $decry = (new \vdouw\Aes())->decrypt($str);
         echo('----testAes2 start-----');
         echo($decry);
         echo('----testAes2 end-----');
+    }
+
+    /**
+     * 测试IAuth->setSign()
+     * return 'Geo5T7xcjxkObRlfi8hQ2cPq8CZr/mHktjwNumtNgu0='
+     */
+    public function testIAuth1()
+    {
+        $data = [
+            'did' => '123ddd',
+            'version' => 1
+        ];
+        echo \vdouw\IAuth::setSign($data);
+        //exit;
+    }
+
+    /**
+     * return 'did=123ddd&version=1'
+     */
+    public function testIAuth2(){
+        $str = 'Geo5T7xcjxkObRlfi8hQ2cPq8CZr/mHktjwNumtNgu0=';
+        echo('----testIAuth2 start----');
+        echo (new \vdouw\Aes())->decrypt($str);
+        echo('----testIAuth2 end----');
     }
 
 
