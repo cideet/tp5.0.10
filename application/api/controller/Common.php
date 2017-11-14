@@ -8,8 +8,6 @@
 
 namespace app\api\controller;
 
-use vdouw\Aes;
-
 /**
  * API模块的公共控制器
  * Class Common
@@ -24,7 +22,7 @@ class Common extends \think\Controller
     {
         parent::_initialize();
         $this->checkRequestAuth();
-        $this->testAes();
+        $this->testAes1();
     }
 
     /**
@@ -34,13 +32,24 @@ class Common extends \think\Controller
     {
         //首先需要获取headers里的数据
         $headers = request()->header();
-        halt($headers);
+        echo('-----headers-----');
+        //halt($headers);
     }
 
-    public function testAes()
+    /**
+     * 测试Aes加密
+     * return 6dDiaoQrSC2tPepBYWGFhyPSjU+TIWdLmgvFB/FvGoMWWLDOJuDq+/wovs/BUXxU
+     */
+    public function testAes1()
     {
         $str = 'id=1&ms=45&username=zhangsanfeng';
-        echo (new Aes())->encrypt($str);
-        exit;
+        $encry = (new \vdouw\Aes())->encrypt($str);
+        echo('----testAes1 start-----');
+        echo($encry);
+        echo('----testAes1 end-----');
     }
+
+
+
+
 }
