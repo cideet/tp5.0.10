@@ -37,11 +37,14 @@ class IAuth
         if (!is_array($arr) || empty($arr['did']) || $arr['did'] != $data['did']) {
             return false;
         }
-        //10分钟过期
+        //过期时间判断
         if ((time() - ceil($arr['time'] / 1000)) > config('app.app_sign_time')) {
             return false;
         }
         //判断唯一性
+        //1、文件（单服务器）
+        //2、mysql
+        //3、redis
         //再次测试的时候，删除缓存文件即可
         if (\think\Cache::get($data['sign'])) {
             return false;

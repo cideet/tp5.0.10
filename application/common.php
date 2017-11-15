@@ -91,6 +91,10 @@ function showApi($status, $message, $data = [], $httpCode = 200)
     return json($data, $httpCode);
 }
 
+/**
+ * 获取当前时间的13位时间戳
+ * @return string
+ */
 function get13Timestamp()
 {
     list($t1, $t2) = explode(' ', microtime());

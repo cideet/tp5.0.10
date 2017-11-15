@@ -83,12 +83,13 @@ class Test extends \app\api\controller\Common
         //    exception('您提交的数据不合法');
         //}
         //返回的状态码是500，这明显不是我们想要的值
-        
+
         $data = input('post.');
-        if ($data['mt'] != 1) {
-            //exception("input('post.mt')!=1");    //错误码:500
-            throw new \vdouw\exception\ApiException("input('post.mt')!=1", 403);
-        }
-        return showApi(1, 'OK', input('post.'), 201);
+        //if ($data['mt'] != 1) {
+        //    //exception("input('post.mt')!=1");    //错误码:500
+        //    throw new \vdouw\exception\ApiException("input('post.mt')!=1", 403);
+        //}
+        //return showApi(1, 'OK', input('post.'), 201);
+        return showApi(1, 'OK', (new \vdouw\Aes())->encrypt(json_encode(input('post.'))), 201);
     }
 }
