@@ -7,10 +7,10 @@
  */
 namespace app\api\controller;
 
-class Getservicetimestamp extends \think\Controller
+class Getservicetimestamp extends \app\api\controller\Common
 {
     /**
-     * 获取服务器时间戳接口
+     * 获取服务器时间戳
      * @return array
      */
     public function index()

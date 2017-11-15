@@ -9,6 +9,8 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
+use think\Route;
+
 //return [
 //    '__pattern__' => [
 //        'name' => '\w+',
@@ -21,28 +23,32 @@
 //];
 
 //通过域名加test，就可以访问/index.php/api/test/index
-\think\Route::get('test', 'api/test/index');
+Route::get('test', 'api/test/index');
 //postman对应的是get方式，输入网址“http://127.0.0.65/test”查看效果
 
-\think\Route::put('test/:id', 'api/test/update');
+Route::put('test/:id', 'api/test/update');
 //postman对应的是put方式，输入网址“http://127.0.0.65/test/12”查看效果，可以在body中添加参数
 
-\think\Route::post('test', 'api/test/save');
+Route::post('test', 'api/test/save');
 
-\think\Route::delete('test/:id', 'api/test/delete');
+Route::delete('test/:id', 'api/test/delete');
 
 //Route::resource('test', 'api/test');
-//\think\Route::resource('testresource','api/testresource');
+//Route::resource('testresource','api/testresource');
 //POST => '/index.php/api/testresource/save'
 //GET  => '/index.php/api/testresource/index'
 
 //indexx就可以打开首页，由于本程序事先未考虑这样去做路由，所以有一些问题
-//\think\Route::resource('indexx', 'home/index');
+//Route::resource('indexx', 'home/index');
 
 //获取服务器时间戳
-\think\Route::get('getservicetimestamp', 'api/getservicetimestamp/index');
+Route::get('getservicetimestamp', 'api/getservicetimestamp/index');
 
-\think\Route::get('testresource', 'api/testresource/index');
-\think\Route::post('testresource', 'api/testresource/save');
+//获取分类
+Route::get('testgetallcategory', 'api/testcategory/read');
+
+
+Route::get('testresource', 'api/testresource/index');
+Route::post('testresource', 'api/testresource/save');
 
 
