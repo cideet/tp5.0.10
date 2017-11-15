@@ -39,6 +39,9 @@
 //indexx就可以打开首页，由于本程序事先未考虑这样去做路由，所以有一些问题
 //\think\Route::resource('indexx', 'home/index');
 
+//获取服务器时间戳
+\think\Route::get('getservicetimestamp', 'api/getservicetimestamp/index');
+
 \think\Route::get('testresource', 'api/testresource/index');
 \think\Route::post('testresource', 'api/testresource/save');
 

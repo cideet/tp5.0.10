@@ -80,6 +80,9 @@ sign加密需要客户端工程师做，解密需要服务端工程师做 <br>
 测试Aes加密 =》application/api/controller/Common.php->testAes1 <br>
 测试Aes解密 =》application/api/controller/Common.php->testAes2 <br>
 
+获取服务器时间戳 <br>
+http://127.0.0.65/index.php/getservicetimestamp <br>
+
 
 
 
