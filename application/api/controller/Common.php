@@ -89,7 +89,8 @@ class Common extends \think\Controller
     {
         $data = [
             'did' => '123ddd',
-            'version' => 1
+            'version' => 1,
+            'time' => get13Timestamp()
         ];
         echo('<br>----testIAuth1 start----<br>');
         echo \vdouw\IAuth::setSign($data);
@@ -102,7 +103,8 @@ class Common extends \think\Controller
      */
     public function testIAuth2()
     {
-        $str = 'Geo5T7xcjxkObRlfi8hQ2cPq8CZr/mHktjwNumtNgu0=';
+        //$str = 'Geo5T7xcjxkObRlfi8hQ2cPq8CZr/mHktjwNumtNgu0=';
+        $str = 'JUH7jXhA7TjhvANBNIihq/+Ed2F4DgUyCrL0xA7VtO2/C+Y+3QpYyVQOcCFfVj6X';
         echo('<br>----testIAuth2 start----<br>');
         echo (new \vdouw\Aes())->decrypt($str);
         echo('<br>----testIAuth2 end----<br>');

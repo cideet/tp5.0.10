@@ -91,5 +91,11 @@ function showApi($status, $message, $data = [], $httpCode = 200)
     return json($data, $httpCode);
 }
 
+function get13Timestamp()
+{
+    list($t1, $t2) = explode(' ', microtime());
+    return $t2 . ceil($t1 * 1000);
+}
+
 
 
