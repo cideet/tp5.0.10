@@ -21,6 +21,15 @@ class Testcategory extends Common
             'catename' => '首页',
             'parent_id' => 0
         ];
+        $headers = request()->header();
+        //halt($headers);
+        if ($headers['version'] == 2) {
+            $array[] = [
+                'id' => 1999,
+                'catename' => '测试接口版本控制',
+                'parent_id' => 0
+            ];
+        }
         foreach ($categorys as $id => $catename) {
             $array[] = [
                 'id' => $id,
