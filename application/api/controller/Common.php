@@ -52,6 +52,7 @@ class Common extends \think\Controller
         if (!\vdouw\IAuth::checkSignPass($headers)) {
             throw new \vdouw\exception\ApiException('Sign授权码失败', 401);
         }
+        \think\Cache::set($headers['sign'],1,config('app.app_sign_cache_time'));  //写入缓存
         $this->headers = $headers;
     }
 
