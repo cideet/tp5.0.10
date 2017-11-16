@@ -42,10 +42,13 @@ Route::delete('test/:id', 'api/test/delete');
 //Route::resource('indexx', 'home/index');
 
 //获取服务器时间戳
-Route::get('getservicetimestamp', 'api/getservicetimestamp/index');
+Route::get('api/getservicetimestamp', 'api/getservicetimestamp/index');
 
 //获取分类
 Route::get('testgetallcategory', 'api/testcategory/read');
+
+//获取分类（version:1）
+//Route::get('testgetallcategory', 'api/testcategory/read');
 
 
 Route::get('testresource', 'api/testresource/index');

@@ -81,10 +81,10 @@ sign加密需要客户端工程师做，解密需要服务端工程师做 <br>
 测试Aes解密 =》application/api/controller/Common.php->testAes2 <br>
 
 获取服务器时间戳（记得是get方式） <br>
-http://127.0.0.65/index.php/getservicetimestamp <br>
+http://127.0.0.65/index.php/api/getservicetimestamp <br>
 
 获取分类（记得是get方式） <br>
-http://127.0.0.65/index.php/testgetallcategory <br>
+http://127.0.0.65/index.php/api/testgetallcategory <br>
 
 
 
