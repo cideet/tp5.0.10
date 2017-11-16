@@ -6,7 +6,7 @@
  * Time: 20:11
  */
 
-namespace app\api\controller;
+namespace app\api\controller\v1;
 
 class Category extends \think\Controller
 {

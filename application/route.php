@@ -47,8 +47,8 @@ Route::get('api/getservicetimestamp', 'api/getservicetimestamp/index');
 //获取分类
 Route::get('api/testgetallcategory', 'api/testcategory/read');
 
-//获取分类（version:1）
-//Route::get('testgetallcategory', 'api/testcategory/read');
+//获取分类（不同版本号，放入不同的文件夹，比如v1/v2）
+Route::get('api/:version/testgetallcategory', 'api/:version.testcategory/read');
 
 
 Route::get('testresource', 'api/testresource/index');

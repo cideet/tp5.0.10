@@ -86,6 +86,11 @@ http://127.0.0.65/index.php/api/getservicetimestamp <br>
 获取分类（记得是get方式） <br>
 http://127.0.0.65/index.php/api/testgetallcategory <br>
 
+版本控制 <br>
+不同版本号，放入不同的文件夹，比如v1/v2 <br>
+postman中输入以下链接，对比查看效果： <br>
+http://127.0.0.65/index.php/api/v1/testgetallcategory <br>
+http://127.0.0.65/index.php/api/v2/testgetallcategory <br>
 
 
 
