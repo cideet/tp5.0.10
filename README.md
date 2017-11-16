@@ -92,6 +92,16 @@ postman中输入以下链接，对比查看效果： <br>
 http://127.0.0.65/index.php/api/v1/testgetallcategory <br>
 http://127.0.0.65/index.php/api/v2/testgetallcategory <br>
 
+API接口文档编写 <br>
+有利于客户端工程师熟悉接口 <br>
+有利于服务端工程师接手接口 <br>
+经过对比， 用http://doc.oschina.net 编写接口文档比较不错 <br>
+右上角记得有个“切换团队” <br>
+公开的接口文档：http://zhangsanfeng_test2.mydoc.io/ <br>
+输入密码可访问的接口文档：http://doc.oschina.net/zhangsanfeng_test1 <br>
+团队文档：http://doc.oschina.net/vdouw_team_test1 <br>
+
+
 
 
 
