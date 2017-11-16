@@ -26,7 +26,7 @@ class Testcategory extends Common
         if ($headers['version'] == 2) {
             $array[] = [
                 'id' => 1999,
-                'catename' => '测试接口版本控制',
+                'catename' => '测试接口版本控制=>version:2',
                 'parent_id' => 0
             ];
         }
