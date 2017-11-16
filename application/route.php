@@ -45,7 +45,7 @@ Route::delete('test/:id', 'api/test/delete');
 Route::get('api/getservicetimestamp', 'api/getservicetimestamp/index');
 
 //获取分类
-Route::get('testgetallcategory', 'api/testcategory/read');
+Route::get('api/testgetallcategory', 'api/testcategory/read');
 
 //获取分类（version:1）
 //Route::get('testgetallcategory', 'api/testcategory/read');
