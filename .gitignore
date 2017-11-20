@@ -1,3 +1,5 @@
 .idea
 runtime/
 .project
+public/react/node_modules/
+public/vue/node_modules/
