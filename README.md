@@ -103,12 +103,12 @@ API接口文档编写 <br>
 
 React <br>
 npm install webpack webpack-dev-server extract-text-webpack-plugin open-browser-webpack-plugin optimize-css-assets-webpack-plugin --save-dev <br>
-npm install babel-core babel-loader babel-plugin-react-transform babel-preset-latest babel-preset-react --save-dev <br>
-npm autoprefixer css-loader cssnano file-loader html-loader html-webpack-plugin img-loader json-loader less less-loader postcss postcss-loader style-loader url-loader --save-dev <br>
+    npm install babel-core babel-loader babel-plugin-react-transform babel-preset-latest babel-preset-react --save-dev <br>
+npm install autoprefixer css-loader cssnano file-loader html-loader html-webpack-plugin img-loader json-loader less less-loader postcss postcss-loader style-loader url-loader --save-dev <br>
 npm install react-transform-hmr ---save-dev 安装这个才能实现热替换的功能<br>
 npm install koa koa-body koa-router --save-dev <br>
 npm install es6-promise --save <br>
-npm install immutable react react-addons-css-transition-group react-addons-perf react-addons-pure-render-mixin react-dom react-redux react-router@2.8.1 react-router-dom@4.2.2 redux whatwg-fetch --save <br>
+npm install immutable react@15.6.1 react-addons-css-transition-group react-addons-perf react-addons-pure-render-mixin react-dom@15.6.1 react-redux react-router@2.8.1 react-router-dom@4.2.2 redux whatwg-fetch --save <br>
 npm install react-swipe swipe-js-iso --save <br>
 
 
