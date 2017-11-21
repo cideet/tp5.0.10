@@ -3,12 +3,8 @@
 * {
     margin: 0;
     padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
     &:before, *:after {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
 }
@@ -78,19 +74,11 @@ body {
 body {
     .left50 {
         margin-left: 50%;
-        -moz-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        -o-transform: translateX(-50%);
-        -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
     }
 
     .top50 {
         margin-top: 50%;
-        -moz-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
     }
 
@@ -98,10 +86,6 @@ body {
         position: absolute;
         top: 50%;
         left: 50%;
-        -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
 }
@@ -350,26 +334,14 @@ body {
         overflow: auto;
     }
     .transform-rotate-180deg {
-        -moz-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-        -o-transform: rotate(180deg);
-        -webkit-transform: rotate(180deg);
         transform: rotate(180deg);
     }
 
     .transform-rotate-0deg {
-        -moz-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
 
     .tran-all {
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-        -ms-transition: all 0.3s;
-        -o-transition: all 0.3s;
         transition: all 0.3s;
     }
 }
@@ -424,7 +396,6 @@ body {
     .vdouw-table td {
         height: 50px;
         padding: 0 10px;
-        text-align: center;
         border: 1px solid #e5e5e5;
         border-top: none;
         border-left: none;
@@ -475,18 +446,14 @@ body {
         padding: 3px 10px;
         border-radius: 2px;
         background-image: none;
-        -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-        -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
         transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
         border: 1px solid #ccc;
-        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     }
 
     .form-control:focus {
         border-color: #438eb9;
         outline: 0;
-        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(67, 142, 185, 0.6);
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(67, 142, 185, 0.6);
     }
 
@@ -516,7 +483,6 @@ body {
     .btn:active {
         background-image: none;
         outline: 0;
-        -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
         box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     }
 
@@ -728,46 +694,6 @@ body {
     }
 }
 
-/* 分页 */
-.pagination {
-    width: 100%;
-    li {
-        float: left;
-        margin-right: 5px;
-    }
-
-    li a, li span {
-        display: inline-block;
-        width: 30px;
-        text-align: center;
-        height: 30px;
-        line-height: 30px;
-        background: #ddd;
-        border-radius: 3px;
-    }
-
-    li a:hover {
-        background: #337ab7;
-        color: white;
-        transition: all 0.3s;
-    }
-
-    li span {
-        background: #337ab7;
-        color: white;
-    }
-
-    li.disabled span {
-        background: #ddd;
-        color: #333;
-    }
-
-    li span:hover {
-        background: #2b6699;
-        transition: all 0.3s;
-        color: white;
-    }
-}
 
 
 
