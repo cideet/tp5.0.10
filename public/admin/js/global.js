@@ -68,6 +68,7 @@ var vdouwTool = {
 
     /**
      * 数据去重
+     * 利用对象的属性去重
      * @param $array
      * @returns {Array}
      */
@@ -77,7 +78,7 @@ var vdouwTool = {
         for (var i = 0; i < $array.length; i++) {
             if (!json[$array[i]]) {
                 res.push($array[i]);
-                json[this[i]] = 1;
+                json[$array[i]] = 1;
             }
         }
         return res;
