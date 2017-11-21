@@ -103,7 +103,7 @@ API接口文档编写 <br>
 
 React <br>
 npm install webpack webpack-dev-server extract-text-webpack-plugin open-browser-webpack-plugin optimize-css-assets-webpack-plugin --save-dev <br>
-    npm install babel-core babel-loader babel-plugin-react-transform babel-preset-latest babel-preset-react --save-dev <br>
+npm install babel-core babel-loader babel-plugin-react-transform babel-preset-latest babel-preset-react --save-dev <br>
 npm install autoprefixer css-loader@0.28.7 cssnano file-loader html-loader html-webpack-plugin img-loader json-loader less@2.7.2 less-loader@4.0.5 postcss@6.0.8 postcss-loader@1.3.3 style-loader@0.18.2 url-loader@0.5.9 --save-dev <br>
 npm install react-transform-hmr ---save-dev 安装这个才能实现热替换的功能<br>
 npm install koa@1.2.2 koa-body@1.6.0 koa-router@5.4.0 --save-dev <br>

@@ -1,0 +1,43 @@
+/**
+ * Created by Administrator on 2017/11/21 0021.
+ */
+html {
+  height: 100%;
+}
+html body {
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+  height: l00%;
+  box-sizing: border-box;
+}
+html body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "微软雅黑", "Times New Roman", Georgia, Serif;
+}
+html body a {
+  text-decoration: none;
+}
+input {
+  outline: none;
+  border: 0;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.clearfix:after {
+  display: table;
+  content: '';
+  clear: both;
+}
+img {
+  max-width: 100%;
+}
+.mt-5 {
+  margin-top: 5px;
+}
