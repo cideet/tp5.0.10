@@ -22,11 +22,11 @@ class Index extends React.Component {
                         ? this.props.children
                         : <div>正在加载...</div>
                 }
-                <ul>
+                {/*<ul className="overflow-hidden clearfix">
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/articlelist">ArticleList</Link></li>
                     <li><Link to="/notFound">NotFound</Link></li>
-                </ul>
+                </ul>*/}
             </div>
         )
     }

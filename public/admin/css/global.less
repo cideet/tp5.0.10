@@ -14,7 +14,7 @@
 }
 
 html, body {
-    font: 12px/1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+    font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -453,21 +453,18 @@ body {
         text-align: center;
     }
 
-    img {
+    img.middle {
+        vertical-align: middle;
+    }
+
+    .img-responsive {
+        display: block;
         max-width: 100%;
-        .middle {
-            vertical-align: middle;
-        }
+        height: auto;
+    }
 
-        .img-responsive {
-            display: block;
-            max-width: 100%;
-            height: auto;
-        }
-
-        .img-circle {
-            border-radius: 50%;
-        }
+    .img-circle {
+        border-radius: 50%;
     }
 
     .form-control {

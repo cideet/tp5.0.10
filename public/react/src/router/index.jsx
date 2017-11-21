@@ -15,7 +15,7 @@ class Index extends React.Component {
         return (
             <Router history={this.props.history}>
                 <Route path="/" component={App}>
-                    <IndexRoute component={Home}/>
+                    <IndexRoute path="home" component={Home}/>
                     <Route path="articlelist" component={ArticleList}/>
                     <Route path="*" component={NotFound}/>
                 </Route>

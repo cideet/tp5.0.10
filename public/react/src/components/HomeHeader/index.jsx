@@ -6,7 +6,7 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Link} from 'react-router';
 
-import HomeHeader from '../../components/HomeHeader/index';
+import './index.less';
 
 class Index extends React.Component {
     constructor(props, context) {
@@ -16,8 +16,12 @@ class Index extends React.Component {
 
     render() {
         return (
-            <div>
-                <HomeHeader />
+            <div className="home-header clearfix">
+                <ul>
+                    <li className="pull-left active"><Link to="/"><span>首页</span></Link></li>
+                    <li className="pull-left"><Link to="/articlelist"><span>前端</span></Link></li>
+                    <li className="pull-left"><Link to="/articlelist"><span>程序</span></Link></li>
+                </ul>
             </div>
         )
     }
