@@ -9,6 +9,7 @@ import {Link} from 'react-router';
 import ReactSwipe from 'react-swipe';
 
 import testPic from '../../static/images/test.jpg';
+import testPic2 from '../../static/images/test2.jpg';
 import './index.less';
 
 class Index extends React.Component {
@@ -29,7 +30,7 @@ class Index extends React.Component {
             <div className="home-banner clearfix">
                 <ReactSwipe swipeOptions={opt}>
                     <div className="item"><img src={testPic}/></div>
-                    <div className="item"><img src={testPic}/></div>
+                    <div className="item"><img src={testPic2}/></div>
                     <div className="item"><img src={testPic}/></div>
                 </ReactSwipe>
                 <div className="banner-index left50">
