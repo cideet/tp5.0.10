@@ -32,15 +32,15 @@ class Index extends React.Component {
                     <div className="item"><img src={testPic}/></div>
                     <div className="item"><img src={testPic}/></div>
                 </ReactSwipe>
-                <div className="index-container">
+                <div className="banner-index left50">
                     <ul>
-                        <li className={this.state.index === 0 ? "selected" : ''}></li>
-                        <li className={this.state.index === 1 ? "selected" : ''}></li>
-                        <li className={this.state.index === 2 ? "selected" : ''}></li>
+                        <li className={this.state.index === 0 ? "active" : ''}></li>
+                        <li className={this.state.index === 1 ? "active" : ''}></li>
+                        <li className={this.state.index === 2 ? "active" : ''}></li>
                     </ul>
                 </div>
             </div>
-        )
+        );
     }
 }
 

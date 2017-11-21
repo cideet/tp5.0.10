@@ -3,31 +3,19 @@
  */
 
 .home-banner {
-    background-color: #fff;
-    padding: 10px;
-
+    padding: 8px;
+    position: relative;
     .item {
-        ul {
+        overflow: hidden;
+        img {
             width: 100%;
-            height: auto;
-        }
-        li {
-            display: block;
-            list-style: none;
-            width: 20%;
-            background-repeat: no-repeat;
-            background-size: 50px auto;
-            background-position: top center;
-            text-align: center;
-            padding-top: 50px;
-            color: #666;
-            font-size: 14px;
+            height: 150px;
         }
     }
-
-    .index-container {
-        margin-top: 10px;
-
+    .banner-index {
+        position: absolute;
+        bottom: 15px;
+        left: 0;
         ul {
             width: 100%;
             height: auto;
@@ -42,7 +30,7 @@
             background-color: #ccc;
             margin: 0 3px;
         }
-        li.selected {
+        li.active {
             background-color: rgb(233, 32, 61);
         }
     }
